@@ -21,6 +21,12 @@
   .serif   {font-family:'Fraunces',Georgia,'Times New Roman',serif;}
   .mono    {font-family:'SFMono-Regular',Consolas,'Courier New',monospace;}
   a {text-decoration:none;}
+  @media only screen and (max-width:620px){
+    .wrap{width:100% !important;}
+    .brand{font-size:60px !important; letter-spacing:1px !important;}
+    .heropad{padding:40px 26px 34px 26px !important;}
+    .sidepad{padding-left:26px !important; padding-right:26px !important;}
+  }
 </style>
 </head>
 <body style="margin:0; padding:0; background-color:#e9e9ec;">
@@ -33,14 +39,15 @@ AI made building fast. The slow part is now everything around it - decisions, ap
 <tr>
 <td align="center" style="padding:30px 10px;">
 
-  <table role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" style="width:640px; max-width:640px; background-color:#ffffff;">
+  <!--[if mso]><table role="presentation" width="640" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+  <table role="presentation" class="wrap" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; max-width:640px; background-color:#ffffff;">
 
     <!-- top accent rule -->
     <tr><td bgcolor="#e20074" style="background-color:#e20074; font-size:0; line-height:0; height:5px;">&nbsp;</td></tr>
 
     <!-- ===== HERO ===== -->
     <tr>
-      <td bgcolor="#0a0a0a" style="background-color:#0a0a0a; padding:50px 48px 48px 48px;">
+      <td bgcolor="#0a0a0a" class="heropad" style="background-color:#0a0a0a; padding:50px 48px 48px 48px;">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
           <tr>
             <td valign="top" class="heading" style="font-size:12px; line-height:1; letter-spacing:4px; color:#bdbdbd; text-transform:uppercase; font-weight:700;">Digital &amp; Omnichannel SK</td>
@@ -52,7 +59,7 @@ AI made building fast. The slow part is now everything around it - decisions, ap
 
         <div style="height:30px; line-height:30px; font-size:0;">&nbsp;</div>
 
-        <h1 class="display" style="margin:0; font-size:96px; line-height:0.82; color:#ffffff; text-transform:uppercase; letter-spacing:2px; font-weight:400;">
+        <h1 class="display brand" style="margin:0; font-size:96px; line-height:0.82; color:#ffffff; text-transform:uppercase; letter-spacing:2px; font-weight:400;">
           Floor&nbsp;9
         </h1>
 
@@ -235,6 +242,7 @@ AI made building fast. The slow part is now everything around it - decisions, ap
     </tr>
 
   </table>
+  <!--[if mso]></td></tr></table><![endif]-->
 
 </td>
 </tr>
