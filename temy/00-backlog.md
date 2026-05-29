@@ -14,6 +14,8 @@ Stav: `nápad` -> `zbieram materiál` -> `draft` -> `odoslané`
 | 8 | Vilov newsletter - nové tričko | vilov-newsletter-tshirt.md | nápad | ľahšia, osobnejšia téma |
 | 9 | Kde je AI rýchle a kde pomalé | kde-je-ai-rychle-a-kde-pomale.md | draft | issue N°03 "Where AI is fast" (12. 6. 2026) - Tomi's Window TBD |
 | 10 | Dopamín a AI | dopamin-a-ai.md | nápad | reflexia o návykovosti / pozornosti |
+| 11 | Malé tímy | male-timy.md | nápad | ako to robíme v Omnichannel & Digital - malé tímy, veľký dosah |
+| 12 | Minions | minions.md | nápad | |
 
 ## Tip na poradie
 
