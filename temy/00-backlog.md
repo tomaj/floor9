@@ -6,7 +6,7 @@ Stav: `nápad` -> `zbieram materiál` -> `draft` -> `odoslané`
 |---|------|-------|------|-------|
 | 1 | Armagedon | armagedon.md | ready to send | issue N°01, FLOOR 9 v2 (EN, polished) |
 | 2 | Paperclip | paperclip.md | nápad | |
-| 3 | Revo | revo.md | nápad | |
+| 3 | Revo | revo.md | ready to send | issue N°02 "Stop paying vendors" (5. 6. 2026) |
 | 4 | Greenportal | greenportal.md | nápad | |
 | 5 | Cortex | cortex.md | nápad | feature preview platforma |
 | 6 | MCP - na čo nám je | mcp.md | nápad | MCP-first integrácie |
