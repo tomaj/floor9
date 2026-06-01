@@ -17,14 +17,10 @@
 For years we've handed vendors a huge amount of work - and paid a fortune for it. The more we wanted built, the more we paid. That era is over.
 
 ## 01 - What we actually pay for
-For a decade we've paid vendors to deliver finished things on **fixed scope, fixed price** - the more we needed built, the bigger the invoice (and often a licence on top). That pricing was built for a world without AI. That world is over.
-
-*(To be clear: vendors who give us **bodyshop** - real people working inside our teams - are a different conversation, and a fair one. This is about **paying for delivery of ready-made software**. That's the part that's ending.)*
-
-The old game is finished. The only question left is what replaces it.
+One caveat before we go further: vendors who give us **bodyshop** — real people working inside our teams — are a different conversation, and a fair one. This is about **paying for delivery of ready-made software**. That's the part that's ending. So — what replaces it?
 
 ## 02 - What replaces it
-Every vendor request now meets two answers - and a vendor has to win one of them:
+Every vendor request now has two possible outcomes:
 
 1. **We build it ourselves.** With AI we ship things that used to take months.
 2. **The vendor comes back at a tenth of the price** - because they use AI too, and deliver in weeks.
@@ -52,6 +48,14 @@ So we didn't pay. One developer, prompting with Claude, had a first testable ver
 
 ## Kept honest
 Revo isn't a finished, locked-down product - it's a working version we keep improving together with business, going live for testing in June. We had zero experience with this kind of app, so the first version is a starting point, not the finish line. But it's already proof: with AI we can deliver even what we've never done before - fast, cheap, and on our own terms.
+
+## Tweet of the week
+
+> "What stage in the cycle is it when the Uber driver Claudes while the Tesla drives"
+>
+> — [@aarondfrancis](https://x.com/aarondfrancis/status/2060577512347013344)
+
+![Uber driver using Claude while Tesla drives](https://pbs.twimg.com/media/HJikU8obkAAoGIY.jpg)
 
 ## Tomi's Window
 **Claude Opus 4.8** - anthropic.com/news/claude-opus-4-8

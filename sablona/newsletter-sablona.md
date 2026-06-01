@@ -39,6 +39,14 @@
 - [thing 1]
 - [thing 2]
 
+## Tweet of the week
+
+> "[tweet text]"
+>
+> — [@handle](https://x.com/handle/status/...)
+
+![alt text](https://pbs.twimg.com/media/...)
+
 ## What I'm chewing on
 [2-3 sentences, a reflection - not from work is fine]
 [real link]

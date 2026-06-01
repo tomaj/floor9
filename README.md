@@ -60,6 +60,16 @@ Primárne kolegovia TTL. Píš tak, aby to šéf mohol bez úpravy preposlať vy
 - Pomlčky krátke ("-"), nikdy dlhé.
 - Display font v HTML je Anton + Archivo cez Google Fonts. V starom Outlook desktop (Word engine) padnú na Arial/Arial Black - štruktúra (tabuľky, bary cez bgcolor) drží aj tak. V novom Outlooku / Outlook web / Apple Mail / Gmail vyzerá presne ako náhľad.
 
+## Stála rubrika: "Tweet of the week"
+
+Toto je **stála sekcia v každom čísle**, zaradená pred "Tomi's Window". Jeden vtipný alebo trefný tweet zo sveta AI/tech, ktorý doladí tón pred záverom.
+
+Vizuálne: biele pozadie s tenkým rámčekom, obrázok z tweetu (priamo z Twitter CDN), kurzívny text citátu, magenta meno autora.
+
+Ako naplniť: nájdi tweet → získaj image URL cez `https://api.fxtwitter.com/handle/status/ID` → vyplň `{{TWEET_URL}}`, `{{TWEET_IMAGE_URL}}`, `{{TWEET_TEXT}}`, `{{TWEET_AUTHOR}}` v šablóne. Ak tweet nemá obrázok, vynechaj `<img>` riadok.
+
+V Claude Code: *"pridaj do tohto newslettera tweet [URL] ako Tweet of the week"*
+
 ## Stála rubrika: "Tomi's Window"
 
 Toto je **stála sekcia v každom čísle** - nie jednorazovka. Vizuálne je zámerne odlíšená: celý blok má tmavé (čierne) pozadie s rámčekom a zeleným labelom "A regular thing", aby vyskočil z toku a čitateľ ho hneď spoznal.

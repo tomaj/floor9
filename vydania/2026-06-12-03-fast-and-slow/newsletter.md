@@ -45,6 +45,14 @@ Try it: https://dr-helix.telekomsk.prod.acp.sk.tmo/
 ## The ask (call to colleagues)
 Here's the uncomfortable part: **the work isn't the bottleneck anymore - our process is.** With AI our appetite can be enormous - 100 initiatives a quarter instead of 10 - but only if we know what we want, decide fast, and kill the dependencies. So let's tear down the manual steps and the approval queues, automate them, and stay fast *and* safe at the same time. The AI path exists. **Let's find it together.**
 
+## Tweet of the week
+
+> "What stage in the cycle is it when the Uber driver Claudes while the Tesla drives"
+>
+> — [@aarondfrancis](https://x.com/aarondfrancis/status/2060577512347013344)
+
+![Uber driver using Claude while Tesla drives](https://pbs.twimg.com/media/HJikU8obkAAoGIY.jpg)
+
 ## Tomi's Window
 **[ TODO - pick this issue's tool/link. Keep the dark visual. ]**
 One lighter thing from the tech world - a tool, a link, something I'm playing with. (Candidates: Cortex, an MCP server, a small dev tool.)

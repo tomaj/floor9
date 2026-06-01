@@ -16,6 +16,7 @@ Stav: `nápad` -> `zbieram materiál` -> `draft` -> `odoslané`
 | 10 | Dopamín a AI | dopamin-a-ai.md | nápad | reflexia o návykovosti / pozornosti |
 | 11 | Malé tímy | male-timy.md | nápad | ako to robíme v Omnichannel & Digital - malé tímy, veľký dosah |
 | 12 | Minions | minions.md | nápad | |
+| 13 | Claude Code vs Codex? | claude-code-vs-codex.md | nápad | porovnanie nástrojov, čo nám funguje a prečo |
 
 ## Tip na poradie
 
