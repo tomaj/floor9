@@ -17,7 +17,7 @@
 For years we've handed vendors a huge amount of work - and paid a fortune for it. The more we wanted built, the more we paid. That era is over.
 
 ## 01 - What we actually pay for
-One caveat before we go further: vendors who give us **bodyshop** — real people working inside our teams — are a different conversation, and a fair one. This is about **paying for delivery of ready-made software**. That's the part that's ending. So — what replaces it?
+One caveat before we go further: vendors who give us **bodyshop** - real people working inside our teams - are a different conversation, and a fair one. This is about **paying for delivery of ready-made software**. That's the part that's ending. So - what replaces it?
 
 ## 02 - What replaces it
 Every vendor request now has two possible outcomes:
@@ -35,7 +35,7 @@ So here's what changes on our side, starting now:
 **This one's on all of us.** So push back on every quote - hard. Vendors already use AI; they can build in a fraction of the time, yet they still estimate and invoice the old way. Don't accept it. Ask for a **dramatically lower price, every single time** - and make them justify it. Every euro we don't challenge is money thrown straight out the window.
 
 ## Proof: Revo
-**A vendor wanted `140k €` plus a forever licence. We built it ourselves in `2 weeks`.**
+**A vendor wanted `140k €` plus a forever licence. We wrote the first version in `2 weeks`.**
 
 Retail wanted to record in-store conversations and analyse them with AI. The analytics engine (AIVA) already existed - we only needed a desktop tool that records through the microphone and uploads to a server. A vendor offered to build it on top of an existing solution for ~140k €, plus a licence fee we'd keep paying year after year. The catch: it was expected out of the Omnichannel budget - money we don't have.
 
@@ -53,17 +53,17 @@ Revo isn't a finished, locked-down product - it's a working version we keep impr
 
 > "What stage in the cycle is it when the Uber driver Claudes while the Tesla drives"
 >
-> — [@aarondfrancis](https://x.com/aarondfrancis/status/2060577512347013344)
+> - [@aarondfrancis](https://x.com/aarondfrancis/status/2060577512347013344)
 
 ![Uber driver using Claude while Tesla drives](https://pbs.twimg.com/media/HJikU8obkAAoGIY.jpg)
 
 ## Tomi's Window
 **Claude Opus 4.8** - anthropic.com/news/claude-opus-4-8
-The new top model from Anthropic - the engine behind most of what you read about on Floor 9. Their own staff engineer put it well: *"noticeably better judgment - it asks the right questions, catches its own mistakes, pushes back when a plan isn't sound."* We've been running on it on Floor 9 for about a week now.
-- ~4x less likely than the previous version to let flaws in its own code pass unremarked.
-- New "effort control" - you choose how hard it thinks: higher effort to reason more deeply, lower to respond faster.
-- The big one for us: **Dynamic Workflows** - it plans the work, then runs hundreds of parallel subagents in a single session and verifies its own outputs before reporting back. Built for codebase-scale migrations across hundreds of thousands of lines of code.
-- Same price as Opus 4.7 - and fast mode is 3x cheaper than on previous models.
+Anthropic just dropped another major upgrade - their biggest model yet and the engine behind most of what you read on Floor 9. We've been experimenting with it for about a week. Too early to measure real impact, but the difference in how it handles complex code is noticeable. The bigger picture: Anthropic and OpenAI are in a full sprint to build the best AI coding agent, and every few weeks the bar moves. For us that means the tools keep getting sharper - which is exactly why bets like Revo make sense.
+- Their claim: ~4x less likely to miss flaws in its own code.
+- New "effort control" - you pick how hard it thinks before answering.
+- **Dynamic Workflows** - can run hundreds of parallel subagents in one session. We haven't stress-tested this yet, but the potential for large-scale code changes is interesting.
+- Same price as before, fast mode 3x cheaper.
 
 ## Sign-off
 Happy to go deeper over coffee any time. If a vendor quotes you something from here on, ping me before you reserve the budget - let's see what it costs to just build it.

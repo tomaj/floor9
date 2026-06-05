@@ -55,4 +55,19 @@
 [invite to dialogue, two-way] + [team credit] - [Name]
 
 ---
-RULES: less text + more visual. Honest, not braggy. Hyphens "-", never em dashes. Written in English.
+RULES:
+- Less text + more visual. Honest, not braggy. Written in English.
+- Hyphens "-", never em dashes ("—" or &#8212;).
+- MOBILE FIRST (most readers open on phone via Outlook/Apple Mail):
+  - Container max-width: 540px, width: 100%. No fixed-width tables.
+  - No MSO conditional width tables (<!--[if mso]><table width="640">).
+  - Outer wrapper: padding:0 (no gray border).
+  - All content side padding: 16px (not 48px).
+  - Hero padding: 32px 16px 30px 16px. Floor 9 title: 80px.
+  - Body text: 17px. List items: 17px. Kept honest/feature text: 16px.
+  - Stats numbers: 36px. Stats labels: 14px. Bullet points: 15px.
+  - Feature titles (Tomi's Window): 32px.
+  - Add -webkit-text-size-adjust:100% on body tag.
+  - Images: style="width:100%; display:block;" (no width="544" attribute).
+  - Do NOT rely on media queries or <style> blocks for mobile layout - Outlook strips <head> when sending. All critical sizing must be inline.
+  - Media query is progressive enhancement only (for clients that support it).
