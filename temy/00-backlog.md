@@ -13,7 +13,7 @@ Stav: `nápad` -> `zbieram materiál` -> `draft` -> `odoslané`
 | 7 | Operácia Guľový blesk | gulovy-blesk.md | nápad | |
 | 8 | Vilov newsletter - nové tričko | vilov-newsletter-tshirt.md | nápad | ľahšia, osobnejšia téma |
 | 9 | Kde je AI rýchle a kde pomalé | kde-je-ai-rychle-a-kde-pomale.md | draft | issue N°03 "Where AI is fast" (12. 6. 2026) - Tomi's Window TBD |
-| 10 | Dopamín a AI | dopamin-a-ai.md | nápad | reflexia o návykovosti / pozornosti |
+| 10 | Dopamín a AI | dopamin-a-ai.md | draft | issue N°05 "Hooked" (26. 6. 2026) |
 | 11 | Malé tímy | male-timy.md | nápad | ako to robíme v Omnichannel & Digital - malé tímy, veľký dosah |
 | 12 | Minions | minions.md | nápad | |
 | 13 | Claude Code vs Codex? | claude-code-vs-codex.md | nápad | porovnanie nástrojov, čo nám funguje a prečo |
