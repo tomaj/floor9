@@ -89,3 +89,25 @@ Issue #01 (Armagedon) je hotové a ready na poslanie:
 4. Predmet napr.: FLOOR 9 · Issue N°01 - Operation Armageddon. Najprv pošli test sebe.
 
 Pozn.: V Outlook desktop (Word engine) serif padne na Georgia, display na Arial Black - layout drží. V novom Outlooku / web / Apple Mail / Gmail vyzerá presne ako náhľad.
+
+## Decklink - online verzia newslettera
+
+Kazdy newsletter sa po finalizacii nahra na Decklink (`https://emp.st.sk/decklink/`), kde je dostupny cez sharovaci link. Tento link sa prida na koniec emailu ako "Read online" odkaz.
+
+### Workflow
+
+1. **Finalizuj HTML** - ked je `newsletter.html` hotove a otestovane
+2. **Nahraj na Decklink** - spusti `./decklink-upload.sh vydania/YYYY-MM-DD-NN-tema/newsletter.html "FLOOR 9 Issue N°XX - Nazov"`
+3. **Pri updateoch** - ten isty prikaz znova, skript automaticky vytvori novu verziu (netreba manualne riesit)
+4. **Pridaj link do emailu** - shareUrl z outputu vloz do HTML ako "Read online" odkaz
+
+### Technicke detaily
+
+- API token je v `.decklink-token` (gitignored, NIKDY NEKOMITOVAT)
+- Deck ID mapping je v `.decklink-decks.json` (gitignored)
+- Skript `decklink-upload.sh` automaticky rozlisuje novy deck vs. update existujuceho
+- API docs: `https://emp.st.sk/decklink/docs/api`
+
+### Poznamka pre Claude Code
+
+**Pri kazdom finalnom generovani newsletter HTML (alebo updatoch) automaticky spusti upload na Decklink.** Pouzij `./decklink-upload.sh` s cestou k HTML a nazvom vydania. Share URL z odpovede vloz do emailovej verzie ako "Read online" link dole.
