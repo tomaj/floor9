@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 TOKEN_FILE="$SCRIPT_DIR/.decklink-token"
 DECKS_FILE="$SCRIPT_DIR/.decklink-decks.json"
 ASSETS_FILE="$SCRIPT_DIR/.decklink-assets.json"
-BASE_URL="https://emp.st.sk/decklink"
+BASE_URL="https://decklink.sk.tmo"
 
 if [ ! -f "$TOKEN_FILE" ]; then
   echo "Error: $TOKEN_FILE not found"
