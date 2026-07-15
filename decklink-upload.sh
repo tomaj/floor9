@@ -160,7 +160,7 @@ if [ "$ASSET_COUNT" -gt 0 ] && [ -n "$SHORT_ID" ]; then
   cp "$HTML_FILE" "$TMPFILE"
 
   while IFS=$'\t' read -r img_name asset_id; do
-    new_url="/decklink/api/decks/s/$SHORT_ID/assets/$asset_id?v=original"
+    new_url="/api/decks/s/$SHORT_ID/assets/$asset_id?v=original"
     sed -i '' "s|src=\"$img_name\"|src=\"$new_url\"|g" "$TMPFILE"
     echo "  $img_name -> .../$asset_id"
   done < "$ASSET_MAP_FILE"
