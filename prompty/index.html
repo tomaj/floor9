@@ -120,9 +120,40 @@
   .lenses{margin:0 24px 24px;}
   .lenses > p{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 12px;}
   .lens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:5px;overflow:hidden;}
-  .lens{background:var(--card);padding:11px 14px;}
-  .lens b{display:block;font-size:13.5px;font-weight:800;color:var(--ink);}
+  .lens{position:relative;display:block;width:100%;text-align:left;background:var(--card);
+    padding:11px 32px 12px 14px;border:0;margin:0;font:inherit;color:inherit;cursor:pointer;transition:background .15s;}
+  .lens b{display:block;font-size:13.5px;font-weight:800;color:var(--ink);transition:color .15s;}
   .lens small{display:block;font-size:12.5px;color:var(--ink-soft);line-height:1.4;margin-top:2px;}
+  .lens::after{content:"+";position:absolute;top:9px;right:12px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1;color:var(--ink-faint);transition:color .15s,transform .15s;}
+  .lens:hover,.lens:focus-visible{background:color-mix(in srgb,var(--c) 8%, var(--card));}
+  .lens:hover b,.lens:focus-visible b{color:var(--c);}
+  .lens:hover::after,.lens:focus-visible::after{color:var(--c);transform:rotate(90deg);}
+
+  /* ===== MODAL ===== */
+  .modal{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal.open{display:flex;}
+  .modal-backdrop{position:absolute;inset:0;background:rgba(6,8,12,.6);}
+  .modal-box{--c:#c0357f;position:relative;z-index:1;background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-top:4px solid var(--c);border-radius:8px;
+    max-width:520px;width:100%;max-height:86vh;overflow:auto;box-shadow:0 24px 70px rgba(0,0,0,.4);
+    padding:28px 26px 24px;}
+  .modal-close{position:absolute;top:12px;right:12px;appearance:none;border:1px solid var(--line-strong);
+    background:var(--card);color:var(--ink-soft);width:32px;height:32px;border-radius:999px;cursor:pointer;
+    font-size:16px;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:border-color .15s,color .15s;}
+  .modal-close:hover{border-color:var(--c);color:var(--c);}
+  .modal-tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent);border:1px solid color-mix(in srgb,var(--c) 32%,transparent);
+    display:inline-block;padding:3px 8px;border-radius:3px;margin-bottom:14px;}
+  .modal-box h4{margin:0 0 18px;font-size:24px;font-weight:800;letter-spacing:-.015em;line-height:1.15;padding-right:36px;}
+  .m-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 6px;}
+  .modal-box .m-text{margin:0 0 18px;font-size:15.5px;line-height:1.6;color:var(--ink-soft);}
+  .modal-box .m-text strong{color:var(--ink);font-weight:700;}
+  .m-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .m-links a{font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.04em;
+    text-decoration:none;color:var(--c);background:color-mix(in srgb,var(--c) 10%,transparent);
+    border:1px solid color-mix(in srgb,var(--c) 30%,transparent);padding:6px 11px;border-radius:4px;transition:background .15s;}
+  .m-links a:hover{background:color-mix(in srgb,var(--c) 20%,transparent);text-decoration:none;}
+  .m-links a::after{content:" ↗";color:var(--ink-faint);}
 
   /* ===== FOOTER ===== */
   footer{border-top:1px solid var(--line);margin-top:28px;}
@@ -200,37 +231,61 @@
       </div>
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
-        <pre class="prompt" data-i18n="en">Look at this application and find where we can make it better for the user and more engaging. First map the main user journeys from the code, then walk them through these behavioral-design lenses (skip any that don't fit - don't force them):
-
-peak-end rule, Zeigarnik effect, goal-gradient + endowed progress, variable reward, flow, curiosity gap, aesthetic-usability, IKEA effect, fresh-start effect, Hick's law, loss aversion, social proof.
+        <pre class="prompt" data-i18n="en">You are a product and behavioral-design reviewer. Look at this application and find where we can make it better for the user and more engaging. First map the main user journeys from the code, then evaluate each journey against the twelve behavioral-design lenses below. Skip any lens that genuinely doesn't apply - don't force it.
 
 Context: this is an enterprise app behind a login, so "engagement" means helping people finish their task and come back willingly - not manufacturing addiction.
 
-For each idea: name the exact screen or flow, what's weak today (with evidence from the code), one concrete change, and a rough effort estimate. Call out the single strongest "peak" moment we have and the weakest ending. Rank everything by impact-to-effort. Flag anything that crosses into a dark pattern and give me the ethical version instead.</pre>
-        <pre class="prompt" data-i18n="sk">Pozri sa na túto aplikáciu a nájdi, kde ju vieme spraviť lepšou pre používateľa a viac engaging. Najprv si z kódu zmapuj hlavné user journeys a potom ich prejdi cez tieto behaviorálne optiky (preskoč tie, čo nesadnú - nesiľ ich):
+The twelve lenses:
+1. Peak-end rule - people judge an experience by its most intense moment and its ending, not the average. Look for a deliberate "wow" peak and a well-finished last step of each flow.
+2. Zeigarnik effect - unfinished tasks stay on our mind. Look for progress indicators, "80% complete", saved drafts - open loops that invite closing.
+3. Goal-gradient + endowed progress - motivation rises closer to the goal, and starting with some progress already granted ("2 of 5 done") pulls people in.
+4. Variable reward - an unpredictable reward is stickier than a fixed one. Look for tasteful surprise and delight - but reward real value, never a slot machine.
+5. Flow - engagement sits just above the user's current skill; too easy bores, too hard frustrates. Look for progressive disclosure and difficulty that scales.
+6. Curiosity gap - a visible gap between what I know and want to know pulls me forward ("2 more steps and you'll see your result").
+7. Aesthetic-usability effect - things that look better are perceived as easier and more trustworthy. Look for visual polish where it builds confidence.
+8. IKEA effect - people value what they helped create. Look for onboarding where the user sets something up or personalises.
+9. Fresh-start effect - motivation rises at symbolic beginnings (new week, month, birthday). Look for graceful restarts without a sense of failure.
+10. Hick's law - more choices mean slower, harder decisions. Look for screens with too many options, missing defaults, or no single primary action.
+11. Loss aversion - losing hurts more than gaining pleases ("don't lose your streak" beats "earn a point"). Use to protect the user's progress, not to coerce.
+12. Social proof - people copy what others do. Look for honest usage signals ("used by 2,400 colleagues", what similar teams chose).
 
-peak-end rule, Zeigarnik efekt, goal-gradient + endowed progress, variabilná odmena, flow, curiosity gap, aesthetic-usability, IKEA efekt, fresh-start efekt, Hickov zákon, loss aversion, social proof.
+For each lens that applies: name the exact screen or flow, what's weak today (with evidence from the code), one concrete change, and a rough effort estimate. Then call out the single strongest "peak" moment we have today and the weakest ending. Rank all ideas by impact-to-effort. Flag anything that would cross into a dark pattern and give me the ethical version instead.</pre>
+        <pre class="prompt" data-i18n="sk">Si reviewer produktu a behaviorálneho dizajnu. Pozri sa na túto aplikáciu a nájdi, kde ju vieme spraviť lepšou pre používateľa a viac engaging. Najprv si z kódu zmapuj hlavné user journeys a potom každý z nich vyhodnoť voči dvanástim behaviorálnym optikám nižšie. Preskoč optiku, ktorá naozaj nesadne - nesiľ ju.
 
 Kontext: je to firemná aplikácia za loginom, takže "engagement" znamená pomôcť ľuďom dokončiť úlohu a dobrovoľne sa vrátiť - nie vyrábať závislosť.
 
-Pri každom nápade: pomenuj konkrétnu obrazovku alebo flow, čo je dnes slabé (s dôkazom z kódu), jednu konkrétnu zmenu a hrubý odhad námahy. Zvlášť pomenuj náš najsilnejší "peak" moment a najslabší koniec. Zoraď všetko podľa pomeru dopad/námaha. Označ všetko, čo prechádza do dark patternu, a daj mi namiesto toho etickú verziu.</pre>
+Dvanásť optík:
+1. Peak-end rule - zážitok hodnotíme podľa najintenzívnejšieho momentu a konca, nie podľa priemeru. Hľadaj zámerný "wow" vrchol a dobre dokončený posledný krok každého flow.
+2. Zeigarnik efekt - nedokončené úlohy nám ostávajú v hlave. Hľadaj indikátory progresu, "hotové na 80%", uložené drafty - otvorené slučky, ktoré lákajú uzavrieť.
+3. Goal-gradient + endowed progress - motivácia rastie bližšie k cieľu a keď časť progresu dostaneš vopred ("2 z 5 hotové"), vtiahne to.
+4. Variabilná odmena - nepredvídateľná odmena drží viac než pravidelná. Hľadaj vkusné prekvapenie a potešenie - ale odmeňuj reálnu hodnotu, nikdy nie ako automat.
+5. Flow - engagement sedí tesne nad schopnosťami používateľa; príliš ľahké nudí, príliš ťažké frustruje. Hľadaj progressive disclosure a obtiažnosť, ktorá škáluje.
+6. Curiosity gap - viditeľná medzera medzi tým, čo viem a čo chcem vedieť, ťahá dopredu ("ešte 2 kroky a uvidíš výsledok").
+7. Aesthetic-usability effect - veci, ktoré vyzerajú lepšie, pôsobia jednoduchšie a dôveryhodnejšie. Hľadaj vizuálny polish tam, kde buduje dôveru.
+8. IKEA efekt - ľudia si vážia to, na čom sa podieľali. Hľadaj onboarding, kde si používateľ niečo nastaví alebo prispôsobí.
+9. Fresh-start efekt - motivácia stúpa pri symbolických začiatkoch (nový týždeň, mesiac, narodeniny). Hľadaj elegantné reštarty bez pocitu zlyhania.
+10. Hickov zákon - viac možností = pomalšie a ťažšie rozhodovanie. Hľadaj obrazovky s priveľa možnosťami, chýbajúce defaulty alebo žiadnu jednu hlavnú akciu.
+11. Loss aversion - strata bolí viac, než zisk poteší ("nepríď o svoj streak" funguje lepšie než "získaj bod"). Použi na ochranu progresu používateľa, nie na nátlak.
+12. Social proof - ľudia kopírujú, čo robia ostatní. Hľadaj úprimné signály použitia ("používa 2 400 kolegov", čo zvolili podobné tímy).
+
+Pri každej optike, ktorá sadne: pomenuj konkrétnu obrazovku alebo flow, čo je dnes slabé (s dôkazom z kódu), jednu konkrétnu zmenu a hrubý odhad námahy. Potom zvlášť pomenuj náš najsilnejší "peak" moment a najslabší koniec. Zoraď všetky nápady podľa pomeru dopad/námaha. Označ všetko, čo by prešlo do dark patternu, a daj mi namiesto toho etickú verziu.</pre>
       </div>
       <div class="lenses">
         <p data-i18n="en">The twelve lenses</p>
         <p data-i18n="sk">Dvanásť optík</p>
         <div class="lens-grid">
-          <div class="lens"><b>Peak-end rule</b><small data-i18n="en">We remember the peak and the ending, not the average. Build one wow moment, polish the last screen.</small><small data-i18n="sk">Pamätáme si vrchol a koniec, nie priemer. Sprav jeden wow moment a dolaď posledný krok.</small></div>
-          <div class="lens"><b>Zeigarnik effect</b><small data-i18n="en">Unfinished tasks nag us. Progress bars, "80% done", saved drafts - an open loop to close.</small><small data-i18n="sk">Nedokončené úlohy nám vŕtajú v hlave. Progress bary, "hotové na 80%", uložené drafty.</small></div>
-          <div class="lens"><b>Goal-gradient</b><small data-i18n="en">The closer the goal, the harder we push. Start progress pre-filled ("2 of 5 done").</small><small data-i18n="sk">Čím bližšie k cieľu, tým väčší ťah. Začni progres predvyplnený ("2 z 5 hotové").</small></div>
-          <div class="lens"><b>Variable reward</b><small data-i18n="en">Unpredictable rewards stick. An occasional surprise - but reward real value, not a slot machine.</small><small data-i18n="sk">Nepredvídateľná odmena drží. Občasné prekvapenie - ale odmeňuj hodnotu, nie ako automat.</small></div>
-          <div class="lens"><b>Flow</b><small data-i18n="en">Engagement lives just above current skill. Don't drown newcomers, don't bore power users.</small><small data-i18n="sk">Engagement žije tesne nad schopnosťami. Neprehlť nováčika, nenuď power usera.</small></div>
-          <div class="lens"><b>Curiosity gap</b><small data-i18n="en">A visible gap pulls us forward. "2 more steps and you'll see your result."</small><small data-i18n="sk">Viditeľná medzera ťahá dopredu. "Ešte 2 kroky a uvidíš výsledok."</small></div>
-          <div class="lens"><b>Aesthetic-usability</b><small data-i18n="en">Nicer-looking things feel easier and more trustworthy. Polish is perceived quality.</small><small data-i18n="sk">Krajšie veci pôsobia jednoduchšie a dôveryhodnejšie. Polish je vnímaná kvalita.</small></div>
-          <div class="lens"><b>IKEA effect</b><small data-i18n="en">We value what we helped build. Let users set something up in onboarding.</small><small data-i18n="sk">Vážime si to, na čom sme sa podieľali. Nechaj usera si niečo nastaviť v onboardingu.</small></div>
-          <div class="lens"><b>Fresh-start effect</b><small data-i18n="en">Motivation rises at symbolic beginnings. Let people restart without feeling they failed.</small><small data-i18n="sk">Motivácia stúpa pri symbolických začiatkoch. Umožni reštart bez pocitu zlyhania.</small></div>
-          <div class="lens"><b>Hick's law</b><small data-i18n="en">More options = slower decisions. Fewer choices per screen, sensible defaults, one primary action.</small><small data-i18n="sk">Viac možností = pomalšie rozhodovanie. Menej volieb, rozumné defaulty, jedno hlavné CTA.</small></div>
-          <div class="lens"><b>Loss aversion</b><small data-i18n="en">Losing hurts more than gaining. "Don't lose your streak" &gt; "earn a point". Warn, don't coerce.</small><small data-i18n="sk">Strata bolí viac než zisk poteší. "Nepríď o streak" &gt; "získaj bod". Varuj, nevydieraj.</small></div>
-          <div class="lens"><b>Social proof</b><small data-i18n="en">We copy what others do. Show real usage - "used by 2,400 colleagues", what similar teams chose.</small><small data-i18n="sk">Kopírujeme, čo robia ostatní. Ukáž reálne použitie - "používa 2 400 kolegov", čo zvolili podobné tímy.</small></div>
+          <button type="button" class="lens" data-lens="peak-end" onclick="openLens('peak-end')"><b>Peak-end rule</b><small data-i18n="en">We remember the peak and the ending, not the average. Build one wow moment, polish the last screen.</small><small data-i18n="sk">Pamätáme si vrchol a koniec, nie priemer. Sprav jeden wow moment a dolaď posledný krok.</small></button>
+          <button type="button" class="lens" data-lens="zeigarnik" onclick="openLens('zeigarnik')"><b>Zeigarnik effect</b><small data-i18n="en">Unfinished tasks nag us. Progress bars, "80% done", saved drafts - an open loop to close.</small><small data-i18n="sk">Nedokončené úlohy nám vŕtajú v hlave. Progress bary, "hotové na 80%", uložené drafty.</small></button>
+          <button type="button" class="lens" data-lens="goal-gradient" onclick="openLens('goal-gradient')"><b>Goal-gradient</b><small data-i18n="en">The closer the goal, the harder we push. Start progress pre-filled ("2 of 5 done").</small><small data-i18n="sk">Čím bližšie k cieľu, tým väčší ťah. Začni progres predvyplnený ("2 z 5 hotové").</small></button>
+          <button type="button" class="lens" data-lens="variable-reward" onclick="openLens('variable-reward')"><b>Variable reward</b><small data-i18n="en">Unpredictable rewards stick. An occasional surprise - but reward real value, not a slot machine.</small><small data-i18n="sk">Nepredvídateľná odmena drží. Občasné prekvapenie - ale odmeňuj hodnotu, nie ako automat.</small></button>
+          <button type="button" class="lens" data-lens="flow" onclick="openLens('flow')"><b>Flow</b><small data-i18n="en">Engagement lives just above current skill. Don't drown newcomers, don't bore power users.</small><small data-i18n="sk">Engagement žije tesne nad schopnosťami. Neprehlť nováčika, nenuď power usera.</small></button>
+          <button type="button" class="lens" data-lens="curiosity" onclick="openLens('curiosity')"><b>Curiosity gap</b><small data-i18n="en">A visible gap pulls us forward. "2 more steps and you'll see your result."</small><small data-i18n="sk">Viditeľná medzera ťahá dopredu. "Ešte 2 kroky a uvidíš výsledok."</small></button>
+          <button type="button" class="lens" data-lens="aesthetic" onclick="openLens('aesthetic')"><b>Aesthetic-usability</b><small data-i18n="en">Nicer-looking things feel easier and more trustworthy. Polish is perceived quality.</small><small data-i18n="sk">Krajšie veci pôsobia jednoduchšie a dôveryhodnejšie. Polish je vnímaná kvalita.</small></button>
+          <button type="button" class="lens" data-lens="ikea" onclick="openLens('ikea')"><b>IKEA effect</b><small data-i18n="en">We value what we helped build. Let users set something up in onboarding.</small><small data-i18n="sk">Vážime si to, na čom sme sa podieľali. Nechaj usera si niečo nastaviť v onboardingu.</small></button>
+          <button type="button" class="lens" data-lens="fresh-start" onclick="openLens('fresh-start')"><b>Fresh-start effect</b><small data-i18n="en">Motivation rises at symbolic beginnings. Let people restart without feeling they failed.</small><small data-i18n="sk">Motivácia stúpa pri symbolických začiatkoch. Umožni reštart bez pocitu zlyhania.</small></button>
+          <button type="button" class="lens" data-lens="hicks" onclick="openLens('hicks')"><b>Hick's law</b><small data-i18n="en">More options = slower decisions. Fewer choices per screen, sensible defaults, one primary action.</small><small data-i18n="sk">Viac možností = pomalšie rozhodovanie. Menej volieb, rozumné defaulty, jedno hlavné CTA.</small></button>
+          <button type="button" class="lens" data-lens="loss" onclick="openLens('loss')"><b>Loss aversion</b><small data-i18n="en">Losing hurts more than gaining. "Don't lose your streak" &gt; "earn a point". Warn, don't coerce.</small><small data-i18n="sk">Strata bolí viac než zisk poteší. "Nepríď o streak" &gt; "získaj bod". Varuj, nevydieraj.</small></button>
+          <button type="button" class="lens" data-lens="social" onclick="openLens('social')"><b>Social proof</b><small data-i18n="en">We copy what others do. Show real usage - "used by 2,400 colleagues", what similar teams chose.</small><small data-i18n="sk">Kopírujeme, čo robia ostatní. Ukáž reálne použitie - "používa 2 400 kolegov", čo zvolili podobné tímy.</small></button>
         </div>
       </div>
     </article>
@@ -479,6 +534,21 @@ Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiasto�
   </div>
 </footer>
 
+<div class="modal" id="lensModal" role="dialog" aria-modal="true" aria-labelledby="lensTitle">
+  <div class="modal-backdrop" onclick="closeLens()"></div>
+  <div class="modal-box">
+    <button class="modal-close" id="lensClose" aria-label="Close" onclick="closeLens()">&times;</button>
+    <span class="modal-tag" id="lensTag">Lens</span>
+    <h4 id="lensTitle"></h4>
+    <p class="m-label" id="lensWhatLabel"></p>
+    <p class="m-text" id="lensWhat"></p>
+    <p class="m-label" id="lensWhyLabel"></p>
+    <p class="m-text" id="lensWhy"></p>
+    <p class="m-label" id="lensLinksLabel"></p>
+    <div class="m-links" id="lensLinks"></div>
+  </div>
+</div>
+
 <script>
   function setLang(l){
     document.documentElement.setAttribute('lang', l);
@@ -515,6 +585,104 @@ Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiasto�
     try{ document.execCommand('copy'); }catch(e){}
     document.body.removeChild(ta);
   }
+  var UI = {
+    en:{what:'What it does', why:'Why it matters', links:'Learn more & examples', tag:'Behavioral lens'},
+    sk:{what:'Čo to robí', why:'Prečo je to dôležité', links:'Zdroje a príklady', tag:'Behaviorálna optika'}
+  };
+  var LENS = {
+    'peak-end':{
+      en:{t:'Peak-end rule', what:'People don\'t remember an experience as the average of every moment - they remember its most intense point (the peak) and how it ended. A single strong high and a clean finish outweigh a mediocre middle.', why:'Design one deliberate standout moment, and make the last step of every flow (checkout, success, sign-out) feel good. A great ending is remembered as a great experience, even if the path there was slightly rough.'},
+      sk:{t:'Peak-end rule', what:'Ľudia si zážitok nepamätajú ako priemer všetkých momentov - pamätajú si najintenzívnejší bod (peak) a to, ako sa skončil. Jeden silný vrchol a čistý koniec prevážia priemerný stred.', why:'Navrhni jeden zámerný výrazný moment a dolaď posledný krok každého flow (checkout, úspech, odhlásenie), aby pôsobil dobre. Skvelý koniec si ľudia zapamätajú ako skvelý zážitok, aj keď cesta k nemu bola trochu drsná.'},
+      links:[{l:'Laws of UX',u:'https://lawsofux.com/peak-end-rule/'},{l:'NN/g',u:'https://www.nngroup.com/articles/peak-end-rule/'},{l:'Examples',u:'https://growth.design/psychology'}]
+    },
+    'zeigarnik':{
+      en:{t:'Zeigarnik effect', what:'We remember and mentally return to unfinished tasks far more than completed ones. An open loop creates a small tension the brain wants to resolve.', why:'Show progress that is clearly incomplete - a progress bar, "profile 80% complete", a saved draft. It nudges people to come back and finish, without any pressure.'},
+      sk:{t:'Zeigarnik efekt', what:'Nedokončené úlohy si pamätáme a vraciame sa k nim v mysli oveľa viac než k dokončeným. Otvorená slučka vytvára malé napätie, ktoré chce mozog uzavrieť.', why:'Ukáž progres, ktorý je zjavne nedokončený - progress bar, "profil na 80%", uložený draft. Jemne to núti vrátiť sa a dokončiť, bez akéhokoľvek tlaku.'},
+      links:[{l:'Laws of UX',u:'https://lawsofux.com/zeigarnik-effect/'},{l:'Wikipedia',u:'https://en.wikipedia.org/wiki/Zeigarnik_effect'},{l:'Examples',u:'https://growth.design/psychology'}]
+    },
+    'goal-gradient':{
+      en:{t:'Goal-gradient + endowed progress', what:'The closer people are to a goal, the harder they push toward it. And if you grant some progress up front (a loyalty card with two stamps already filled), people behave as if they are already on the path - the endowed progress effect.', why:'Never start people from zero. Pre-fill the first step, show "2 of 5 done", and add cues near the finish. The perceived head start markedly increases completion.'},
+      sk:{t:'Goal-gradient + endowed progress', what:'Čím sú ľudia bližšie k cieľu, tým intenzívnejšie sa oň snažia. A keď im časť progresu dáš vopred (vernostná kartička s dvoma pečiatkami už predvyplnenými), správajú sa, akoby už boli na ceste - endowed progress efekt.', why:'Nikdy nezačínaj ľudí od nuly. Predvyplň prvý krok, ukáž "2 z 5 hotové" a pridaj náznaky blízkosti cieľa. Pocit náskoku výrazne zvyšuje dokončenie.'},
+      links:[{l:'Laws of UX',u:'https://lawsofux.com/goal-gradient-effect/'},{l:'Examples',u:'https://growth.design/psychology'}]
+    },
+    'variable-reward':{
+      en:{t:'Variable reward', what:'An unpredictable reward is more compelling than a predictable one. Not knowing exactly what or when you will get keeps attention high - the mechanism Skinner identified and slot machines exploit.', why:'A little tasteful surprise (an unexpected tip, a small unlock, a delightful response) makes a product feel alive. The ethical line: reward genuine value, do not engineer a compulsion loop.'},
+      sk:{t:'Variabilná odmena', what:'Nepredvídateľná odmena je príťažlivejšia než predvídateľná. To, že presne nevieš, čo a kedy dostaneš, drží pozornosť vysoko - mechanizmus, ktorý opísal Skinner a zneužívajú ho automaty.', why:'Trocha vkusného prekvapenia (nečakaný tip, malý unlock, milá odpoveď) spraví produkt živým. Etická hranica: odmeňuj skutočnú hodnotu, nevytváraj slučku nutkania.'},
+      links:[{l:'Nir Eyal',u:'https://www.nirandfar.com/want-to-hook-your-users-drive-them-crazy/'},{l:'Wikipedia',u:'https://en.wikipedia.org/wiki/Reinforcement'},{l:'Examples',u:'https://growth.design/psychology'}]
+    },
+    'flow':{
+      en:{t:'Flow', what:'Csikszentmihalyi\'s flow is the state of full absorption that appears when the difficulty of a task sits just above the user\'s current skill - challenging enough to hold attention, not so hard it frustrates.', why:'Scale difficulty and disclosure to the user. Do not drown newcomers in options or bore power users with hand-holding. Clear goals plus immediate feedback keep people in the zone.'},
+      sk:{t:'Flow', what:'Flow (Csikszentmihalyi) je stav úplného pohltenia, ktorý nastáva, keď je náročnosť úlohy tesne nad aktuálnymi schopnosťami používateľa - dosť náročná, aby držala pozornosť, no nie taká, aby frustrovala.', why:'Škáluj náročnosť a mieru odhaľovania podľa používateľa. Neutop nováčika v možnostiach a nenuď power usera vodením za ruku. Jasné ciele plus okamžitá spätná väzba držia ľudí "v zóne".'},
+      links:[{l:'Wikipedia',u:'https://en.wikipedia.org/wiki/Flow_(psychology)'},{l:'Examples',u:'https://growth.design/psychology'}]
+    },
+    'curiosity':{
+      en:{t:'Curiosity gap', what:'Loewenstein\'s information-gap theory says curiosity is the discomfort we feel when we notice a gap between what we know and what we want to know - and we are motivated to close it. It peaks when the gap is small and clearly fillable.', why:'Tease the payoff just ahead ("2 more steps and you\'ll see your result"). Used honestly it guides people forward; used as clickbait that never pays off, it destroys trust.'},
+      sk:{t:'Curiosity gap', what:'Loewensteinova teória informačnej medzery hovorí, že zvedavosť je nepohodlie, ktoré cítime, keď si všimneme medzeru medzi tým, čo vieme a čo chceme vedieť - a sme motivovaní ju zaplniť. Vrcholí, keď je medzera malá a zjavne zaplniteľná.', why:'Naznač odmenu tesne pred sebou ("ešte 2 kroky a uvidíš výsledok"). Použité úprimne vedie ľudí dopredu; použité ako clickbait, ktorý sa nikdy nenaplní, ničí dôveru.'},
+      links:[{l:'Wikipedia',u:'https://en.wikipedia.org/wiki/George_Loewenstein'},{l:'Examples',u:'https://growth.design/psychology'}]
+    },
+    'aesthetic':{
+      en:{t:'Aesthetic-usability effect', what:'Users perceive attractive interfaces as easier to use and more trustworthy - and are more forgiving of minor usability problems - even when the design is not functionally better.', why:'Visual polish is not decoration; it is perceived quality and credibility. It buys goodwill and can mask small friction - but it is not a substitute for fixing real usability issues.'},
+      sk:{t:'Aesthetic-usability effect', what:'Používatelia vnímajú atraktívne rozhrania ako jednoduchšie na použitie a dôveryhodnejšie - a odpúšťajú im drobné problémy s použiteľnosťou - aj keď dizajn nie je funkčne lepší.', why:'Vizuálny polish nie je dekorácia; je to vnímaná kvalita a dôveryhodnosť. Získava priazeň a dokáže prekryť malé trenie - ale nenahrádza opravu skutočných problémov s použiteľnosťou.'},
+      links:[{l:'Laws of UX',u:'https://lawsofux.com/aesthetic-usability-effect/'},{l:'NN/g',u:'https://www.nngroup.com/articles/aesthetic-usability-effect/'},{l:'Examples',u:'https://growth.design/psychology'}]
+    },
+    'ikea':{
+      en:{t:'IKEA effect', what:'People place a disproportionately high value on things they helped create - even partially. The effort you invest makes the outcome feel more "yours".', why:'Let users build or personalise something during onboarding (set up a dashboard, pick preferences, create a first item). That small act of co-creation deepens attachment and retention.'},
+      sk:{t:'IKEA efekt', what:'Ľudia pripisujú neúmerne vysokú hodnotu veciam, na ktorých tvorbe sa podieľali - aj čiastočne. Vložená námaha spraví výsledok viac "ich".', why:'Nechaj používateľa počas onboardingu niečo postaviť alebo prispôsobiť (nastaviť dashboard, zvoliť preferencie, vytvoriť prvú položku). Tento malý akt spolutvorby prehlbuje väzbu a retenciu.'},
+      links:[{l:'The Decision Lab',u:'https://thedecisionlab.com/biases/ikea-effect'},{l:'Wikipedia',u:'https://en.wikipedia.org/wiki/IKEA_effect'},{l:'Examples',u:'https://growth.design/psychology'}]
+    },
+    'fresh-start':{
+      en:{t:'Fresh-start effect', what:'People are more motivated to pursue goals right after a temporal landmark - a new week, month, year, or a birthday - because these moments feel like a clean break from a past self.', why:'Frame restarts around natural landmarks and let people reset a streak or goal without shame. A "new week, fresh start" beats making someone feel they permanently failed.'},
+      sk:{t:'Fresh-start efekt', what:'Ľudia sú motivovanejší ísť za cieľmi hneď po časovom medzníku - nový týždeň, mesiac, rok či narodeniny - lebo tieto momenty pôsobia ako čistý rez od minulého ja.', why:'Zarámuj reštarty okolo prirodzených medzníkov a nechaj ľudí resetovať streak či cieľ bez hanby. "Nový týždeň, čistý štít" je lepšie než dať niekomu pocit, že navždy zlyhal.'},
+      links:[{l:'NN/g',u:'https://www.nngroup.com/articles/fresh-start-effect/'},{l:'Examples',u:'https://growth.design/psychology'}]
+    },
+    'hicks':{
+      en:{t:'Hick\'s law', what:'The time it takes to make a decision grows with the number and complexity of the choices. More options mean slower, more tiring decisions - and often no decision at all.', why:'Reduce choices per screen, provide sensible defaults, and make one primary action obvious. Simplifying decisions usually raises satisfaction and completion, counterintuitive as "fewer options" sounds.'},
+      sk:{t:'Hickov zákon', what:'Čas potrebný na rozhodnutie rastie s počtom a zložitosťou možností. Viac možností znamená pomalšie a únavnejšie rozhodovanie - a často žiadne rozhodnutie.', why:'Zníž počet volieb na obrazovku, daj rozumné defaulty a sprav jednu hlavnú akciu zjavnou. Zjednodušenie rozhodovania zvyčajne zvyšuje spokojnosť a dokončenie, akokoľvek neintuitívne "menej možností" znie.'},
+      links:[{l:'Laws of UX',u:'https://lawsofux.com/hicks-law/'},{l:'Examples',u:'https://growth.design/psychology'}]
+    },
+    'loss':{
+      en:{t:'Loss aversion', what:'Losing something hurts psychologically about twice as much as gaining the same thing feels good (Kahneman & Tversky). We work harder to avoid a loss than to secure an equivalent gain.', why:'Framing matters: "don\'t lose your streak" motivates more than "earn a point". Use it to help people protect progress they value - but pressuring people with manufactured loss is a dark pattern.'},
+      sk:{t:'Loss aversion', what:'Strata niečoho bolí psychicky asi dvakrát toľko, koľko poteší rovnako veľký zisk (Kahneman & Tversky). Viac sa snažíme vyhnúť strate než zabezpečiť si rovnaký zisk.', why:'Záleží na rámovaní: "nepríď o svoj streak" motivuje viac než "získaj bod". Použi to na to, aby si ľuďom pomohol chrániť progres, na ktorom im záleží - ale tlačiť na ľudí umelo vytvorenou stratou je dark pattern.'},
+      links:[{l:'The Decision Lab',u:'https://thedecisionlab.com/biases/loss-aversion'},{l:'Wikipedia',u:'https://en.wikipedia.org/wiki/Loss_aversion'},{l:'Examples',u:'https://growth.design/psychology'}]
+    },
+    'social':{
+      en:{t:'Social proof', what:'When uncertain, people look to what others - especially similar others - are doing, and copy it. Cialdini identified it as one of the core levers of influence.', why:'Show honest signals of real usage: "used by 2,400 colleagues", "most teams choose this", recent activity. It lowers uncertainty and builds trust - as long as the numbers are true. Fake social proof backfires badly.'},
+      sk:{t:'Social proof', what:'Keď sú ľudia neistí, pozerajú sa na to, čo robia ostatní - najmä podobní ľudia - a kopírujú to. Cialdini to označil za jednu z kľúčových pák vplyvu.', why:'Ukáž úprimné signály reálneho použitia: "používa 2 400 kolegov", "väčšina tímov volí toto", nedávna aktivita. Znižuje to neistotu a buduje dôveru - pokiaľ sú čísla pravdivé. Falošný social proof sa zle vypomstí.'},
+      links:[{l:'Wikipedia',u:'https://en.wikipedia.org/wiki/Social_proof'},{l:'Examples',u:'https://growth.design/psychology'}]
+    }
+  };
+  var lastFocus = null;
+  function openLens(key){
+    var d = LENS[key]; if(!d) return;
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
+    var t = d[lang] || d.en;
+    document.getElementById('lensTag').textContent = UI[lang].tag;
+    document.getElementById('lensTitle').textContent = t.t;
+    document.getElementById('lensWhatLabel').textContent = UI[lang].what;
+    document.getElementById('lensWhat').textContent = t.what;
+    document.getElementById('lensWhyLabel').textContent = UI[lang].why;
+    document.getElementById('lensWhy').textContent = t.why;
+    document.getElementById('lensLinksLabel').textContent = UI[lang].links;
+    var lc = document.getElementById('lensLinks'); lc.innerHTML = '';
+    (d.links||[]).forEach(function(x){
+      var a = document.createElement('a');
+      a.href = x.u; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = x.l;
+      lc.appendChild(a);
+    });
+    lastFocus = document.activeElement;
+    document.getElementById('lensModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lensClose').focus();
+  }
+  function closeLens(){
+    document.getElementById('lensModal').classList.remove('open');
+    document.body.style.overflow = '';
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && document.getElementById('lensModal').classList.contains('open')) closeLens();
+  });
+
   (function init(){
     try{
       var l = localStorage.getItem('playbook-lang'); if(l) setLang(l);
