@@ -17,6 +17,7 @@ Stav: `nápad` -> `zbieram materiál` -> `draft` -> `odoslané`
 | 11 | Malé tímy | male-timy.md | nápad | ako to robíme v Omnichannel & Digital - malé tímy, veľký dosah |
 | 12 | Minions | minions.md | nápad | |
 | 13 | Claude Code vs Codex? | claude-code-vs-codex.md | nápad | porovnanie nástrojov, čo nám funguje a prečo |
+| 14 | Ako jednoducho zlepsit vasu aplikaciu | engagement-psychology.md | ready to send | issue N°11 "Steal this prompt" (4. 9. 2026, 1. piatok v septembri) - behavioral levers + AI audit prompt |
 
 ## Tip na poradie
 
