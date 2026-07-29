@@ -321,28 +321,39 @@ Pri každej optike, ktorá sadne: pomenuj konkrétnu obrazovku alebo flow, čo j
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
         <div class="prompt-clip">
-        <pre class="prompt" data-i18n="en">I want this to be a modern, state-of-the-art application, built the way apps of this type are built today. Audit the real setup - read package.json, the lockfile and the config files, don't assume - then propose how to get there.
+        <pre class="prompt" data-i18n="en">I want this to be a modern, state-of-the-art application, built the way apps of this type are built today. Audit the real setup - read package.json, the lockfile and the config files, don't assume - then work through these five areas:
 
-- Stack reality: what frameworks, versions and key libraries are we actually on? Which are outdated, deprecated or end-of-life?
-- Framework best practice: are we using the current recommended patterns of what we already have (React - hooks, Suspense, modern data-fetching, server components where they fit), or old idioms?
-- Dependencies: which packages could be replaced by a better-maintained modern option, and which strong current libraries are worth adopting? Note the bundle-size and maintenance impact.
-- Tooling: build, bundling, type-safety, linting, testing, CI - is it current and strict enough?
-- Architecture: what structurally holds us back from being a clean reference implementation?
+1. Stack &amp; versions - which frameworks, runtimes and key libraries we run on, and which are outdated, deprecated or end-of-life.
+2. Framework best practice - whether we use the current recommended patterns of what we already have (React: hooks, Suspense, modern data-fetching, server components where they fit) or old idioms.
+3. Dependencies - which packages are outdated or replaceable by a leaner, better-maintained option, and the bundle-size and maintenance impact.
+4. Tooling &amp; CI - build, bundler, type-safety, linting, tests and CI: current, strict, and enforced on every change?
+5. Architecture &amp; state - state management, data fetching and module boundaries, and what structurally blocks a clean reference implementation.
 
-Separate real improvements from hype - I don't want churn for its own sake. Deliver a prioritised roadmap: quick wins first, then bigger migrations, each with a rough effort and risk note and a safe incremental path. This is an audit - propose, don't start upgrading yet.</pre>
-        <pre class="prompt" data-i18n="sk">Chcem, aby toto bola moderná, state-of-the-art aplikácia, postavená tak, ako sa dnes robia appky tohto typu. Sprav audit reálneho stavu - prečítaj package.json, lockfile a konfiguračné súbory, nepredpokladaj - a navrhni, ako sa k tomu dostať.
+Separate real improvements from hype - no churn for its own sake. Deliver a prioritised roadmap: quick wins first, then bigger migrations, each with a rough effort and risk note and a safe incremental path. This is an audit - propose, don't start upgrading yet.</pre>
+        <pre class="prompt" data-i18n="sk">Chcem, aby toto bola moderná, state-of-the-art aplikácia, postavená tak, ako sa dnes robia appky tohto typu. Sprav audit reálneho stavu - prečítaj package.json, lockfile a konfiguračné súbory, nepredpokladaj - a potom prejdi týchto päť oblastí:
 
-- Realita stacku: na akých frameworkoch, verziách a kľúčových knižniciach reálne sme? Ktoré sú zastarané, deprecated alebo po konci podpory?
-- Best practice frameworkov: používame aktuálne odporúčané postupy toho, čo už máme (React - hooks, Suspense, moderné načítavanie dát, server components tam, kde sadnú), alebo staré idiómy?
-- Závislosti: ktoré balíky by sa dali nahradiť lepšie udržiavanou modernou alternatívou a ktoré silné aktuálne knižnice sa oplatí zaviesť? Uveď dopad na veľkosť bundlu a údržbu.
-- Nástroje: build, bundling, typová bezpečnosť, linting, testovanie, CI - je to aktuálne a dosť prísne?
-- Architektúra: čo nás štrukturálne brzdí byť čistou referenčnou implementáciou?
+1. Stack a verzie - na akých frameworkoch, runtime a kľúčových knižniciach bežíme a ktoré sú zastarané, deprecated alebo po konci podpory.
+2. Best practice frameworku - či používame aktuálne odporúčané vzory toho, čo už máme (React: hooks, Suspense, moderné načítavanie dát, server components tam, kde sadnú), alebo staré idiómy.
+3. Závislosti - ktoré balíky sú zastarané alebo nahraditeľné štíhlejšou, lepšie udržiavanou alternatívou, a aký to má dopad na bundle a údržbu.
+4. Nástroje a CI - build, bundler, typová bezpečnosť, linting, testy a CI: aktuálne, prísne a vynucované pri každej zmene?
+5. Architektúra a stav - manažment stavu, načítavanie dát a hranice modulov, a čo štrukturálne bráni čistej referenčnej implementácii.
 
-Oddeľ reálne zlepšenia od hype - nechcem zmeny pre zmenu. Priprav prioritizovaný plán: najprv rýchle výhry, potom väčšie migrácie, každá s hrubým odhadom námahy a rizika a s bezpečnou inkrementálnou cestou. Toto je audit - navrhni, zatiaľ nič neupgraduj.</pre>
+Oddeľ reálne zlepšenia od hype - žiadne zmeny pre zmenu. Priprav prioritizovaný plán: najprv rýchle výhry, potom väčšie migrácie, každá s hrubým odhadom námahy a rizika a bezpečnou inkrementálnou cestou. Toto je audit - navrhni, zatiaľ nič neupgraduj.</pre>
         <div class="prompt-fade"></div>
         </div>
         <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
+            <div class="lenses">
+          <p data-i18n="en">The five areas</p>
+          <p data-i18n="sk">Päť oblastí</p>
+          <div class="lens-grid">
+          <button type="button" class="lens" data-lens="m-stack" onclick="openLens('m-stack')"><b>Stack &amp; versions</b><small data-i18n="en">Which frameworks and versions we run on - and what is outdated or end-of-life.</small><small data-i18n="sk">Na akých frameworkoch a verziách bežíme - a čo je zastarané či po podpore.</small></button>
+          <button type="button" class="lens" data-lens="m-patterns" onclick="openLens('m-patterns')"><b>Framework best practice</b><small data-i18n="en">Current framework idioms vs old patterns the ecosystem left behind.</small><small data-i18n="sk">Aktuálne idiómy frameworku vs staré vzory, od ktorých ekosystém odišiel.</small></button>
+          <button type="button" class="lens" data-lens="m-deps" onclick="openLens('m-deps')"><b>Dependencies</b><small data-i18n="en">Outdated or replaceable packages, and the bundle and maintenance cost.</small><small data-i18n="sk">Zastarané či nahraditeľné balíky a náklad na bundle a údržbu.</small></button>
+          <button type="button" class="lens" data-lens="m-tooling" onclick="openLens('m-tooling')"><b>Tooling &amp; CI</b><small data-i18n="en">Build, types, lint, tests, CI - current, strict, and actually enforced?</small><small data-i18n="sk">Build, typy, lint, testy, CI - aktuálne, prísne a naozaj vynucované?</small></button>
+          <button type="button" class="lens" data-lens="m-arch" onclick="openLens('m-arch')"><b>Architecture &amp; state</b><small data-i18n="en">State, data flow and module boundaries that keep it modernisable.</small><small data-i18n="sk">Stav, tok dát a hranice modulov, čo ju držia modernizovateľnou.</small></button>
+          </div>
+        </div>
     </article>
 
     <!-- ===== SECURITY ===== -->
@@ -357,40 +368,46 @@ Oddeľ reálne zlepšenia od hype - nechcem zmeny pre zmenu. Priprav prioritizov
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
         <div class="prompt-clip">
-        <pre class="prompt" data-i18n="en">Do a thorough, deep security audit of this application - frontend and backend. Work from the real code, not the docs, READMEs or comments, and verify each issue is actually exploitable rather than just pattern-matching. Trace untrusted input from where it enters to where it's used.
+        <pre class="prompt" data-i18n="en">Do a thorough, deep security audit of this application - frontend and backend. Work from the real code, not the docs, and verify each issue is actually exploitable rather than pattern-matching. Trace untrusted input from where it enters to where it's used. Context: the app is internet-facing, behind an F5 (BIG-IP) login - don't treat that as a safety net; assume an authenticated user can be hostile.
 
-Context: the app is internet-facing, behind an F5 (BIG-IP) login. Don't treat that login as a safety net - assume an authenticated user can be hostile.
-
-Cover at least:
-- AuthN / AuthZ: is every endpoint properly protected? Missing authorization checks, IDOR, privilege escalation, endpoints that trust the frontend to hide them?
-- Injection &amp; input validation: SQL / NoSQL injection, command injection, XSS (stored and reflected), SSRF, path traversal, mass assignment.
-- Secrets: hardcoded credentials, tokens or keys in the repo or shipped in the client bundle.
-- Data exposure: sensitive data or PII sent to the client, in verbose errors, or in logs.
-- Sessions &amp; transport: CSRF, secure/httpOnly cookies, CORS config, missing rate limiting.
-- File uploads and any calls to external services.
-- Dependencies with known vulnerabilities.
-- OWASP Top 10 as a checklist.
+Work through these six areas:
+1. Authentication &amp; authorization - is every endpoint protected server-side? IDOR, privilege escalation, endpoints that trust the frontend to hide them.
+2. Injection &amp; input validation - SQL/NoSQL injection, command injection, XSS (stored and reflected), SSRF, path traversal, mass assignment.
+3. Secrets &amp; configuration - hardcoded credentials, tokens or keys in the repo, git history, or the client bundle.
+4. Data exposure &amp; privacy - over-sent fields, PII in logs or errors, stack traces leaked to the client.
+5. Sessions, transport &amp; CORS - CSRF, secure/httpOnly cookies, CORS scope, missing rate limiting.
+6. Dependencies &amp; supply chain - third-party packages with known vulnerabilities or no maintenance.
+Use the OWASP Top 10 as a backdrop.
 
 For each finding: severity, exact file:line, a short exploit scenario, how confident you are it's real, and the concrete fix. Order by real-world risk. Verify against the code - don't assume.</pre>
-        <pre class="prompt" data-i18n="sk">Sprav dôkladný, hĺbkový bezpečnostný audit tejto aplikácie - frontend aj backend. Vychádzaj z reálneho kódu, nie z dokumentácie, README ani komentárov, a pri každom probléme over, že je naozaj zneužiteľný, nie len že sedí vzor. Sleduj nedôveryhodný vstup od miesta, kde vstupuje, až tam, kde sa použije.
+        <pre class="prompt" data-i18n="sk">Sprav dôkladný, hĺbkový bezpečnostný audit tejto aplikácie - frontend aj backend. Vychádzaj z reálneho kódu, nie z dokumentácie, a pri každom probléme over, že je naozaj zneužiteľný, nie len že sedí vzor. Sleduj nedôveryhodný vstup od miesta, kde vstupuje, až tam, kde sa použije. Kontext: aplikácia je otvorená do internetu, za loginom cez F5 (BIG-IP) - neber to ako záchrannú sieť; predpokladaj, že aj prihlásený používateľ môže byť nepriateľský.
 
-Kontext: aplikácia je otvorená do internetu, za loginom cez F5 (BIG-IP). Neber ten login ako záchrannú sieť - predpokladaj, že aj prihlásený používateľ môže byť nepriateľský.
-
-Pokry aspoň:
-- AuthN / AuthZ: je každý endpoint poriadne chránený? Chýbajúce autorizačné kontroly, IDOR, eskalácia práv, endpointy spoliehajúce sa na to, že ich skryje frontend?
-- Injection a validácia vstupov: SQL / NoSQL injection, command injection, XSS (stored aj reflected), SSRF, path traversal, mass assignment.
-- Tajomstvá: natvrdo zapísané heslá, tokeny alebo kľúče v repozitári alebo poslané v klientskom bundli.
-- Únik dát: citlivé dáta alebo PII posielané na klienta, v ukecaných chybách alebo v logoch.
-- Session a prenos: CSRF, secure/httpOnly cookies, nastavenie CORS, chýbajúci rate limiting.
-- Uploady súborov a akékoľvek volania na externé služby.
-- Závislosti so známymi zraniteľnosťami.
-- OWASP Top 10 ako checklist.
+Prejdi týchto šesť oblastí:
+1. Autentifikácia &amp; autorizácia - je každý endpoint chránený na serveri? IDOR, eskalácia práv, endpointy spoliehajúce sa na to, že ich skryje frontend.
+2. Injection &amp; validácia vstupov - SQL/NoSQL injection, command injection, XSS (stored aj reflected), SSRF, path traversal, mass assignment.
+3. Tajomstvá &amp; konfigurácia - natvrdo zapísané credentials, tokeny či kľúče v repozitári, v git histórii alebo v klientskom bundli.
+4. Únik dát &amp; súkromie - polia posielané navyše, PII v logoch alebo chybách, stack trace unikajúci na klienta.
+5. Session, prenos &amp; CORS - CSRF, secure/httpOnly cookies, rozsah CORS, chýbajúci rate limiting.
+6. Závislosti &amp; dodávateľský reťazec - balíky tretích strán so známymi zraniteľnosťami alebo bez údržby.
+OWASP Top 10 ber ako pozadie.
 
 Pri každom náleze: závažnosť, presný súbor:riadok, krátky scenár zneužitia, ako si istý, že je reálny, a konkrétna oprava. Zoraď podľa reálneho rizika. Over voči kódu - nepredpokladaj.</pre>
         <div class="prompt-fade"></div>
         </div>
         <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
+            <div class="lenses">
+          <p data-i18n="en">The six areas</p>
+          <p data-i18n="sk">Šesť oblastí</p>
+          <div class="lens-grid">
+          <button type="button" class="lens" data-lens="s-authz" onclick="openLens('s-authz')"><b>Authentication &amp; authorization</b><small data-i18n="en">Every endpoint checks who you are and what you may do - server-side.</small><small data-i18n="sk">Každý endpoint overuje, kto si a čo smieš - na serveri.</small></button>
+          <button type="button" class="lens" data-lens="s-injection" onclick="openLens('s-injection')"><b>Injection &amp; input validation</b><small data-i18n="en">Untrusted input into queries, commands, templates or the DOM.</small><small data-i18n="sk">Nedôveryhodný vstup do dopytov, príkazov, šablón či DOM.</small></button>
+          <button type="button" class="lens" data-lens="s-secrets" onclick="openLens('s-secrets')"><b>Secrets &amp; configuration</b><small data-i18n="en">No credentials or keys in the repo, history, or client bundle.</small><small data-i18n="sk">Žiadne credentials ani kľúče v repo, histórii či klientskom bundli.</small></button>
+          <button type="button" class="lens" data-lens="s-data" onclick="openLens('s-data')"><b>Data exposure &amp; privacy</b><small data-i18n="en">What the API over-sends, logs, or leaks in errors.</small><small data-i18n="sk">Čo API posiela navyše, loguje alebo uniká v chybách.</small></button>
+          <button type="button" class="lens" data-lens="s-session" onclick="openLens('s-session')"><b>Sessions, transport &amp; CORS</b><small data-i18n="en">Cookies, CSRF, CORS scope and rate limiting on sensitive routes.</small><small data-i18n="sk">Cookies, CSRF, rozsah CORS a rate limiting na citlivých routách.</small></button>
+          <button type="button" class="lens" data-lens="s-deps" onclick="openLens('s-deps')"><b>Dependencies &amp; supply chain</b><small data-i18n="en">Third-party packages with known CVEs or no maintenance.</small><small data-i18n="sk">Balíky tretích strán so známymi CVE alebo bez údržby.</small></button>
+          </div>
+        </div>
     </article>
 
     <!-- ===== PERFORMANCE ===== -->
@@ -405,34 +422,44 @@ Pri každom náleze: závažnosť, presný súbor:riadok, krátky scenár zneuž
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
         <div class="prompt-clip">
-        <pre class="prompt" data-i18n="en">Audit this application for performance end to end and validate we're doing things right. Base findings on the real code, and focus on what a user would actually feel - not micro-optimizations that don't matter. Trace one or two of the heaviest real flows from request to render.
+        <pre class="prompt" data-i18n="en">Audit this application for performance end to end. Base findings on the real code, focus on what a user would actually feel (not micro-optimizations), and trace one or two of the heaviest real flows from request to render.
 
-Focus on (but don't stop here):
-- Database / server calls: query efficiency, missing indexes, over-fetching rows or columns, missing pagination.
-- N+1 query patterns anywhere in the data layer.
-- Redundant or duplicate backend/DB calls - the same data fetched more than once, missing caching or memoization.
-- React: unnecessary re-renders, missing useMemo/useCallback/React.memo, state placed too high in the tree, heavy components, long lists that should be virtualized.
-- Time to first meaningful render: bundle size, code splitting, lazy loading, requests blocking the critical path.
-- Loading resources (images, fonts, scripts): eager vs lazy, caching headers, CDN usage.
-- Request waterfalls that could be parallelized, batched or streamed.
+Work through these six areas:
+1. Database &amp; queries - query efficiency, missing indexes, over-fetching, missing pagination.
+2. Redundant calls &amp; caching - the same data fetched repeatedly, missing caching or memoization.
+3. React rendering - unnecessary re-renders, missing memoization, state placed too high, heavy components, un-virtualized long lists.
+4. Bundle &amp; first render - bundle size, code splitting, lazy loading, requests blocking the critical path.
+5. Resource loading - images, fonts, scripts: eager vs lazy, sizes and formats, caching headers, CDN.
+6. Request orchestration - dependent waterfalls that could be parallelized, batched or streamed.
 
-For each finding: the exact file / component / query, the impact (ideally an estimate of what it costs), a concrete fix, and an effort estimate. Rank by impact-to-effort and put user-perceptible wins first. This is an audit - propose, don't start changing code yet.</pre>
-        <pre class="prompt" data-i18n="sk">Sprav audit výkonu tejto aplikácie od začiatku po koniec a zvaliduj, či to máme spravené dobre. Vychádzaj z reálneho kódu a sústreď sa na to, čo používateľ naozaj pocíti - nie na mikro-optimalizácie, na ktorých nezáleží. Sleduj jeden-dva najťažšie reálne flows od requestu po render.
+For each finding: the exact file/component/query, the impact (ideally an estimate of what it costs), a concrete fix, and an effort estimate. Rank by impact-to-effort, user-perceptible wins first. This is an audit - propose, don't start changing code yet.</pre>
+        <pre class="prompt" data-i18n="sk">Sprav audit výkonu tejto aplikácie od začiatku po koniec. Vychádzaj z reálneho kódu, sústreď sa na to, čo používateľ naozaj pocíti (nie mikro-optimalizácie), a sleduj jeden-dva najťažšie reálne flows od requestu po render.
 
-Zameraj sa hlavne na (ale nekonči pri tomto):
-- Volania do databázy / na server: efektivita dopytov, chýbajúce indexy, naťahovanie zbytočných riadkov a stĺpcov, chýbajúce stránkovanie.
-- N+1 dopyty kdekoľvek v dátovej vrstve.
-- Zbytočné alebo duplicitné volania na backend/DB - tie isté dáta tahané viackrát, chýbajúci caching alebo memoizácia.
-- React: zbytočné re-rendery, chýbajúce useMemo/useCallback/React.memo, stav uložený privysoko v strome, ťažké komponenty, dlhé zoznamy, ktoré by mali byť virtualizované.
-- Čas do prvého zmysluplného vykreslenia: veľkosť bundlu, code splitting, lazy loading, requesty blokujúce kritickú cestu.
-- Načítavanie resources (obrázky, fonty, skripty): eager vs lazy, caching hlavičky, využitie CDN.
-- Vodopády requestov, ktoré by sa dali paralelizovať, dávkovať alebo streamovať.
+Prejdi týchto šesť oblastí:
+1. Databáza &amp; dopyty - efektivita dopytov, chýbajúce indexy, over-fetching, chýbajúce stránkovanie.
+2. Zbytočné volania &amp; caching - tie isté dáta ťahané opakovane, chýbajúci caching alebo memoizácia.
+3. Render v Reacte - zbytočné re-rendery, chýbajúca memoizácia, stav privysoko, ťažké komponenty, nevirtualizované dlhé zoznamy.
+4. Bundle &amp; prvý render - veľkosť bundlu, code splitting, lazy loading, requesty blokujúce kritickú cestu.
+5. Načítavanie resources - obrázky, fonty, skripty: eager vs lazy, veľkosti a formáty, caching hlavičky, CDN.
+6. Orchestrácia requestov - závislé vodopády, ktoré by sa dali paralelizovať, dávkovať alebo streamovať.
 
-Pri každom náleze: presný súbor / komponent / dopyt, dopad (ideálne odhad, koľko to stojí), konkrétna oprava a odhad námahy. Zoraď podľa pomeru dopad/námaha a dopredu daj výhry, ktoré používateľ pocíti. Toto je audit - navrhni, zatiaľ nič nemeň.</pre>
+Pri každom náleze: presný súbor/komponent/dopyt, dopad (ideálne odhad, koľko to stojí), konkrétna oprava a odhad námahy. Zoraď podľa pomeru dopad/námaha, dopredu výhry, ktoré používateľ pocíti. Toto je audit - navrhni, zatiaľ nič nemeň.</pre>
         <div class="prompt-fade"></div>
         </div>
         <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
+            <div class="lenses">
+          <p data-i18n="en">The six areas</p>
+          <p data-i18n="sk">Šesť oblastí</p>
+          <div class="lens-grid">
+          <button type="button" class="lens" data-lens="p-db" onclick="openLens('p-db')"><b>Database &amp; queries</b><small data-i18n="en">Indexes, N+1, over-fetching and missing pagination.</small><small data-i18n="sk">Indexy, N+1, over-fetching a chýbajúce stránkovanie.</small></button>
+          <button type="button" class="lens" data-lens="p-caching" onclick="openLens('p-caching')"><b>Redundant calls &amp; caching</b><small data-i18n="en">The same data fetched twice; what could be cached or memoised.</small><small data-i18n="sk">Tie isté dáta ťahané dvakrát; čo sa dá cachovať alebo memoizovať.</small></button>
+          <button type="button" class="lens" data-lens="p-react" onclick="openLens('p-react')"><b>React rendering</b><small data-i18n="en">Wasted re-renders, memoisation, state placement, list virtualisation.</small><small data-i18n="sk">Zbytočné re-rendery, memoizácia, umiestnenie stavu, virtualizácia zoznamov.</small></button>
+          <button type="button" class="lens" data-lens="p-bundle" onclick="openLens('p-bundle')"><b>Bundle &amp; first render</b><small data-i18n="en">Bundle size, code splitting, and what blocks first paint.</small><small data-i18n="sk">Veľkosť bundlu, code splitting a čo blokuje prvé vykreslenie.</small></button>
+          <button type="button" class="lens" data-lens="p-resources" onclick="openLens('p-resources')"><b>Resource loading</b><small data-i18n="en">Images, fonts and scripts - sizes, lazy loading, caching, CDN.</small><small data-i18n="sk">Obrázky, fonty, skripty - veľkosti, lazy loading, caching, CDN.</small></button>
+          <button type="button" class="lens" data-lens="p-requests" onclick="openLens('p-requests')"><b>Request orchestration</b><small data-i18n="en">Serial waterfalls that could be parallelised or streamed.</small><small data-i18n="sk">Sériové vodopády, ktoré sa dajú paralelizovať alebo streamovať.</small></button>
+          </div>
+        </div>
     </article>
 
     <!-- ===== REFACTORING ===== -->
@@ -449,42 +476,42 @@ Pri každom náleze: presný súbor / komponent / dopyt, dopad (ideálne odhad, 
         <div class="prompt-clip">
         <pre class="prompt" data-i18n="en">Review how this application is implemented and find what we can improve to make it more maintainable and readable - without changing any behaviour. We are only improving the code; functionality must stay identical.
 
-Look for:
-- Readability: unclear naming, over-long functions, deep nesting, low cohesion / high coupling.
-- Change safety: code where a small edit is likely to break something unrelated.
-- Open/Closed principle: places where extending behaviour forces us to modify existing code.
-- Dead code: unused functions, variables, imports, unreachable branches.
-- Scattered logic that belongs together - pull it into cohesive functions / modules.
-- Copy&amp;paste code: extract the shared abstraction into a single place.
-- Magic strings and numbers: pull them into named constants, so we stop comparing raw strings in different spots.
-- Inconsistent error handling.
-- Typing: are the types correct and complete everywhere? Any "any", missing types, unsafe casts?
-- Suppressed checks: disabled linter rules, ignored errors, skipped tests, eslint-disable, @ts-ignore - we want everything checked, so flag every suppression.
-- Missing comments where they'd genuinely help understanding (not noise).
-- General code smells.
+Work through these six areas:
+1. Readability &amp; naming - intention-revealing names, short functions, shallow nesting.
+2. Cohesion &amp; coupling - things that change together living together; modules depending on each other as little as possible; one responsibility per unit.
+3. Duplication &amp; abstraction - extract genuine copy&amp;paste into one place, without over-abstracting things that only look alike.
+4. Open/Closed &amp; extensibility - adding a case shouldn't mean editing a long if/switch; prefer pluggable seams.
+5. Types &amp; data modeling - precise, complete types; make illegal states unrepresentable; no 'any', unsafe casts or stringly-typed values.
+6. Dead code &amp; suppressed checks - unused/unreachable code, and every disabled linter rule, @ts-ignore or skipped test.
 
-Deliver a prioritised analysis: what to change, why, and how, ranked by value vs risk, grouped into safe incremental steps. Where behaviour is at risk, note what test would lock it down first. Don't change functionality - refactor only, and propose before touching anything.</pre>
+Deliver a prioritised analysis: what to change, why and how, ranked by value vs risk, grouped into safe incremental steps. Where behaviour is at risk, note what test would lock it down first. Don't change functionality - refactor only, and propose before touching anything.</pre>
         <pre class="prompt" data-i18n="sk">Pozri sa, ako je táto aplikácia naimplementovaná, a nájdi, čo vieme zlepšiť, aby bola lepšie udržiavateľná a čitateľnejšia - bez zmeny akéhokoľvek správania. Iba zlepšujeme kód; funkcionalita musí ostať identická.
 
-Hľadaj:
-- Čitateľnosť: nejasné pomenovania, príliš dlhé funkcie, hlboké zanorenie, nízka súdržnosť / vysoká previazanosť.
-- Bezpečnosť zmien: kód, kde malá úprava pravdepodobne pokazí niečo nesúvisiace.
-- Open/Closed princíp: miesta, kde rozšírenie správania núti meniť existujúci kód.
-- Mŕtvy kód: nepoužité funkcie, premenné, importy, nedosiahnuteľné vetvy.
-- Roztrúsenú logiku, ktorá patrí spolu - vytiahni ju do súdržných funkcií / modulov.
-- Copy&amp;paste kód: vytiahni spoločnú abstrakciu na jedno miesto.
-- Magic strings a čísla: vytiahni ich do pomenovaných konštánt, nech neporovnávame surové reťazce sem-tam.
-- Nekonzistentné ošetrovanie chýb.
-- Typovosť: sú typy všade správne a úplné? Nie je niekde "any", chýbajúce typy, nebezpečné pretypovania?
-- Potlačené kontroly: vypnuté pravidlá lintera, ignorované chyby, preskočené testy, eslint-disable, @ts-ignore - chceme kontrolovať všetko, tak označ každé potlačenie.
-- Chýbajúce komentáre tam, kde by naozaj pomohli pochopeniu (nie šum).
-- Všeobecné code smells.
+Prejdi týchto šesť oblastí:
+1. Čitateľnosť &amp; pomenovania - mená prezrádzajúce zámer, krátke funkcie, plytké zanorenie.
+2. Súdržnosť &amp; previazanosť - veci, čo sa menia spolu, žijú spolu; moduly na sebe závisia čo najmenej; jedna zodpovednosť na jednotku.
+3. Duplikácia &amp; abstrakcia - vytiahni skutočný copy&amp;paste na jedno miesto, bez over-abstrakcie vecí, čo len vyzerajú podobne.
+4. Open/Closed &amp; rozšíriteľnosť - pridanie prípadu nemá znamenať úpravu dlhého if/switch; preferuj zapojiteľné švy.
+5. Typy &amp; modelovanie dát - presné, úplné typy; neplatné stavy nereprezentovateľné; žiadne 'any', nebezpečné pretypovania ani stringovo typované hodnoty.
+6. Mŕtvy kód &amp; potlačené kontroly - nepoužitý/nedosiahnuteľný kód a každé vypnuté pravidlo lintera, @ts-ignore či preskočený test.
 
 Priprav prioritizovanú analýzu: čo zmeniť, prečo a ako, zoradené podľa prínosu vs rizika, rozdelené do bezpečných inkrementálnych krokov. Kde hrozí zmena správania, napíš, aký test by to najprv zaistil. Nemeň funkcionalitu - iba refaktoruj a najprv navrhni, než sa niečoho dotkneš.</pre>
         <div class="prompt-fade"></div>
         </div>
         <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
+            <div class="lenses">
+          <p data-i18n="en">The six areas</p>
+          <p data-i18n="sk">Šesť oblastí</p>
+          <div class="lens-grid">
+          <button type="button" class="lens" data-lens="r-readability" onclick="openLens('r-readability')"><b>Readability &amp; naming</b><small data-i18n="en">Names that reveal intent, short functions, shallow nesting.</small><small data-i18n="sk">Mená prezrádzajúce zámer, krátke funkcie, plytké zanorenie.</small></button>
+          <button type="button" class="lens" data-lens="r-structure" onclick="openLens('r-structure')"><b>Cohesion &amp; coupling</b><small data-i18n="en">High cohesion, low coupling, one responsibility per unit.</small><small data-i18n="sk">Vysoká súdržnosť, nízka previazanosť, jedna zodpovednosť na jednotku.</small></button>
+          <button type="button" class="lens" data-lens="r-dry" onclick="openLens('r-dry')"><b>Duplication &amp; abstraction</b><small data-i18n="en">Extract genuine duplication - without over-abstracting.</small><small data-i18n="sk">Vytiahni skutočnú duplikáciu - bez over-abstrakcie.</small></button>
+          <button type="button" class="lens" data-lens="r-openclosed" onclick="openLens('r-openclosed')"><b>Open/Closed &amp; extensibility</b><small data-i18n="en">Add new cases by plugging in, not editing a long switch.</small><small data-i18n="sk">Nové prípady zapojením, nie úpravou dlhého switchu.</small></button>
+          <button type="button" class="lens" data-lens="r-types" onclick="openLens('r-types')"><b>Types &amp; data modeling</b><small data-i18n="en">Precise types; make illegal states unrepresentable; no 'any'.</small><small data-i18n="sk">Presné typy; neplatné stavy nereprezentovateľné; žiadne 'any'.</small></button>
+          <button type="button" class="lens" data-lens="r-hygiene" onclick="openLens('r-hygiene')"><b>Dead code &amp; suppressed checks</b><small data-i18n="en">Dead code, and every disabled linter rule or @ts-ignore.</small><small data-i18n="sk">Mŕtvy kód a každé vypnuté pravidlo lintera či @ts-ignore.</small></button>
+          </div>
+        </div>
     </article>
 
     <!-- ===== USABILITY ===== -->
@@ -499,36 +526,44 @@ Priprav prioritizovanú analýzu: čo zmeniť, prečo a ako, zoradené podľa pr
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
         <div class="prompt-clip">
-        <pre class="prompt" data-i18n="en">I want this app to be genuinely usable. Walk the main user journeys in the app, find the friction, and tell me what's missing and what to add to make it easier and more pleasant.
+        <pre class="prompt" data-i18n="en">I want this app to be genuinely usable. Walk the main user journeys, find the friction, and tell me what's missing and what to add.
 
-Consider:
-- Clarity: is it always obvious what to do next? Labels, empty states, feedback after every action.
-- Error handling from the user's side: helpful messages, recovery paths, preventing mistakes before they happen.
-- Consistency: patterns, wording and components used the same way throughout.
-- Information hierarchy: is the important thing the most prominent thing on each screen?
-- Accessibility: keyboard navigation, visible focus, colour contrast, screen-reader labels, ARIA - against WCAG.
-- Forms: when validation fires, sensible defaults, clearly marked required fields, good error text.
-- Loading and latency: skeletons, optimistic UI, progress feedback.
-- Mobile and responsive behaviour.
+Work through these six areas:
+1. Clarity &amp; feedback - is it always obvious what to do next? Labels, empty states, immediate feedback after every action, visible system status.
+2. Error prevention &amp; recovery - guardrails on destructive actions, helpful messages, an obvious way back.
+3. Consistency - patterns, wording and components used the same way throughout, following platform conventions.
+4. Accessibility - keyboard navigation, visible focus, colour contrast, screen-reader labels and ARIA, against WCAG.
+5. Forms - validation timing, sensible defaults, clearly marked required fields, and never losing what the user typed.
+6. Loading &amp; responsiveness - skeletons, optimistic UI, progress feedback, and a layout that works on a phone.
 
-Go screen by screen where it matters. Give concrete, prioritised recommendations, say where each one applies, and put the quick, high-impact wins first.</pre>
-        <pre class="prompt" data-i18n="sk">Chcem, aby bola táto aplikácia naozaj dobre použiteľná. Prejdi hlavné user journeys v aplikácii, nájdi trenie a povedz mi, čo chýba a čo doplniť, aby sa používala ľahšie a príjemnejšie.
+Go screen by screen where it matters. Give concrete, prioritised recommendations, say where each applies, and put quick high-impact wins first.</pre>
+        <pre class="prompt" data-i18n="sk">Chcem, aby bola táto aplikácia naozaj dobre použiteľná. Prejdi hlavné user journeys, nájdi trenie a povedz mi, čo chýba a čo doplniť.
 
-Zváž:
-- Zrozumiteľnosť: je vždy jasné, čo spraviť ďalej? Popisky, prázdne stavy, spätná väzba po každej akcii.
-- Ošetrenie chýb z pohľadu používateľa: nápomocné hlášky, cesty z chyby von, predchádzanie omylom skôr, než nastanú.
-- Konzistentnosť: vzory, formulácie a komponenty používané všade rovnako.
-- Informačná hierarchia: je to najdôležitejšie zároveň najvýraznejšie na obrazovke?
-- Prístupnosť: ovládanie klávesnicou, viditeľný focus, kontrast farieb, popisky pre čítačky obrazovky, ARIA - voči WCAG.
-- Formuláre: kedy sa spúšťa validácia, rozumné defaulty, jasne označené povinné polia, dobré chybové texty.
-- Načítavanie a odozva: skeletony, optimistické UI, indikácia priebehu.
-- Mobil a responzívne správanie.
+Prejdi týchto šesť oblastí:
+1. Zrozumiteľnosť &amp; spätná väzba - je vždy jasné, čo ďalej? Popisky, prázdne stavy, okamžitá spätná väzba po každej akcii, viditeľný stav systému.
+2. Predchádzanie chybám &amp; náprava - poistky pri deštruktívnych akciách, nápomocné hlášky, zjavná cesta späť.
+3. Konzistentnosť - vzory, formulácie a komponenty používané všade rovnako, s dodržaním konvencií platformy.
+4. Prístupnosť - ovládanie klávesnicou, viditeľný focus, kontrast farieb, popisky pre čítačky a ARIA, voči WCAG.
+5. Formuláre - načasovanie validácie, rozumné defaulty, jasne označené povinné polia a nestrácanie toho, čo používateľ napísal.
+6. Načítavanie &amp; responzivita - skeletony, optimistické UI, indikácia priebehu a layout, ktorý funguje na telefóne.
 
 Choď obrazovku po obrazovke tam, kde to dáva zmysel. Daj konkrétne, prioritizované odporúčania, povedz, kde sa každé uplatní, a dopredu daj rýchle výhry s veľkým dopadom.</pre>
         <div class="prompt-fade"></div>
         </div>
         <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
+            <div class="lenses">
+          <p data-i18n="en">The six areas</p>
+          <p data-i18n="sk">Šesť oblastí</p>
+          <div class="lens-grid">
+          <button type="button" class="lens" data-lens="u-clarity" onclick="openLens('u-clarity')"><b>Clarity &amp; feedback</b><small data-i18n="en">Always clear what to do next; every action gets feedback.</small><small data-i18n="sk">Vždy jasné, čo ďalej; každá akcia dostane spätnú väzbu.</small></button>
+          <button type="button" class="lens" data-lens="u-errors" onclick="openLens('u-errors')"><b>Error prevention &amp; recovery</b><small data-i18n="en">Prevent mistakes, explain errors, offer a way back.</small><small data-i18n="sk">Bráň chybám, vysvetli ich, ponúkni cestu späť.</small></button>
+          <button type="button" class="lens" data-lens="u-consistency" onclick="openLens('u-consistency')"><b>Consistency</b><small data-i18n="en">Same patterns and wording everywhere; follow conventions.</small><small data-i18n="sk">Rovnaké vzory a slová všade; dodržuj konvencie.</small></button>
+          <button type="button" class="lens" data-lens="u-a11y" onclick="openLens('u-a11y')"><b>Accessibility (WCAG)</b><small data-i18n="en">Keyboard, focus, contrast, screen readers - against WCAG.</small><small data-i18n="sk">Klávesnica, focus, kontrast, čítačky - voči WCAG.</small></button>
+          <button type="button" class="lens" data-lens="u-forms" onclick="openLens('u-forms')"><b>Forms</b><small data-i18n="en">Validation timing, defaults, and never losing input.</small><small data-i18n="sk">Načasovanie validácie, defaulty a nestrácanie vstupu.</small></button>
+          <button type="button" class="lens" data-lens="u-loading" onclick="openLens('u-loading')"><b>Loading &amp; responsiveness</b><small data-i18n="en">Skeletons, optimistic UI, and a layout that works on a phone.</small><small data-i18n="sk">Skeletony, optimistické UI a layout, čo funguje na telefóne.</small></button>
+          </div>
+        </div>
     </article>
 
     <!-- ===== FUNCTIONAL ===== -->
@@ -545,26 +580,39 @@ Choď obrazovku po obrazovke tam, kde to dáva zmysel. Daj konkrétne, prioritiz
         <div class="prompt-clip">
         <pre class="prompt" data-i18n="en">Verify in depth that we've implemented everything in the PRD. Treat the PRD as the source of truth and go requirement by requirement. If you can't find the PRD in the repo, ask me for it before starting.
 
-For every requirement and acceptance criterion, check:
-- The screen or feature it describes actually exists and is functional.
-- The behaviour matches the spec - not just "a screen is there", but it does what it should, including edge cases, empty states and error states.
-- Nothing from the spec is silently missing or only half-implemented.
-- Flag anything built beyond the spec (scope creep) and anything where the PRD is ambiguous.
+Work through these five areas:
+1. Screen &amp; feature coverage - every screen/feature the PRD describes exists and is reachable, not stubbed or flagged off.
+2. Behaviour vs spec - each flow does what the spec says: rules, calculations and state transitions match, not just 'a screen is there'.
+3. Edge, empty &amp; error states - the states beyond the happy path from the PRD are handled (empty, loading, permission-denied, validation, server errors).
+4. Scope creep - anything built beyond the spec, and whether it's justified.
+5. Spec gaps &amp; ambiguity - where the PRD is silent or contradictory and code made a silent decision.
 
-Deliver a traceability table: PRD requirement -> status (done / partial / missing) -> evidence (file:line) -> the gap, if any. Cite concrete files for every "done". Be honest about partials - if it looks done but isn't wired up, say so.</pre>
+Deliver a traceability table: PRD requirement -> status (done / partial / missing) -> evidence (file:line) -> the gap, if any. Cite concrete files for every 'done'. Be honest about partials - if it looks done but isn't wired up, say so.</pre>
         <pre class="prompt" data-i18n="sk">Over do hĺbky, či máme implementované všetko, čo je v PRD. Ber PRD ako zdroj pravdy a choď požiadavku po požiadavke. Ak PRD v repozitári nenájdeš, vypýtaj si ho odo mňa, než začneš.
 
-Pri každej požiadavke a akceptačnom kritériu skontroluj:
-- Či obrazovka alebo feature, ktorú popisuje, naozaj existuje a je funkčná.
-- Či správanie sedí so špecifikáciou - nie len "obrazovka tam je", ale robí to, čo má, vrátane hraničných prípadov, prázdnych stavov a chybových stavov.
-- Či nič zo špecifikácie potichu nechýba alebo nie je len spolovice hotové.
-- Označ všetko postavené nad rámec špecifikácie (scope creep) a všetko, kde je PRD nejednoznačné.
+Prejdi týchto päť oblastí:
+1. Pokrytie obrazoviek &amp; funkcií - každá obrazovka/feature z PRD existuje a je dostupná, nie stub ani vypnutá flagom.
+2. Správanie vs špecifikácia - každý flow robí, čo hovorí špecifikácia: pravidlá, výpočty a prechody stavov sedia, nielen 'obrazovka tam je'.
+3. Hraničné, prázdne &amp; chybové stavy - stavy mimo šťastnej cesty z PRD sú ošetrené (prázdne, načítavanie, zamietnutý prístup, validácia, serverové chyby).
+4. Scope creep - čokoľvek postavené nad rámec špecifikácie a či je to opodstatnené.
+5. Medzery &amp; nejednoznačnosti v špecifikácii - kde PRD mlčí alebo si protirečí a kód spravil tiché rozhodnutie.
 
-Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiastočne / chýba) -> dôkaz (súbor:riadok) -> aká je medzera. Pri každom "hotové" cituj konkrétne súbory. Buď úprimný pri čiastočných - ak to vyzerá hotovo, ale nie je to zapojené, napíš to.</pre>
+Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiastočne / chýba) -> dôkaz (súbor:riadok) -> aká je medzera. Pri každom 'hotové' cituj konkrétne súbory. Buď úprimný pri čiastočných - ak to vyzerá hotovo, ale nie je to zapojené, napíš to.</pre>
         <div class="prompt-fade"></div>
         </div>
         <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
+            <div class="lenses">
+          <p data-i18n="en">The five areas</p>
+          <p data-i18n="sk">Päť oblastí</p>
+          <div class="lens-grid">
+          <button type="button" class="lens" data-lens="f-coverage" onclick="openLens('f-coverage')"><b>Screen &amp; feature coverage</b><small data-i18n="en">Every PRD screen exists and is reachable.</small><small data-i18n="sk">Každá obrazovka z PRD existuje a je dostupná.</small></button>
+          <button type="button" class="lens" data-lens="f-behaviour" onclick="openLens('f-behaviour')"><b>Behaviour vs spec</b><small data-i18n="en">Flows do what the spec says, not just 'a screen exists'.</small><small data-i18n="sk">Flows robia, čo hovorí špecifikácia, nielen 'obrazovka existuje'.</small></button>
+          <button type="button" class="lens" data-lens="f-states" onclick="openLens('f-states')"><b>Edge, empty &amp; error states</b><small data-i18n="en">Empty, loading, permission and error states are handled.</small><small data-i18n="sk">Prázdne, načítavacie, prístupové a chybové stavy sú ošetrené.</small></button>
+          <button type="button" class="lens" data-lens="f-scope" onclick="openLens('f-scope')"><b>Scope creep</b><small data-i18n="en">Anything built beyond the spec - and is it justified?</small><small data-i18n="sk">Čokoľvek postavené nad rámec špecifikácie - a je to opodstatnené?</small></button>
+          <button type="button" class="lens" data-lens="f-gaps" onclick="openLens('f-gaps')"><b>Spec gaps &amp; ambiguity</b><small data-i18n="en">Where the PRD is silent and code decided silently.</small><small data-i18n="sk">Kde PRD mlčí a kód rozhodol potichu.</small></button>
+          </div>
+        </div>
     </article>
 
   </section>
@@ -698,52 +746,109 @@ Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiasto�
     }
   };
   var EX = {
-    'peak-end':{en:[`Duolingo ends every lesson with confetti and an XP tally - a deliberate high note.`,`Uber closes a ride on a clean rating and receipt screen, never an abrupt cut-off.`],
-      sk:[`Duolingo končí každú lekciu konfetami a spočítaním XP - zámerný vrchol.`,`Uber ukončí jazdu čistou obrazovkou s hodnotením a účtenkou, nie náhlym strihom.`]},
-    'zeigarnik':{en:[`LinkedIn's "Profile strength" meter that nudges you to complete your profile.`,`Onboarding checklists like "Setup 60% complete" that pull you back to finish.`],
-      sk:[`Ukazovateľ "sila profilu" na LinkedIne, ktorý ťa tlačí dokončiť profil.`,`Onboarding checklisty typu "nastavenie hotové na 60%", ktoré ťa vrátia dokončiť.`]},
-    'goal-gradient':{en:[`Loyalty cards handed out with 2 of 10 stamps pre-filled - people finish faster (Kivetz, 2006).`,`A signup wizard that marks "Step 1 done" just for creating the account.`],
-      sk:[`Vernostné kartičky rozdávané s 2 z 10 pečiatok vopred - ľudia dokončia rýchlejšie (Kivetz, 2006).`,`Registračný sprievodca, ktorý označí "Krok 1 hotový" už za vytvorenie účtu.`]},
-    'variable-reward':{en:[`Pull-to-refresh on a feed - you never know what new thing appears.`,`LinkedIn's occasional "you appeared in 27 searches this week" surprise.`],
-      sk:[`Pull-to-refresh vo feede - nikdy nevieš, čo nové sa objaví.`,`Občasné prekvapenie na LinkedIne "tento týždeň si sa objavil v 27 vyhľadávaniach".`]},
-    'flow':{en:[`Duolingo scales difficulty lesson by lesson so it never gets boring or overwhelming.`,`Games and tools that unlock advanced features only once you're ready for them.`],
-      sk:[`Duolingo škáluje náročnosť lekciu po lekcii, aby to nebolo nudné ani zahlcujúce.`,`Hry a nástroje, ktoré odomknú pokročilé funkcie, až keď si na ne pripravený.`]},
-    'curiosity':{en:[`"Your results are ready - see your score" after finishing a quiz or test.`,`Spotify Wrapped teasing "...and your #1 artist is..." right before the reveal.`],
-      sk:[`"Tvoje výsledky sú pripravené - pozri si skóre" po dokončení kvízu alebo testu.`,`Spotify Wrapped naznačuje "...a tvoj interpret č. 1 je..." tesne pred odhalením.`]},
-    'aesthetic':{en:[`Stripe's checkout feels effortless even though payments are genuinely complex.`,`A cleanly designed form feels quicker to fill than an ugly one with identical fields.`],
-      sk:[`Checkout od Stripe pôsobí ľahko, hoci platby sú naozaj zložité.`,`Čisto navrhnutý formulár sa zdá rýchlejší na vyplnenie než škaredý s rovnakými poľami.`]},
-    'ikea':{en:[`Notion and Trello: you build your own workspace, so you're invested in keeping it.`,`Spotify playlists you curate yourself make you value the app more.`],
-      sk:[`Notion a Trello: postavíš si vlastný priestor, takže ti záleží na jeho udržaní.`,`Playlisty na Spotify, ktoré si sám kurátoruješ, ťa k appke viac pripútajú.`]},
-    'fresh-start':{en:[`Fitness apps framing "New week, new start" to restart a goal without guilt.`,`Duolingo's Monday streak reset and streak-repair so a slip doesn't feel final.`],
-      sk:[`Fitness appky s rámovaním "nový týždeň, nový začiatok" na reštart cieľa bez viny.`,`Pondelkový reset streaku a jeho oprava v Duolingu, aby zaváhanie nepôsobilo definitívne.`]},
-    'hicks':{en:[`Google's homepage: a single search box instead of a portal full of links.`,`Streaming apps leading with "Continue watching" and one big Play button.`],
-      sk:[`Domovská stránka Googlu: jediné vyhľadávacie pole namiesto portálu plného odkazov.`,`Streamovacie appky vedú s "pokračovať v pozeraní" a jedným veľkým tlačidlom Play.`]},
-    'loss':{en:[`Duolingo's "Don't lose your 30-day streak!" reminder before midnight.`,`Booking.com's "Only 1 room left at this price" - powerful, so use it only when true.`],
-      sk:[`Pripomienka Duolinga "nepríď o svoj 30-dňový streak!" pred polnocou.`,`"Posledná 1 izba za túto cenu" na Booking.com - silné, tak to použi len keď je to pravda.`]},
-    'social':{en:[`Booking.com's "12 other people are looking at this hotel right now".`,`Amazon's star ratings and "#1 Best Seller" badge; "used by 2,400 teams" on B2B sites.`],
-      sk:[`"Práve teraz si tento hotel pozerá ďalších 12 ľudí" na Booking.com.`,`Hviezdičkové hodnotenia a odznak "#1 Best Seller" na Amazone; "používa 2 400 tímov" na B2B weboch.`]}
+    'peak-end':{en:[`Duolingo ends each lesson with confetti and an XP tally - the celebration becomes the moment you remember, so you come back for the next hit.`,`Uber closes a ride on a clean rating + receipt screen rather than an abrupt cut-off, so the trip is remembered as smooth even if traffic wasn't.`,`Mailchimp's high-five after you hit send turns the scariest moment (a mass email) into the emotional peak you recall next time.`],
+      sk:[`Duolingo končí každú lekciu konfetami a spočítaním XP - oslava sa stane momentom, ktorý si pamätáš, tak sa vrátiš po ďalšiu dávku.`,`Uber ukončí jazdu čistou obrazovkou s hodnotením a účtenkou namiesto náhleho strihu, tak si jazdu zapamätáš ako hladkú, aj keď premávka nebola.`,`High-five od Mailchimpu po stlačení odoslať premení najstrašidelnejší moment (hromadný e-mail) na emočný vrchol, ktorý si nabudúce vybavíš.`]},
+    'zeigarnik':{en:[`LinkedIn's Profile strength: Intermediate bar leaves an open loop you feel compelled to close by adding one more detail.`,`Slack's onboarding checklist (2 of 5 done) keeps nagging quietly until you finish setup.`,`A half-written draft that auto-saves and shows Draft pulls you back to finish what you started.`],
+      sk:[`Sila profilu: stredná na LinkedIne necháva otvorenú slučku, ktorú cítiš nutkanie uzavrieť pridaním ešte jedného detailu.`,`Onboarding checklist v Slacku (2 z 5 hotové) potichu vŕta, kým nedokončíš nastavenie.`,`Rozpísaný draft, ktorý sa sám uloží a zobrazí Draft, ťa ťahá späť dokončiť, čo si začal.`]},
+    'goal-gradient':{en:[`Kivetz's coffee-card study: cards with 2 of 12 stamps pre-filled were completed faster than empty 10-stamp cards - identical work, more finishers.`,`Signup wizards that tick Step 1 complete for creating the account make the rest feel like momentum, not a fresh climb.`,`A profile bar that jumps to 40% just for basics makes the remaining 60% feel close enough to bother with.`],
+      sk:[`Kivetzova štúdia s kartičkami na kávu: kartičky s 2 z 12 pečiatok vopred sa dokončili rýchlejšie než prázdne na 10 - rovnaká práca, viac dokončení.`,`Registrační sprievodcovia, čo odškrtnú Krok 1 hotový za vytvorenie účtu, spravia zvyšok pocitom rozbehu, nie novým výstupom.`,`Ukazovateľ profilu, ktorý skočí na 40% len za základy, spraví zvyšných 60% dosť blízkych na to, aby si sa obťažoval.`]},
+    'variable-reward':{en:[`Pull-to-refresh on a feed is a slot-machine pull - the unpredictable payoff is what makes the gesture compulsive.`,`LinkedIn's occasional you appeared in 27 searches this week is a surprise reward that pulls you back to check for more.`,`Ethical version: reward real value unpredictably - a tool that occasionally surfaces a genuinely useful tip, not endless empty pulls.`],
+      sk:[`Pull-to-refresh vo feede je páka automatu - nepredvídateľná odmena je to, čo robí gesto nutkavým.`,`Občasné tento týždeň si sa objavil v 27 vyhľadávaniach na LinkedIne je prekvapivá odmena, ktorá ťa ťahá späť skontrolovať viac.`,`Etická verzia: odmeňuj reálnu hodnotu nepredvídateľne - nástroj, ktorý občas ukáže naozaj užitočný tip, nie donekonečna prázdne páky.`]},
+    'flow':{en:[`Duolingo raises difficulty lesson by lesson, so you're always slightly stretched but never lost - the classic flow channel.`,`Good games teach one mechanic at a time; an app can do the same by revealing advanced features only once basics are mastered.`,`A power-user shortcut layer keeps experts engaged without overwhelming newcomers on the default path.`],
+      sk:[`Duolingo dvíha náročnosť lekciu po lekcii, takže si vždy trochu natiahnutý, no nikdy stratený - klasický kanál flow.`,`Dobré hry učia jednu mechaniku naraz; appka vie to isté - odhaliť pokročilé funkcie, až keď sú základy zvládnuté.`,`Vrstva skratiek pre power userov drží expertov zaujatých bez zahltenia nováčikov na základnej ceste.`]},
+    'curiosity':{en:[`Your results are ready - see your score after a quiz opens a gap you'll click to close.`,`Spotify Wrapped teases ...and your #1 artist is... with a pause before the reveal, and it works because the gap is small and clearly fillable.`,`Ethical use: 2 steps left to see your report is honest; a headline that never pays off is clickbait that burns trust.`],
+      sk:[`Tvoje výsledky sú pripravené - pozri si skóre po kvíze otvorí medzeru, ktorú klikneš, aby si zavrel.`,`Spotify Wrapped naznačí ...a tvoj interpret č. 1 je... s pauzou pred odhalením a funguje to, lebo medzera je malá a jasne zaplniteľná.`,`Etické použitie: ostávajú 2 kroky k tvojmu reportu je úprimné; titulok, ktorý sa nikdy nenaplní, je clickbait, čo spáli dôveru.`]},
+    'aesthetic':{en:[`Stripe's checkout feels effortless despite genuinely complex payments - polish makes users assume it's simple and trustworthy.`,`In studies, users rated the same ATM easier to use when it simply looked nicer - identical function, higher perceived usability.`,`A clean, well-spaced form gets fewer this is confusing complaints than an ugly one with the exact same fields.`],
+      sk:[`Checkout od Stripe pôsobí ľahko napriek naozaj zložitým platbám - polish spraví, že používatelia predpokladajú, že je jednoduchý a dôveryhodný.`,`V štúdiách ľudia hodnotili ten istý bankomat ako ľahší na použitie, keď len vyzeral krajšie - rovnaká funkcia, vyššia vnímaná použiteľnosť.`,`Čistý, vzdušný formulár dostane menej sťažností toto je mätúce než škaredý s úplne rovnakými poľami.`]},
+    'ikea':{en:[`Notion and Trello let you build your own workspace, so the effort you invested makes you reluctant to leave.`,`Spotify playlists you curate yourself feel like yours, which is why a hand-made playlist beats an identical algorithmic one for loyalty.`,`An onboarding that asks you to set 3 preferences creates ownership - you've already put a piece of yourself in.`],
+      sk:[`Notion a Trello ti dovolia postaviť si vlastný priestor, tak ťa vložená námaha odrádza odísť.`,`Playlisty na Spotify, ktoré si sám kurátoruješ, sú tvoje, preto ručne robený playlist prekoná identický algoritmický v lojalite.`,`Onboarding, ktorý ťa poprosí nastaviť 3 preferencie, vytvorí vlastníctvo - už si do toho vložil kúsok seba.`]},
+    'fresh-start':{en:[`Fitness apps frame New week, new start so a missed goal feels like a fresh page, not a failure.`,`Duolingo's streak repair and Monday reset let a slip-up feel recoverable, keeping people from quitting after one miss.`,`Start fresh this month on the 1st taps the temporal landmark when motivation is naturally highest.`],
+      sk:[`Fitness appky rámujú nový týždeň, nový začiatok, tak zmeškaný cieľ pôsobí ako čistá stránka, nie zlyhanie.`,`Oprava streaku a pondelkový reset v Duolingu spravia zaváhanie napraviteľným a bránia ľuďom skončiť po jednom minutí.`,`Začni tento mesiac odznova prvého v mesiaci využije časový medzník, keď je motivácia prirodzene najvyššia.`]},
+    'hicks':{en:[`Google's homepage is one search box, not a portal of links - the single obvious action is why it feels instant to use.`,`Streaming apps lead with Continue watching and one big Play button instead of dumping the whole catalogue on you.`,`A checkout with one recommended shipping option preselected converts better than five equal choices side by side.`],
+      sk:[`Domovská stránka Googlu je jedno vyhľadávacie pole, nie portál odkazov - jedna zjavná akcia je dôvod, prečo pôsobí okamžite.`,`Streamovacie appky vedú s pokračovať v pozeraní a jedným veľkým Play namiesto vysypania celého katalógu.`,`Checkout s jednou odporúčanou možnosťou dopravy predvolenou konvertuje lepšie než päť rovnocenných volieb vedľa seba.`]},
+    'loss':{en:[`Duolingo's Don't lose your 30-day streak! before midnight works because losing the streak stings more than earning a new day would please.`,`A free trial warning you'll lose your saved projects frames continuing as avoiding a loss, not paying for a gain.`,`Booking.com's Only 1 room left at this price is powerful loss framing - so it must be genuinely true, or it's a dark pattern.`],
+      sk:[`Nepríď o svoj 30-dňový streak! od Duolinga pred polnocou funguje, lebo strata streaku bolí viac, než by potešil nový deň.`,`Skúšobná verzia varujúca prídeš o svoje uložené projekty rámuje pokračovanie ako vyhnutie sa strate, nie platbu za zisk.`,`Posledná 1 izba za túto cenu na Booking.com je silné rámovanie straty - tak musí byť naozaj pravdivé, inak je to dark pattern.`]},
+    'social':{en:[`Booking.com's 12 other people are looking at this hotel lowers doubt by showing you're not the only one choosing it.`,`Amazon's star ratings and #1 Best Seller badge let the crowd's choice stand in for your own research.`,`On B2B sites, used by 2,400 teams plus real logos reassures buyers - but only honest numbers; fake proof backfires when caught.`],
+      sk:[`Práve teraz si tento hotel pozerá ďalších 12 ľudí na Booking.com znižuje pochybnosti tým, že ukáže, že nie si jediný, kto ho volí.`,`Hviezdičkové hodnotenia a odznak #1 Best Seller na Amazone nechajú voľbu davu zastúpiť tvoj vlastný prieskum.`,`Na B2B weboch používa 2 400 tímov plus reálne logá upokoja kupujúcich - ale len úprimné čísla; falošný dôkaz sa vypomstí, keď sa odhalí.`]}
   };
+  var DOMAIN = {
+    engage:{c:'#c0357f',en:'Engagement lens',sk:'Behaviorálna optika'},
+    modern:{c:'#4b53c4',en:'Modernization',sk:'Modernizácia'},
+    sec:{c:'#cf3535',en:'Security',sk:'Bezpečnosť'},
+    perf:{c:'#b26a0a',en:'Performance',sk:'Výkon'},
+    refactor:{c:'#6d45c9',en:'Refactoring',sk:'Refaktoring'},
+    ux:{c:'#0e8f7c',en:'Usability',sk:'Použiteľnosť'},
+    func:{c:'#2563c9',en:'Functional',sk:'Funkčnosť'}
+  };
+  var AREAS = {
+    'm-stack':{d:'modern', en:{t:`Stack & versions`, what:`Which frameworks, runtimes and key libraries the project actually runs on, and how far behind current they are.`, why:`You can't modernise what you haven't measured, and end-of-life versions are both a security and a hiring risk.`, ex:[`React 17 blocks the concurrent features and automatic batching that ship from 18+ - a major bump unlocks them for free.`,`A dependency past end-of-life (no more security releases) is a silent liability even if it still works.`]}, sk:{t:`Stack a verzie`, what:`Na akých frameworkoch, runtime a kľúčových knižniciach projekt reálne beží a ako ďaleko za aktuálnom je.`, why:`Nemôžeš modernizovať to, čo si nezmeral, a verzie po konci podpory sú bezpečnostné aj personálne riziko.`, ex:[`React 17 blokuje concurrent funkcie a automatic batching z verzie 18+ - major upgrade ich odomkne zadarmo.`,`Závislosť po konci podpory (žiadne bezpečnostné vydania) je tichá záťaž, aj keď stále funguje.`]}, links:[{l:`React`,u:`https://react.dev/`},{l:`web.dev`,u:`https://web.dev/`}]},
+    'm-patterns':{d:'modern', en:{t:`Framework best practice`, what:`Whether the code uses the current recommended patterns of the frameworks you already have, or older idioms.`, why:`Idiomatic code is easier to hire for, better documented, and usually faster and safer - the framework team optimised the happy path.`, ex:[`Data fetched in a useEffect that just derives state is usually a smell - React says you might not need that Effect.`,`Class components and manual lifecycle wiring where hooks + Suspense would be simpler and less bug-prone.`]}, sk:{t:`Best practice frameworku`, what:`Či kód používa aktuálne odporúčané vzory frameworkov, ktoré už máš, alebo staršie idiómy.`, why:`Idiomatický kód sa ľahšie obsadzuje ľuďmi, je lepšie zdokumentovaný a zvyčajne rýchlejší a bezpečnejší - tím frameworku odladil hlavnú cestu.`, ex:[`Dáta ťahané v useEffect, ktorý len odvodzuje stav, sú väčšinou smell - React hovorí, že ten Effect možno netreba.`,`Class komponenty a ručné lifecycle prepájanie tam, kde by hooks + Suspense boli jednoduchšie a menej chybové.`]}, links:[{l:`You Might Not Need an Effect`,u:`https://react.dev/learn/you-might-not-need-an-effect`},{l:`Thinking in React`,u:`https://react.dev/learn/thinking-in-react`}]},
+    'm-deps':{d:'modern', en:{t:`Dependencies`, what:`Which packages are outdated, deprecated or replaceable by a leaner, better-maintained modern option.`, why:`Every dependency is a liability you carry forever; dropping a heavy or abandoned one often improves speed, security and build times at once.`, ex:[`moment.js (large, in maintenance mode) replaced by date-fns or the native Intl API cuts bundle weight noticeably.`,`A utility library pulled in for one function you could write in three lines - or that ships in the standard library now.`]}, sk:{t:`Závislosti`, what:`Ktoré balíky sú zastarané, deprecated alebo nahraditeľné štíhlejšou, lepšie udržiavanou modernou alternatívou.`, why:`Každá závislosť je záťaž, ktorú nesieš navždy; vyhodenie ťažkej alebo opustenej často zlepší rýchlosť, bezpečnosť aj čas buildu naraz.`, ex:[`moment.js (veľký, v maintenance móde) nahradený date-fns alebo natívnym Intl API citeľne zníži veľkosť bundlu.`,`Utility knižnica pridaná kvôli jednej funkcii, ktorú vieš napísať na tri riadky - alebo je už v štandardnej knižnici.`]}, links:[{l:`web.dev`,u:`https://web.dev/`}]},
+    'm-tooling':{d:'modern', en:{t:`Tooling & CI`, what:`The build, bundler, type-checking, linting, tests and CI pipeline - whether they are current, strict and enforced on every change.`, why:`Modern tooling catches whole classes of bugs before humans do; a fast, strict pipeline is what lets you upgrade everything else with confidence.`, ex:[`A legacy bundler (CRA/webpack) swapped for Vite gives dramatically faster dev startup and HMR.`,`TypeScript strict mode off, or CI that doesn't fail the build on type/lint errors - problems ship anyway.`]}, sk:{t:`Nástroje a CI`, what:`Build, bundler, typová kontrola, linting, testy a CI pipeline - či sú aktuálne, prísne a vynucované pri každej zmene.`, why:`Moderné nástroje zachytia celé triedy chýb skôr než ľudia; rýchly, prísny pipeline je to, čo ti dovolí s istotou upgradovať všetko ostatné.`, ex:[`Zastaraný bundler (CRA/webpack) vymenený za Vite dá výrazne rýchlejší štart dev servera a HMR.`,`Vypnutý strict mód v TypeScripte alebo CI, čo nezhodí build pri type/lint chybách - problémy sa aj tak dostanú von.`]}, links:[{l:`web.dev`,u:`https://web.dev/`}]},
+    'm-arch':{d:'modern', en:{t:`Architecture & state`, what:`How the app is structured - state management, data fetching, module boundaries - and what blocks a clean reference implementation.`, why:`Architecture is the expensive thing to change later; right boundaries and data flow keep the app modernisable for years.`, ex:[`A giant global store holding server data that a query cache (TanStack Query, RTK Query) would manage better.`,`Business logic tangled into components instead of testable, framework-agnostic modules.`]}, sk:{t:`Architektúra a stav`, what:`Ako je appka štruktúrovaná - manažment stavu, načítavanie dát, hranice modulov - a čo bráni čistej referenčnej implementácii.`, why:`Architektúra je to drahé na neskoršiu zmenu; správne hranice a tok dát udržia appku modernizovateľnou roky.`, ex:[`Obrovský globálny store držiaci serverové dáta, ktoré by lepšie spravoval query cache (TanStack Query, RTK Query).`,`Biznis logika zamotaná do komponentov namiesto testovateľných, na frameworku nezávislých modulov.`]}, links:[{l:`React`,u:`https://react.dev/`}]},
+    's-authz':{d:'sec', en:{t:`Authentication & authorization`, what:`Whether every endpoint verifies who the user is and that they may do exactly this action on exactly this object - server-side, every request.`, why:`Broken access control is the #1 risk in the OWASP Top 10; the frontend hiding a button proves nothing.`, ex:[`IDOR: GET /api/invoice/1043 returns any invoice by changing the id, because the server never checks it belongs to you.`,`An admin-only action guarded only by hiding the menu item - the API still accepts the call from anyone.`]}, sk:{t:`Autentifikácia a autorizácia`, what:`Či každý endpoint overuje, kto je používateľ a či smie práve túto akciu na práve tomto objekte - na serveri, pri každom requeste.`, why:`Broken access control je riziko č. 1 v OWASP Top 10; to, že frontend skryje tlačidlo, nedokazuje nič.`, ex:[`IDOR: GET /api/invoice/1043 vráti hociktorú faktúru zmenou id, lebo server nikdy neoverí, že patrí tebe.`,`Akcia len pre admina chránená len skrytím položky v menu - API stále prijme volanie od kohokoľvek.`]}, links:[{l:`OWASP Top 10`,u:`https://owasp.org/www-project-top-ten/`},{l:`Cheat Sheets`,u:`https://cheatsheetseries.owasp.org/`}]},
+    's-injection':{d:'sec', en:{t:`Injection & input validation`, what:`Every place untrusted input reaches a query, command, template or the DOM - is it parameterised, escaped or validated?`, why:`Injection turns user input into code execution or data theft; validation at the boundary is the fix.`, ex:[`String-concatenated SQL instead of parameterised queries - classic SQL injection.`,`Rendering user HTML with dangerouslySetInnerHTML without sanitising - stored XSS.`]}, sk:{t:`Injection a validácia vstupov`, what:`Každé miesto, kde nedôveryhodný vstup dorazí do dopytu, príkazu, šablóny alebo DOM - je parametrizovaný, escapovaný alebo validovaný?`, why:`Injection mení vstup používateľa na spustenie kódu alebo krádež dát; riešením je validácia na hranici.`, ex:[`SQL skladaný reťazcami namiesto parametrizovaných dopytov - klasická SQL injection.`,`Vykresľovanie používateľského HTML cez dangerouslySetInnerHTML bez sanitizácie - stored XSS.`]}, links:[{l:`OWASP Top 10`,u:`https://owasp.org/www-project-top-ten/`},{l:`Cheat Sheets`,u:`https://cheatsheetseries.owasp.org/`}]},
+    's-secrets':{d:'sec', en:{t:`Secrets & configuration`, what:`Whether credentials, tokens and keys live only in server-side secrets - never hardcoded, committed in history, or in the client bundle.`, why:`A leaked key is a breach waiting to happen, anything in the client bundle is public, and git history remembers secrets after you delete them.`, ex:[`An API key inlined in a React component - it's in every user's browser, fully readable.`,`A .env with real credentials committed once; still recoverable from git history even after deletion.`]}, sk:{t:`Tajomstvá a konfigurácia`, what:`Či heslá, tokeny a kľúče žijú len v serverových secrets - nikdy natvrdo, v histórii commitov ani v klientskom bundli.`, why:`Uniknutý kľúč je čakajúci prienik, čokoľvek v klientskom bundli je verejné a git história si tajomstvá pamätá aj po zmazaní.`, ex:[`API kľúč vložený priamo v React komponente - je v prehliadači každého používateľa, plne čitateľný.`,`Súbor .env s reálnymi credentials raz commitnutý; stále obnoviteľný z git histórie aj po zmazaní.`]}, links:[{l:`Cheat Sheets`,u:`https://cheatsheetseries.owasp.org/`}]},
+    's-data':{d:'sec', en:{t:`Data exposure & privacy`, what:`What the API actually returns and logs - over-sent fields, PII in logs or errors, internals in stack traces.`, why:`The client can read every byte you send it; over-fetching and verbose errors hand attackers a map, and PII in logs is a compliance problem.`, ex:[`/api/users returns password hashes and internal flags the UI never uses - all visible in devtools.`,`A 500 error dumping a full stack trace and SQL to the client in production.`]}, sk:{t:`Únik dát a súkromie`, what:`Čo API reálne vracia a loguje - polia navyše, PII v logoch alebo chybách, internals v stack trace.`, why:`Klient si prečíta každý bajt, ktorý mu pošleš; over-fetching a ukecané chyby dajú útočníkovi mapu a PII v logoch je problém s compliance.`, ex:[`/api/users vracia hashe hesiel a interné flagy, ktoré UI nikdy nepoužije - všetko viditeľné v devtools.`,`Chyba 500 vypisujúca celý stack trace a SQL na klienta v produkcii.`]}, links:[{l:`OWASP Top 10`,u:`https://owasp.org/www-project-top-ten/`}]},
+    's-session':{d:'sec', en:{t:`Sessions, transport & CORS`, what:`How sessions and tokens are stored and transmitted - secure/httpOnly cookies, CSRF protection, CORS scope, rate limiting.`, why:`A token in localStorage is XSS-stealable and a wildcard CORS opens the door from other origins - the plumbing attackers probe first.`, ex:[`Access token in localStorage instead of an httpOnly cookie - one XSS and it's gone.`,`Access-Control-Allow-Origin: * on an authenticated API, letting any site call it with the user's session.`]}, sk:{t:`Session, prenos a CORS`, what:`Ako sú session a tokeny uložené a prenášané - secure/httpOnly cookies, ochrana proti CSRF, rozsah CORS, rate limiting.`, why:`Token v localStorage sa dá ukradnúť cez XSS a wildcard CORS otvorí dvere z iných originov - inštalatérstvo, ktoré útočníci skúšajú prvé.`, ex:[`Access token v localStorage namiesto httpOnly cookie - jedno XSS a je preč.`,`Access-Control-Allow-Origin: * na autentifikovanom API, čo dovolí hociktorej stránke volať ho so session používateľa.`]}, links:[{l:`MDN: CORS`,u:`https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS`},{l:`Cheat Sheets`,u:`https://cheatsheetseries.owasp.org/`}]},
+    's-deps':{d:'sec', en:{t:`Dependencies & supply chain`, what:`Third-party packages with known vulnerabilities, unmaintained code, or risky install scripts - and whether you can see the full tree.`, why:`Most of your code isn't yours; one vulnerable transitive dependency (Log4Shell) can own the whole app.`, ex:[`A high-severity CVE in a transitive dependency that npm audit flags but nobody actioned.`,`Packages years behind with no upstream maintenance - no fix coming when the next CVE lands.`]}, sk:{t:`Závislosti a dodávateľský reťazec`, what:`Balíky tretích strán so známymi zraniteľnosťami, neudržiavaným kódom alebo rizikovými install skriptami - a či vidíš celý strom.`, why:`Väčšina kódu nie je tvoja; jediná zraniteľná tranzitívna závislosť (Log4Shell) môže ovládnuť celú appku.`, ex:[`Vážne CVE v tranzitívnej závislosti, ktoré npm audit hlási, ale nikto ho neriešil.`,`Balíky roky pozadu bez údržby - keď príde ďalšie CVE, oprava nepríde.`]}, links:[{l:`OWASP Top 10`,u:`https://owasp.org/www-project-top-ten/`}]},
+    'p-db':{d:'perf', en:{t:`Database & queries`, what:`How queries are written and indexed - missing indexes, full-table scans, over-fetching, missing pagination on large sets.`, why:`The database is the most common real bottleneck; one missing index or unpaginated list can dominate every other cost combined.`, ex:[`A list endpoint that SELECT *-s and returns 50,000 rows with no LIMIT or pagination.`,`Filtering on a column with no index, forcing a full-table scan on every request.`]}, sk:{t:`Databáza a dopyty`, what:`Ako sú dopyty napísané a indexované - chýbajúce indexy, full-table scany, over-fetching, chýbajúce stránkovanie.`, why:`Databáza je najčastejšie reálne úzke hrdlo; jeden chýbajúci index alebo nestránkovaný zoznam preváži všetky ostatné náklady dokopy.`, ex:[`List endpoint, ktorý robí SELECT * a vráti 50 000 riadkov bez LIMIT či stránkovania.`,`Filtrovanie na stĺpci bez indexu, čo núti full-table scan pri každom requeste.`]}, links:[{l:`web.dev`,u:`https://web.dev/`}]},
+    'p-caching':{d:'perf', en:{t:`Redundant calls & caching`, what:`The same data fetched repeatedly, calls that could be memoised or cached, work redone on every render or request.`, why:`The fastest request is the one you don't make; a small cache or memo often removes more latency than any query tuning.`, ex:[`The same /me profile call fired from five components on one screen instead of once and shared.`,`An expensive computation re-run on every render because it isn't memoised.`]}, sk:{t:`Zbytočné volania a caching`, what:`Tie isté dáta ťahané opakovane, volania na memoizáciu/caching, práca robená znova pri každom renderi či requeste.`, why:`Najrýchlejší request je ten, ktorý neurobíš; malá cache alebo memo často odstráni viac latencie než akékoľvek ladenie dopytov.`, ex:[`To isté /me volanie profilu vystrelené z piatich komponentov na jednej obrazovke namiesto raz a zdieľané.`,`Drahá kalkulácia prepočítaná pri každom renderi, lebo nie je memoizovaná.`]}, links:[{l:`React: useMemo`,u:`https://react.dev/reference/react/useMemo`}]},
+    'p-react':{d:'perf', en:{t:`React rendering`, what:`Wasted re-renders, missing memoisation, state placed too high, heavy components, and long lists that should be virtualised.`, why:`Unnecessary renders are invisible until the UI janks; fixing where state lives is usually cheaper than it looks and very noticeable.`, ex:[`A form's keystroke re-rendering the whole page because state sits at the top instead of near the input.`,`Rendering 10,000 table rows into the DOM instead of virtualising the visible window.`]}, sk:{t:`Render v Reacte`, what:`Zbytočné re-rendery, chýbajúca memoizácia, stav privysoko, ťažké komponenty a dlhé zoznamy na virtualizáciu.`, why:`Zbytočné rendery sú neviditeľné, kým UI nezačne sekať; opraviť, kde stav žije, býva lacnejšie, než to vyzerá, a veľmi citeľné.`, ex:[`Stlačenie klávesy vo formulári re-renderuje celú stránku, lebo stav sedí navrchu namiesto pri inpute.`,`Vykreslenie 10 000 riadkov tabuľky do DOM namiesto virtualizácie viditeľného okna.`]}, links:[{l:`React: memo`,u:`https://react.dev/reference/react/memo`}]},
+    'p-bundle':{d:'perf', en:{t:`Bundle & first render`, what:`JavaScript bundle size and what blocks the first meaningful paint - code splitting, lazy loading, critical-path requests.`, why:`Every kilobyte of JS is parsed on the user's device, often a mid-range phone; splitting and deferring is the biggest lever on load time.`, ex:[`The whole app shipped as one 2 MB bundle instead of route-level code splitting.`,`A charting or editor library loaded on first paint but only used on a screen deep in the app.`]}, sk:{t:`Bundle a prvý render`, what:`Veľkosť JavaScript bundlu a čo blokuje prvé zmysluplné vykreslenie - code splitting, lazy loading, requesty na kritickej ceste.`, why:`Každý kilobajt JS sa parsuje na zariadení používateľa, často priemernom telefóne; rozdelenie a odloženie je najväčšia páka na čas načítania.`, ex:[`Celá appka poslaná ako jeden 2 MB bundle namiesto code splittingu po routách.`,`Knižnica na grafy alebo editor načítaná pri prvom vykreslení, no použitá až na obrazovke hlboko v appke.`]}, links:[{l:`web.dev`,u:`https://web.dev/`}]},
+    'p-resources':{d:'perf', en:{t:`Resource loading`, what:`How images, fonts and scripts are loaded and cached - eager vs lazy, correct sizes and formats, caching headers, CDN.`, why:`Media and fonts are often the heaviest bytes; right-sizing and lazy-loading them improves load time and layout stability for free.`, ex:[`Full-resolution images scaled down in CSS instead of served at display size in a modern format.`,`All images loaded eagerly on page load instead of lazy-loading below the fold.`]}, sk:{t:`Načítavanie resources`, what:`Ako sa načítavajú a cachujú obrázky, fonty a skripty - eager vs lazy, správne veľkosti a formáty, caching hlavičky, CDN.`, why:`Média a fonty sú často najťažšie bajty; ich správne nadimenzovanie a lazy-loading zlepší čas načítania aj stabilitu layoutu zadarmo.`, ex:[`Obrázky v plnom rozlíšení zmenšené v CSS namiesto servírovania v zobrazovacej veľkosti a modernom formáte.`,`Všetky obrázky načítané eager pri načítaní stránky namiesto lazy-loadingu pod ohybom.`]}, links:[{l:`web.dev`,u:`https://web.dev/`}]},
+    'p-requests':{d:'perf', en:{t:`Request orchestration`, what:`How network requests are sequenced - dependent waterfalls that could be parallelised, batched or streamed, blocking calls on the critical path.`, why:`Requests in series add up their latencies; in parallel they add up to the slowest one - fixing a waterfall can halve perceived load time.`, ex:[`Three independent fetches chained one after another instead of fired together with Promise.all.`,`Rendering blocked on a slow call that could stream or load after the first paint.`]}, sk:{t:`Orchestrácia requestov`, what:`Ako sú sieťové requesty poradené - závislé vodopády na paralelizáciu/dávkovanie/streamovanie, blokujúce volania na kritickej ceste.`, why:`Requesty v sérii sčítajú svoje latencie; paralelne len na ten najpomalší - oprava vodopádu vie skrátiť vnímaný čas načítania na polovicu.`, ex:[`Tri nezávislé fetch volania zreťazené za sebou namiesto spustenia naraz cez Promise.all.`,`Render blokovaný pomalým volaním, ktoré mohlo streamovať alebo sa načítať po prvom vykreslení.`]}, links:[{l:`web.dev`,u:`https://web.dev/`}]},
+    'r-readability':{d:'refactor', en:{t:`Readability & naming`, what:`Names that reveal intent, functions short enough to hold in your head, nesting shallow enough to follow.`, why:`Most of a codebase's cost is reading it; clear names and small functions are the cheapest, highest-leverage refactor there is.`, ex:[`A 300-line function named handle() doing five unrelated things - split and name each by intent.`,`Variables like data, tmp, x2 that force you to read the body to know what they hold.`]}, sk:{t:`Čitateľnosť a pomenovania`, what:`Pomenovania, ktoré prezradia zámer, funkcie dosť krátke na udržanie v hlave, zanorenie dosť plytké na sledovanie.`, why:`Väčšina nákladov codebase je jeho čítanie; jasné mená a malé funkcie sú najlacnejší refaktor s najväčšou pákou.`, ex:[`Funkcia na 300 riadkov s názvom handle(), ktorá robí päť nesúvisiacich vecí - rozdeľ a pomenuj každú podľa zámeru.`,`Premenné ako data, tmp, x2, ktoré ťa nútia čítať telo, aby si vedel, čo držia.`]}, links:[{l:`Code smells`,u:`https://refactoring.guru/refactoring/smells`}]},
+    'r-structure':{d:'refactor', en:{t:`Cohesion & coupling`, what:`Whether things that change together live together, modules depend on each other as little as possible, and each unit has one clear responsibility.`, why:`Low coupling + high cohesion is what makes a change local instead of a ripple across the codebase.`, ex:[`One change forcing edits in eight files (shotgun surgery) - the responsibility is scattered.`,`A module reaching deep into another's internals instead of a small, stable interface.`]}, sk:{t:`Súdržnosť a previazanosť`, what:`Či veci, čo sa menia spolu, žijú spolu, moduly na sebe závisia čo najmenej a každá jednotka má jednu jasnú zodpovednosť.`, why:`Nízka previazanosť + vysoká súdržnosť je to, čo spraví zmenu lokálnou namiesto vlnenia naprieč codebase.`, ex:[`Jedna zmena vynúti úpravy v ôsmich súboroch (shotgun surgery) - zodpovednosť je rozsypaná.`,`Modul siahajúci hlboko do internals iného namiesto malého, stabilného rozhrania.`]}, links:[{l:`Code smells`,u:`https://refactoring.guru/refactoring/smells`}]},
+    'r-dry':{d:'refactor', en:{t:`Duplication & abstraction`, what:`Copy-pasted logic that has drifted or will drift, pulled into one well-named place - without over-abstracting things that only look similar.`, why:`Duplicated logic means fixing the same bug in N places and missing one; but a wrong abstraction is worse than duplication.`, ex:[`The same validation copy-pasted across four forms - one drifts and now they disagree.`,`Two blocks that look alike but encode different rules - don't force them into one abstraction.`]}, sk:{t:`Duplikácia a abstrakcia`, what:`Copy-paste logika, ktorá sa rozišla alebo sa rozíde, vytiahnutá na jedno miesto - bez over-abstrakcie vecí, čo len vyzerajú podobne.`, why:`Duplikovaná logika znamená opravovať tú istú chybu na N miestach a jedno vynechať; ale zlá abstrakcia je horšia než duplikácia.`, ex:[`Tá istá validácia skopírovaná v štyroch formulároch - jeden sa rozíde a už si protirečia.`,`Dva bloky, čo vyzerajú rovnako, ale kódujú iné pravidlá - nenúť ich do jednej abstrakcie.`]}, links:[{l:`Refactorings`,u:`https://refactoring.guru/refactoring/techniques`}]},
+    'r-openclosed':{d:'refactor', en:{t:`Open/Closed & extensibility`, what:`Places where adding a case means editing a long if/switch instead of plugging in a new implementation.`, why:`When every new feature edits the same central function, it becomes a bug magnet; extensible seams let you add without touching what works.`, ex:[`A switch over type repeated in six spots - every new type means editing all six.`,`Adding a payment method requires touching core checkout code instead of registering a handler.`]}, sk:{t:`Open/Closed a rozšíriteľnosť`, what:`Miesta, kde pridanie prípadu znamená upraviť dlhý if/switch namiesto zapojenia novej implementácie.`, why:`Keď každá nová funkcia upravuje tú istú centrálnu funkciu, stane sa magnetom na chyby; rozšíriteľné švy dovolia pridávať bez zásahu do toho, čo funguje.`, ex:[`Switch cez type opakovaný na šiestich miestach - každý nový typ znamená upraviť všetkých šesť.`,`Pridanie platobnej metódy si vyžaduje zásah do jadra checkoutu namiesto zaregistrovania handlera.`]}, links:[{l:`Open/Closed principle`,u:`https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle`}]},
+    'r-types':{d:'refactor', en:{t:`Types & data modeling`, what:`Whether types are precise and complete, data shapes make illegal states unrepresentable, and there are no 'any', unsafe casts or stringly-typed values.`, why:`Good types are the cheapest tests you'll ever write - they catch bugs at compile time and remove whole categories of runtime errors.`, ex:[`status: string that's really one of four values - make it a union so typos fail to compile.`,`as any casts that silence the compiler and let malformed data flow through unchecked.`]}, sk:{t:`Typy a modelovanie dát`, what:`Či sú typy presné a úplné, dátové tvary robia neplatné stavy nereprezentovateľnými a nie sú tam any, nebezpečné pretypovania ani stringovo typované hodnoty.`, why:`Dobré typy sú najlacnejšie testy - chytia chyby v čase kompilácie a odstránia celé kategórie runtime chýb.`, ex:[`status: string, ktorý je v skutočnosti jedna zo štyroch hodnôt - sprav z toho union, nech preklep neskompiluje.`,`Pretypovania as any, ktoré umlčia kompilátor a nechajú prejsť neskontrolované dáta.`]}, links:[{l:`Code smells`,u:`https://refactoring.guru/refactoring/smells`}]},
+    'r-hygiene':{d:'refactor', en:{t:`Dead code & suppressed checks`, what:`Unused code, unreachable branches, commented-out blocks, and every disabled linter rule, @ts-ignore or skipped test.`, why:`Dead code misleads every future reader, and a suppressed check is a bug someone chose not to see.`, ex:[`A folder of commented-out just in case code nobody dares delete - version control already remembers it.`,`eslint-disable and @ts-ignore sprinkled to make CI pass, each hiding a real issue.`]}, sk:{t:`Mŕtvy kód a potlačené kontroly`, what:`Nepoužitý kód, nedosiahnuteľné vetvy, zakomentované bloky a každé vypnuté pravidlo lintera, @ts-ignore či preskočený test.`, why:`Mŕtvy kód pomýli každého ďalšieho čitateľa a potlačená kontrola je chyba, ktorú sa niekto rozhodol nevidieť.`, ex:[`Priečinok zakomentovaného kódu pre istotu, ktorý sa nikto neodváži zmazať - verzovanie si ho už pamätá.`,`eslint-disable a @ts-ignore rozsypané, aby prešlo CI, každé skrýva reálny problém.`]}, links:[{l:`Code smells`,u:`https://refactoring.guru/refactoring/smells`}]},
+    'u-clarity':{d:'ux', en:{t:`Clarity & feedback`, what:`Whether it's always obvious what to do next and every action gets an immediate, visible response.`, why:`Nielsen's first heuristic is visibility of system status - when users see what's happening, they trust the product and stop guessing.`, ex:[`A save button that gives no feedback - did it work? The user clicks it three times to be sure.`,`An empty list with a blank screen instead of No invoices yet - create your first one.`]}, sk:{t:`Zrozumiteľnosť a spätná väzba`, what:`Či je vždy jasné, čo spraviť ďalej, a každá akcia dostane okamžitú, viditeľnú odozvu.`, why:`Prvá Nielsenova heuristika je viditeľnosť stavu systému - keď používatelia vidia, čo sa deje, dôverujú produktu a prestanú hádať.`, ex:[`Tlačidlo uložiť bez spätnej väzby - podarilo sa? Používateľ ho klikne trikrát pre istotu.`,`Prázdny zoznam s prázdnou obrazovkou namiesto Zatiaľ žiadne faktúry - vytvor prvú.`]}, links:[{l:`NN/g heuristics`,u:`https://www.nngroup.com/articles/ten-usability-heuristics/`}]},
+    'u-errors':{d:'ux', en:{t:`Error prevention & recovery`, what:`How the UI keeps users from mistakes and helps them recover - guardrails on destructive actions, clear messages, an obvious way back.`, why:`The best error message is the one never triggered; preventing mistakes separates calm products from frustrating ones.`, ex:[`A Delete button with no confirmation next to Edit - one misclick and the data is gone.`,`Something went wrong with no cause and no next step, leaving the user stuck.`]}, sk:{t:`Predchádzanie chybám a náprava`, what:`Ako UI bráni používateľom robiť chyby a pomáha im z nich von - poistky pri deštruktívnych akciách, jasné hlášky, zjavná cesta späť.`, why:`Najlepšia chybová hláška je tá, čo nikdy nenastane; predchádzanie chybám odlišuje pokojné produkty od frustrujúcich.`, ex:[`Tlačidlo Zmazať bez potvrdenia hneď vedľa Upraviť - jeden preklik a dáta sú preč.`,`Niečo sa pokazilo bez príčiny a bez ďalšieho kroku, používateľ ostane zaseknutý.`]}, links:[{l:`NN/g heuristics`,u:`https://www.nngroup.com/articles/ten-usability-heuristics/`}]},
+    'u-consistency':{d:'ux', en:{t:`Consistency`, what:`Whether patterns, wording, icons and components behave the same way everywhere and follow platform conventions users already know.`, why:`Every inconsistency is a tiny relearning tax; following conventions means users bring their whole experience of other apps to yours.`, ex:[`Delete, Remove and Discard used for the same action on different screens.`,`A primary button that's magenta here and green two screens later, for no reason.`]}, sk:{t:`Konzistentnosť`, what:`Či sa vzory, formulácie, ikony a komponenty správajú všade rovnako a dodržiavajú konvencie platformy, ktoré používatelia poznajú.`, why:`Každá nekonzistentnosť je malá daň za preučenie; dodržiavanie konvencií znamená, že používatelia prinesú skúsenosť z iných appiek.`, ex:[`Zmazať, Odstrániť a Zahodiť použité pre tú istú akciu na rôznych obrazovkách.`,`Hlavné tlačidlo, ktoré je tu magenta a o dve obrazovky ďalej zelené, bez dôvodu.`]}, links:[{l:`NN/g heuristics`,u:`https://www.nngroup.com/articles/ten-usability-heuristics/`}]},
+    'u-a11y':{d:'ux', en:{t:`Accessibility (WCAG)`, what:`Whether everyone can use it - keyboard navigation, visible focus, colour contrast, screen-reader labels and correct ARIA, against WCAG.`, why:`Accessibility is both a legal requirement and plain good design - contrast and keyboard support help everyone, not only users with disabilities.`, ex:[`Icon-only buttons with no accessible label - a screen reader announces just button.`,`Text at 3:1 contrast that fails WCAG AA and is hard to read in sunlight for everyone.`]}, sk:{t:`Prístupnosť (WCAG)`, what:`Či to vie použiť každý - klávesnica, viditeľný focus, kontrast farieb, popisky pre čítačky a správne ARIA, voči WCAG.`, why:`Prístupnosť je zákonná požiadavka aj jednoducho dobrý dizajn - kontrast a klávesnica pomáhajú všetkým, nielen ľuďom so znevýhodnením.`, ex:[`Tlačidlá len s ikonou bez prístupného popisu - čítačka oznámi len button.`,`Text s kontrastom 3:1, ktorý nespĺňa WCAG AA a je ťažko čitateľný na slnku pre každého.`]}, links:[{l:`WCAG`,u:`https://www.w3.org/WAI/standards-guidelines/wcag/`},{l:`web.dev a11y`,u:`https://web.dev/learn/accessibility`}]},
+    'u-forms':{d:'ux', en:{t:`Forms`, what:`Validation timing and wording, sensible defaults, clearly marked required fields, correct input types, and not losing what the user typed.`, why:`Forms are where real work and real frustration happen; small fixes dramatically raise completion.`, ex:[`A form that clears everything on one validation error, forcing the user to retype it all.`,`Errors shown only on submit at the top, not inline next to the field that's wrong.`]}, sk:{t:`Formuláre`, what:`Načasovanie a formulácia validácie, rozumné defaulty, jasne označené povinné polia, správne typy inputov a nestrácanie vstupu.`, why:`Formuláre sú tam, kde sa deje reálna práca aj frustrácia; malé opravy výrazne zvyšujú dokončenie.`, ex:[`Formulár, ktorý pri jednej chybe validácie vymaže všetko a núti používateľa písať odznova.`,`Chyby zobrazené len po odoslaní hore, nie inline pri poli, ktoré je zle.`]}, links:[{l:`NN/g heuristics`,u:`https://www.nngroup.com/articles/ten-usability-heuristics/`}]},
+    'u-loading':{d:'ux', en:{t:`Loading & responsiveness`, what:`How the UI behaves while waiting and across screen sizes - skeletons, optimistic updates, progress feedback, a layout that works on a phone.`, why:`Perceived speed matters as much as real speed; a skeleton makes the same wait feel far shorter, and most users are on mobile.`, ex:[`A blank white screen during load instead of a skeleton that hints at the coming layout.`,`A table that overflows horizontally and is unusable on a phone.`]}, sk:{t:`Načítavanie a responzivita`, what:`Ako sa UI správa počas čakania a naprieč veľkosťami obrazovky - skeletony, optimistické updaty, indikácia priebehu, layout na telefón.`, why:`Vnímaná rýchlosť je rovnako dôležitá ako reálna; skeleton spraví to isté čakanie oveľa kratším a väčšina používateľov je na mobile.`, ex:[`Prázdna biela obrazovka počas načítania namiesto skeletonu, ktorý naznačí prichádzajúci layout.`,`Tabuľka, ktorá pretečie do šírky a je na telefóne nepoužiteľná.`]}, links:[{l:`web.dev`,u:`https://web.dev/`}]},
+    'f-coverage':{d:'func', en:{t:`Screen & feature coverage`, what:`Whether every screen and feature the PRD describes exists in the build and is reachable - not stubbed, hidden behind a flag, or dropped.`, why:`Missing pieces are the most basic gap between spec and product, and the easiest to miss in a happy-path demo.`, ex:[`A PRD screen that exists in Figma and the menu but routes to a 404 or an empty placeholder.`,`A feature toggled off in production that everyone assumes shipped.`]}, sk:{t:`Pokrytie obrazoviek a funkcií`, what:`Či každá obrazovka a feature z PRD existuje v builde a je dostupná - nie stub, skrytá za flagom alebo vypustená.`, why:`Chýbajúce kúsky sú najzákladnejšia medzera medzi špecifikáciou a produktom a najľahšie sa prehliadnu v deme šťastnej cesty.`, ex:[`Obrazovka z PRD, ktorá existuje vo Figme a v menu, no smeruje na 404 alebo prázdny placeholder.`,`Feature vypnutá v produkcii, o ktorej všetci predpokladajú, že sa vydala.`]}, links:[]},
+    'f-behaviour':{d:'func', en:{t:`Behaviour vs spec`, what:`Whether each flow actually does what the spec says - rules, calculations and state transitions match, not just that a screen is present.`, why:`The screen exists is not the screen is correct; subtle behaviour drift is where real functional bugs hide.`, ex:[`A discount rule implemented as 10% flat when the spec says tiered by order size.`,`A wizard that lets you skip a step the spec marks as mandatory.`]}, sk:{t:`Správanie vs špecifikácia`, what:`Či každý flow reálne robí to, čo hovorí špecifikácia - pravidlá, výpočty a prechody stavov sedia, nielen že obrazovka existuje.`, why:`Obrazovka existuje nie je obrazovka je správna; jemný odklon správania je tam, kde sa skrývajú reálne funkčné chyby.`, ex:[`Pravidlo zľavy implementované ako 10% fixne, hoci špecifikácia hovorí odstupňované podľa veľkosti objednávky.`,`Sprievodca, ktorý dovolí preskočiť krok, čo špecifikácia označuje ako povinný.`]}, links:[]},
+    'f-states':{d:'func', en:{t:`Edge, empty & error states`, what:`Whether the states beyond the happy path from the PRD are handled - empty data, loading, permission-denied, validation and server errors.`, why:`The happy path is maybe 20% of the work; products feel broken exactly where these states were skipped.`, ex:[`A dashboard that only works with data - a brand-new account sees a broken, empty screen.`,`No handling for a failed save, so the user thinks it worked when it didn't.`]}, sk:{t:`Hraničné, prázdne a chybové stavy`, what:`Či sú ošetrené stavy mimo šťastnej cesty z PRD - prázdne dáta, načítavanie, zamietnutý prístup, validačné a serverové chyby.`, why:`Šťastná cesta je možno 20% práce; produkty pôsobia rozbito presne tam, kde sa tieto stavy vynechali.`, ex:[`Dashboard, ktorý funguje len s dátami - úplne nový účet vidí rozbitú, prázdnu obrazovku.`,`Žiadne ošetrenie neúspešného uloženia, takže používateľ si myslí, že to prešlo, hoci nie.`]}, links:[]},
+    'f-scope':{d:'func', en:{t:`Scope creep`, what:`Things built beyond the spec - extra fields, screens or behaviours nobody asked for that add maintenance and can contradict the design.`, why:`Unrequested features aren't free wins - they're untested surface, extra maintenance, and often a sign the team drifted from the goal.`, ex:[`An extra advanced settings panel not in the PRD, now a permanent maintenance cost.`,`A field added because it might be useful that contradicts the spec's simpler flow.`]}, sk:{t:`Scope creep`, what:`Veci postavené nad rámec špecifikácie - polia, obrazovky či správanie navyše, čo nikto nežiadal, pridávajú údržbu a môžu si protirečiť.`, why:`Nežiadané funkcie nie sú výhry zadarmo - je to netestovaná plocha, viac údržby a často znak, že tím sa odklonil od cieľa.`, ex:[`Panel pokročilé nastavenia navyše, ktorý nie je v PRD, teraz trvalý náklad na údržbu.`,`Pole pridané lebo sa možno zíde, ktoré si protirečí s jednoduchším flow zo špecifikácie.`]}, links:[]},
+    'f-gaps':{d:'func', en:{t:`Spec gaps & ambiguity`, what:`Places where the PRD is silent or contradictory and someone made a silent decision in code - the spots most likely to be wrong later.`, why:`Ambiguity gets resolved somewhere - usually in code, invisibly; surfacing those calls avoids shipping the wrong assumption.`, ex:[`The PRD never says what happens when a payment fails mid-flow - code silently retries forever.`,`Two sections of the spec disagree on a limit; the code picked one and nobody flagged it.`]}, sk:{t:`Medzery a nejednoznačnosti v špecifikácii`, what:`Miesta, kde PRD mlčí alebo si protirečí a niekto spravil tiché rozhodnutie v kóde - body najpravdepodobnejšie zle neskôr.`, why:`Nejednoznačnosť sa niekde vyrieši - zvyčajne v kóde, neviditeľne; vyniesť tie rozhodnutia na povrch zabráni vyexpedovať zlý predpoklad.`, ex:[`PRD nikdy nehovorí, čo sa stane, keď platba zlyhá uprostred flow - kód potichu skúša donekonečna.`,`Dve časti špecifikácie sa nezhodnú na limite; kód si vybral jeden a nikto to neoznačil.`]}, links:[]}
+  };
+  function getArea(key){
+    if(AREAS[key]) return AREAS[key];
+    var L = LENS[key]; if(!L) return null;
+    return { d:'engage', links:L.links,
+      en:{t:L.en.t, what:L.en.what, why:L.en.why, ex:(EX[key]&&EX[key].en)||[]},
+      sk:{t:L.sk.t, what:L.sk.what, why:L.sk.why, ex:(EX[key]&&EX[key].sk)||[]} };
+  }
   var lastFocus = null;
   function openLens(key){
-    var d = LENS[key]; if(!d) return;
+    var a = getArea(key); if(!a) return;
     var lang = document.documentElement.getAttribute('data-lang') || 'en';
-    var t = d[lang] || d.en;
-    document.getElementById('lensTag').textContent = UI[lang].tag;
+    var t = a[lang] || a.en;
+    var dom = DOMAIN[a.d] || DOMAIN.engage;
+    var box = document.querySelector('#lensModal .modal-box');
+    if(box) box.style.setProperty('--c', dom.c);
+    document.getElementById('lensTag').textContent = dom[lang] || dom.en;
     document.getElementById('lensTitle').textContent = t.t;
     document.getElementById('lensWhatLabel').textContent = UI[lang].what;
     document.getElementById('lensWhat').textContent = t.what;
     document.getElementById('lensWhyLabel').textContent = UI[lang].why;
     document.getElementById('lensWhy').textContent = t.why;
-    document.getElementById('lensExLabel').textContent = UI[lang].ex;
-    var _el = document.getElementById('lensEx'); _el.innerHTML = '';
-    ((EX[key] && EX[key][lang]) || []).forEach(function(x){ var li = document.createElement('li'); li.textContent = x; _el.appendChild(li); });
-    document.getElementById('lensLinksLabel').textContent = UI[lang].links;
-    var lc = document.getElementById('lensLinks'); lc.innerHTML = '';
-    (d.links||[]).forEach(function(x){
-      var a = document.createElement('a');
-      a.href = x.u; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = x.l;
-      lc.appendChild(a);
-    });
+    var ex = t.ex || [];
+    var exLabel = document.getElementById('lensExLabel'), exList = document.getElementById('lensEx');
+    exList.innerHTML = '';
+    if(ex.length){ exLabel.style.display=''; exList.style.display=''; exLabel.textContent = UI[lang].ex;
+      ex.forEach(function(x){ var li=document.createElement('li'); li.textContent=x; exList.appendChild(li); }); }
+    else { exLabel.style.display='none'; exList.style.display='none'; }
+    var lk = a.links || [];
+    var lLabel = document.getElementById('lensLinksLabel'), lList = document.getElementById('lensLinks');
+    lList.innerHTML = '';
+    if(lk.length){ lLabel.style.display=''; lList.style.display=''; lLabel.textContent = UI[lang].links;
+      lk.forEach(function(x){ var el=document.createElement('a'); el.href=x.u; el.target='_blank'; el.rel='noopener noreferrer'; el.textContent=x.l; lList.appendChild(el); }); }
+    else { lLabel.style.display='none'; lList.style.display='none'; }
     lastFocus = document.activeElement;
     document.getElementById('lensModal').classList.add('open');
     document.body.style.overflow = 'hidden';
