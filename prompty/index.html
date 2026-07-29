@@ -115,6 +115,18 @@
   .copy.done{background:var(--c);color:#fff;border-color:var(--c);}
   pre.prompt{margin:0;padding:16px 16px 18px;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.62;
     color:var(--panel-ink);white-space:pre-wrap;word-break:break-word;overflow-x:auto;}
+  .prompt-clip{position:relative;max-height:212px;overflow:hidden;transition:max-height .35s ease;}
+  .prompt-clip.open{max-height:2600px;}
+  .prompt-clip.no-clip{max-height:none;}
+  .prompt-fade{position:absolute;left:0;right:0;bottom:0;height:108px;pointer-events:none;
+    background:linear-gradient(to bottom, transparent, var(--panel));transition:opacity .3s;}
+  .prompt-clip.open .prompt-fade,.prompt-clip.no-clip .prompt-fade{opacity:0;}
+  .show-more{display:block;margin:-16px auto 14px;position:relative;z-index:2;
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--c);background:var(--card);border:1px solid var(--line-strong);padding:6px 15px;border-radius:999px;
+    cursor:pointer;transition:border-color .15s,color .15s;}
+  .show-more:hover{border-color:var(--c);color:var(--c);}
+  .show-more.hidden{display:none;}
 
   /* lens legend (engagement) */
   .lenses{margin:0 24px 24px;}
@@ -135,7 +147,7 @@
   .modal-backdrop{position:absolute;inset:0;background:rgba(6,8,12,.6);}
   .modal-box{--c:#c0357f;position:relative;z-index:1;background:var(--card);color:var(--ink);
     border:1px solid var(--line);border-top:4px solid var(--c);border-radius:8px;
-    max-width:520px;width:100%;max-height:86vh;overflow:auto;box-shadow:0 24px 70px rgba(0,0,0,.4);
+    max-width:640px;width:100%;max-height:88vh;overflow:auto;box-shadow:0 24px 70px rgba(0,0,0,.4);
     padding:28px 26px 24px;}
   .modal-close{position:absolute;top:12px;right:12px;appearance:none;border:1px solid var(--line-strong);
     background:var(--card);color:var(--ink-soft);width:32px;height:32px;border-radius:999px;cursor:pointer;
@@ -154,6 +166,9 @@
     border:1px solid color-mix(in srgb,var(--c) 30%,transparent);padding:6px 11px;border-radius:4px;transition:background .15s;}
   .m-links a:hover{background:color-mix(in srgb,var(--c) 20%,transparent);text-decoration:none;}
   .m-links a::after{content:" ↗";color:var(--ink-faint);}
+  .modal-box ul.m-ex{margin:0 0 18px;padding:0;list-style:none;}
+  .modal-box ul.m-ex li{position:relative;padding-left:16px;margin:0 0 9px;font-size:14.5px;line-height:1.5;color:var(--ink-soft);}
+  .modal-box ul.m-ex li::before{content:"\203A";position:absolute;left:0;top:-1px;color:var(--c);font-weight:700;}
 
   /* ===== FOOTER ===== */
   footer{border-top:1px solid var(--line);margin-top:28px;}
@@ -231,6 +246,7 @@
       </div>
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-clip">
         <pre class="prompt" data-i18n="en">You are a product and behavioral-design reviewer. Look at this application and find where we can make it better for the user and more engaging. First map the main user journeys from the code, then evaluate each journey against the twelve behavioral-design lenses below. Skip any lens that genuinely doesn't apply - don't force it.
 
 Context: this is an enterprise app behind a login, so "engagement" means helping people finish their task and come back willingly - not manufacturing addiction.
@@ -269,6 +285,9 @@ Dvanásť optík:
 12. Social proof - ľudia kopírujú, čo robia ostatní. Hľadaj úprimné signály použitia ("používa 2 400 kolegov", čo zvolili podobné tímy).
 
 Pri každej optike, ktorá sadne: pomenuj konkrétnu obrazovku alebo flow, čo je dnes slabé (s dôkazom z kódu), jednu konkrétnu zmenu a hrubý odhad námahy. Potom zvlášť pomenuj náš najsilnejší "peak" moment a najslabší koniec. Zoraď všetky nápady podľa pomeru dopad/námaha. Označ všetko, čo by prešlo do dark patternu, a daj mi namiesto toho etickú verziu.</pre>
+        <div class="prompt-fade"></div>
+        </div>
+        <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
       <div class="lenses">
         <p data-i18n="en">The twelve lenses</p>
@@ -301,6 +320,7 @@ Pri každej optike, ktorá sadne: pomenuj konkrétnu obrazovku alebo flow, čo j
       </div>
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-clip">
         <pre class="prompt" data-i18n="en">I want this to be a modern, state-of-the-art application, built the way apps of this type are built today. Audit the real setup - read package.json, the lockfile and the config files, don't assume - then propose how to get there.
 
 - Stack reality: what frameworks, versions and key libraries are we actually on? Which are outdated, deprecated or end-of-life?
@@ -319,6 +339,9 @@ Separate real improvements from hype - I don't want churn for its own sake. Deli
 - Architektúra: čo nás štrukturálne brzdí byť čistou referenčnou implementáciou?
 
 Oddeľ reálne zlepšenia od hype - nechcem zmeny pre zmenu. Priprav prioritizovaný plán: najprv rýchle výhry, potom väčšie migrácie, každá s hrubým odhadom námahy a rizika a s bezpečnou inkrementálnou cestou. Toto je audit - navrhni, zatiaľ nič neupgraduj.</pre>
+        <div class="prompt-fade"></div>
+        </div>
+        <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
     </article>
 
@@ -333,6 +356,7 @@ Oddeľ reálne zlepšenia od hype - nechcem zmeny pre zmenu. Priprav prioritizov
       </div>
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-clip">
         <pre class="prompt" data-i18n="en">Do a thorough, deep security audit of this application - frontend and backend. Work from the real code, not the docs, READMEs or comments, and verify each issue is actually exploitable rather than just pattern-matching. Trace untrusted input from where it enters to where it's used.
 
 Context: the app is internet-facing, behind an F5 (BIG-IP) login. Don't treat that login as a safety net - assume an authenticated user can be hostile.
@@ -363,6 +387,9 @@ Pokry aspoň:
 - OWASP Top 10 ako checklist.
 
 Pri každom náleze: závažnosť, presný súbor:riadok, krátky scenár zneužitia, ako si istý, že je reálny, a konkrétna oprava. Zoraď podľa reálneho rizika. Over voči kódu - nepredpokladaj.</pre>
+        <div class="prompt-fade"></div>
+        </div>
+        <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
     </article>
 
@@ -377,6 +404,7 @@ Pri každom náleze: závažnosť, presný súbor:riadok, krátky scenár zneuž
       </div>
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-clip">
         <pre class="prompt" data-i18n="en">Audit this application for performance end to end and validate we're doing things right. Base findings on the real code, and focus on what a user would actually feel - not micro-optimizations that don't matter. Trace one or two of the heaviest real flows from request to render.
 
 Focus on (but don't stop here):
@@ -401,6 +429,9 @@ Zameraj sa hlavne na (ale nekonči pri tomto):
 - Vodopády requestov, ktoré by sa dali paralelizovať, dávkovať alebo streamovať.
 
 Pri každom náleze: presný súbor / komponent / dopyt, dopad (ideálne odhad, koľko to stojí), konkrétna oprava a odhad námahy. Zoraď podľa pomeru dopad/námaha a dopredu daj výhry, ktoré používateľ pocíti. Toto je audit - navrhni, zatiaľ nič nemeň.</pre>
+        <div class="prompt-fade"></div>
+        </div>
+        <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
     </article>
 
@@ -415,6 +446,7 @@ Pri každom náleze: presný súbor / komponent / dopyt, dopad (ideálne odhad, 
       </div>
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-clip">
         <pre class="prompt" data-i18n="en">Review how this application is implemented and find what we can improve to make it more maintainable and readable - without changing any behaviour. We are only improving the code; functionality must stay identical.
 
 Look for:
@@ -449,6 +481,9 @@ Hľadaj:
 - Všeobecné code smells.
 
 Priprav prioritizovanú analýzu: čo zmeniť, prečo a ako, zoradené podľa prínosu vs rizika, rozdelené do bezpečných inkrementálnych krokov. Kde hrozí zmena správania, napíš, aký test by to najprv zaistil. Nemeň funkcionalitu - iba refaktoruj a najprv navrhni, než sa niečoho dotkneš.</pre>
+        <div class="prompt-fade"></div>
+        </div>
+        <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
     </article>
 
@@ -463,6 +498,7 @@ Priprav prioritizovanú analýzu: čo zmeniť, prečo a ako, zoradené podľa pr
       </div>
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-clip">
         <pre class="prompt" data-i18n="en">I want this app to be genuinely usable. Walk the main user journeys in the app, find the friction, and tell me what's missing and what to add to make it easier and more pleasant.
 
 Consider:
@@ -489,6 +525,9 @@ Zváž:
 - Mobil a responzívne správanie.
 
 Choď obrazovku po obrazovke tam, kde to dáva zmysel. Daj konkrétne, prioritizované odporúčania, povedz, kde sa každé uplatní, a dopredu daj rýchle výhry s veľkým dopadom.</pre>
+        <div class="prompt-fade"></div>
+        </div>
+        <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
     </article>
 
@@ -503,6 +542,7 @@ Choď obrazovku po obrazovke tam, kde to dáva zmysel. Daj konkrétne, prioritiz
       </div>
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-clip">
         <pre class="prompt" data-i18n="en">Verify in depth that we've implemented everything in the PRD. Treat the PRD as the source of truth and go requirement by requirement. If you can't find the PRD in the repo, ask me for it before starting.
 
 For every requirement and acceptance criterion, check:
@@ -521,6 +561,9 @@ Pri každej požiadavke a akceptačnom kritériu skontroluj:
 - Označ všetko postavené nad rámec špecifikácie (scope creep) a všetko, kde je PRD nejednoznačné.
 
 Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiastočne / chýba) -> dôkaz (súbor:riadok) -> aká je medzera. Pri každom "hotové" cituj konkrétne súbory. Buď úprimný pri čiastočných - ak to vyzerá hotovo, ale nie je to zapojené, napíš to.</pre>
+        <div class="prompt-fade"></div>
+        </div>
+        <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
     </article>
 
@@ -544,6 +587,8 @@ Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiasto�
     <p class="m-text" id="lensWhat"></p>
     <p class="m-label" id="lensWhyLabel"></p>
     <p class="m-text" id="lensWhy"></p>
+    <p class="m-label" id="lensExLabel"></p>
+    <ul class="m-ex" id="lensEx"></ul>
     <p class="m-label" id="lensLinksLabel"></p>
     <div class="m-links" id="lensLinks"></div>
   </div>
@@ -556,6 +601,7 @@ Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiasto�
     document.getElementById('lang-en').setAttribute('aria-pressed', l==='en');
     document.getElementById('lang-sk').setAttribute('aria-pressed', l==='sk');
     try{ localStorage.setItem('playbook-lang', l); }catch(e){}
+    if(typeof refreshClips === 'function') refreshClips();
   }
   function toggleTheme(){
     var cur = document.documentElement.getAttribute('data-theme');
@@ -586,8 +632,8 @@ Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiasto�
     document.body.removeChild(ta);
   }
   var UI = {
-    en:{what:'What it does', why:'Why it matters', links:'Learn more & examples', tag:'Behavioral lens'},
-    sk:{what:'Čo to robí', why:'Prečo je to dôležité', links:'Zdroje a príklady', tag:'Behaviorálna optika'}
+    en:{what:'What it does', why:'Why it matters', ex:'Concrete examples', links:'Learn more & examples', tag:'Behavioral lens'},
+    sk:{what:'Čo to robí', why:'Prečo je to dôležité', ex:'Konkrétne príklady', links:'Zdroje a príklady', tag:'Behaviorálna optika'}
   };
   var LENS = {
     'peak-end':{
@@ -651,6 +697,32 @@ Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiasto�
       links:[{l:'Wikipedia',u:'https://en.wikipedia.org/wiki/Social_proof'},{l:'Examples',u:'https://growth.design/psychology'}]
     }
   };
+  var EX = {
+    'peak-end':{en:[`Duolingo ends every lesson with confetti and an XP tally - a deliberate high note.`,`Uber closes a ride on a clean rating and receipt screen, never an abrupt cut-off.`],
+      sk:[`Duolingo končí každú lekciu konfetami a spočítaním XP - zámerný vrchol.`,`Uber ukončí jazdu čistou obrazovkou s hodnotením a účtenkou, nie náhlym strihom.`]},
+    'zeigarnik':{en:[`LinkedIn's "Profile strength" meter that nudges you to complete your profile.`,`Onboarding checklists like "Setup 60% complete" that pull you back to finish.`],
+      sk:[`Ukazovateľ "sila profilu" na LinkedIne, ktorý ťa tlačí dokončiť profil.`,`Onboarding checklisty typu "nastavenie hotové na 60%", ktoré ťa vrátia dokončiť.`]},
+    'goal-gradient':{en:[`Loyalty cards handed out with 2 of 10 stamps pre-filled - people finish faster (Kivetz, 2006).`,`A signup wizard that marks "Step 1 done" just for creating the account.`],
+      sk:[`Vernostné kartičky rozdávané s 2 z 10 pečiatok vopred - ľudia dokončia rýchlejšie (Kivetz, 2006).`,`Registračný sprievodca, ktorý označí "Krok 1 hotový" už za vytvorenie účtu.`]},
+    'variable-reward':{en:[`Pull-to-refresh on a feed - you never know what new thing appears.`,`LinkedIn's occasional "you appeared in 27 searches this week" surprise.`],
+      sk:[`Pull-to-refresh vo feede - nikdy nevieš, čo nové sa objaví.`,`Občasné prekvapenie na LinkedIne "tento týždeň si sa objavil v 27 vyhľadávaniach".`]},
+    'flow':{en:[`Duolingo scales difficulty lesson by lesson so it never gets boring or overwhelming.`,`Games and tools that unlock advanced features only once you're ready for them.`],
+      sk:[`Duolingo škáluje náročnosť lekciu po lekcii, aby to nebolo nudné ani zahlcujúce.`,`Hry a nástroje, ktoré odomknú pokročilé funkcie, až keď si na ne pripravený.`]},
+    'curiosity':{en:[`"Your results are ready - see your score" after finishing a quiz or test.`,`Spotify Wrapped teasing "...and your #1 artist is..." right before the reveal.`],
+      sk:[`"Tvoje výsledky sú pripravené - pozri si skóre" po dokončení kvízu alebo testu.`,`Spotify Wrapped naznačuje "...a tvoj interpret č. 1 je..." tesne pred odhalením.`]},
+    'aesthetic':{en:[`Stripe's checkout feels effortless even though payments are genuinely complex.`,`A cleanly designed form feels quicker to fill than an ugly one with identical fields.`],
+      sk:[`Checkout od Stripe pôsobí ľahko, hoci platby sú naozaj zložité.`,`Čisto navrhnutý formulár sa zdá rýchlejší na vyplnenie než škaredý s rovnakými poľami.`]},
+    'ikea':{en:[`Notion and Trello: you build your own workspace, so you're invested in keeping it.`,`Spotify playlists you curate yourself make you value the app more.`],
+      sk:[`Notion a Trello: postavíš si vlastný priestor, takže ti záleží na jeho udržaní.`,`Playlisty na Spotify, ktoré si sám kurátoruješ, ťa k appke viac pripútajú.`]},
+    'fresh-start':{en:[`Fitness apps framing "New week, new start" to restart a goal without guilt.`,`Duolingo's Monday streak reset and streak-repair so a slip doesn't feel final.`],
+      sk:[`Fitness appky s rámovaním "nový týždeň, nový začiatok" na reštart cieľa bez viny.`,`Pondelkový reset streaku a jeho oprava v Duolingu, aby zaváhanie nepôsobilo definitívne.`]},
+    'hicks':{en:[`Google's homepage: a single search box instead of a portal full of links.`,`Streaming apps leading with "Continue watching" and one big Play button.`],
+      sk:[`Domovská stránka Googlu: jediné vyhľadávacie pole namiesto portálu plného odkazov.`,`Streamovacie appky vedú s "pokračovať v pozeraní" a jedným veľkým tlačidlom Play.`]},
+    'loss':{en:[`Duolingo's "Don't lose your 30-day streak!" reminder before midnight.`,`Booking.com's "Only 1 room left at this price" - powerful, so use it only when true.`],
+      sk:[`Pripomienka Duolinga "nepríď o svoj 30-dňový streak!" pred polnocou.`,`"Posledná 1 izba za túto cenu" na Booking.com - silné, tak to použi len keď je to pravda.`]},
+    'social':{en:[`Booking.com's "12 other people are looking at this hotel right now".`,`Amazon's star ratings and "#1 Best Seller" badge; "used by 2,400 teams" on B2B sites.`],
+      sk:[`"Práve teraz si tento hotel pozerá ďalších 12 ľudí" na Booking.com.`,`Hviezdičkové hodnotenia a odznak "#1 Best Seller" na Amazone; "používa 2 400 tímov" na B2B weboch.`]}
+  };
   var lastFocus = null;
   function openLens(key){
     var d = LENS[key]; if(!d) return;
@@ -662,6 +734,9 @@ Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiasto�
     document.getElementById('lensWhat').textContent = t.what;
     document.getElementById('lensWhyLabel').textContent = UI[lang].why;
     document.getElementById('lensWhy').textContent = t.why;
+    document.getElementById('lensExLabel').textContent = UI[lang].ex;
+    var _el = document.getElementById('lensEx'); _el.innerHTML = '';
+    ((EX[key] && EX[key][lang]) || []).forEach(function(x){ var li = document.createElement('li'); li.textContent = x; _el.appendChild(li); });
     document.getElementById('lensLinksLabel').textContent = UI[lang].links;
     var lc = document.getElementById('lensLinks'); lc.innerHTML = '';
     (d.links||[]).forEach(function(x){
@@ -683,6 +758,40 @@ Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiasto�
     if(e.key === 'Escape' && document.getElementById('lensModal').classList.contains('open')) closeLens();
   });
 
+  function toggleMore(btn){
+    var clip = btn.closest('.panel').querySelector('.prompt-clip');
+    clip.classList.toggle('open');
+    updateMoreButtons();
+  }
+  function updateMoreButtons(){
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
+    var more = lang === 'sk' ? 'Zobraziť viac' : 'Show more';
+    var less = lang === 'sk' ? 'Zobraziť menej' : 'Show less';
+    document.querySelectorAll('.show-more').forEach(function(btn){
+      var clip = btn.closest('.panel').querySelector('.prompt-clip');
+      btn.textContent = clip.classList.contains('open') ? less : more;
+    });
+  }
+  function refreshClips(){
+    var lang = document.documentElement.getAttribute('data-lang') || 'en';
+    document.querySelectorAll('.prompt-clip').forEach(function(clip){
+      var panel = clip.closest('.panel');
+      var btn = panel.querySelector('.show-more');
+      var pre = clip.querySelector('pre.prompt[data-i18n="' + lang + '"]');
+      var full = pre ? pre.scrollHeight : 0;
+      var needs = full > 220;
+      if(needs){
+        clip.classList.remove('no-clip');
+        if(btn) btn.classList.remove('hidden');
+      } else {
+        clip.classList.add('no-clip');
+        clip.classList.remove('open');
+        if(btn) btn.classList.add('hidden');
+      }
+    });
+    updateMoreButtons();
+  }
+
   (function init(){
     try{
       var l = localStorage.getItem('playbook-lang'); if(l) setLang(l);
@@ -690,6 +799,8 @@ Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiasto�
     }catch(e){}
     var cards = document.querySelectorAll('.card.fade');
     cards.forEach(function(c,i){ c.style.animationDelay = (i*55)+'ms'; });
+    refreshClips();
+    var _rt; window.addEventListener('resize', function(){ clearTimeout(_rt); _rt = setTimeout(refreshClips, 150); });
   })();
 </script>
 </body>
