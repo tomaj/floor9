@@ -321,22 +321,24 @@ Pri každej optike, ktorá sadne: pomenuj konkrétnu obrazovku alebo flow, čo j
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
         <div class="prompt-clip">
-        <pre class="prompt" data-i18n="en">I want this to be a modern, state-of-the-art application, built the way apps of this type are built today. Audit the real setup - read package.json, the lockfile and the config files, don't assume - then work through these five areas:
+        <pre class="prompt" data-i18n="en">I want this to be a modern, state-of-the-art application, built the way apps of this type are built today. Audit the real setup - read package.json, the lockfile and the config files, don't assume - then work through these six areas:
 
 1. Stack &amp; versions - which frameworks, runtimes and key libraries we run on, and which are outdated, deprecated or end-of-life.
 2. Framework best practice - whether we use the current recommended patterns of what we already have (React: hooks, Suspense, modern data-fetching, server components where they fit) or old idioms.
 3. Dependencies - which packages are outdated or replaceable by a leaner, better-maintained option, and the bundle-size and maintenance impact.
 4. Tooling &amp; CI - build, bundler, type-safety, linting, tests and CI: current, strict, and enforced on every change?
 5. Architecture &amp; state - state management, data fetching and module boundaries, and what structurally blocks a clean reference implementation.
+6. Observability &amp; monitoring - error tracking, structured logging, metrics and tracing, so we can see production health, not just whether it builds.
 
 Separate real improvements from hype - no churn for its own sake. Deliver a prioritised roadmap: quick wins first, then bigger migrations, each with a rough effort and risk note and a safe incremental path. This is an audit - propose, don't start upgrading yet.</pre>
-        <pre class="prompt" data-i18n="sk">Chcem, aby toto bola moderná, state-of-the-art aplikácia, postavená tak, ako sa dnes robia appky tohto typu. Sprav audit reálneho stavu - prečítaj package.json, lockfile a konfiguračné súbory, nepredpokladaj - a potom prejdi týchto päť oblastí:
+        <pre class="prompt" data-i18n="sk">Chcem, aby toto bola moderná, state-of-the-art aplikácia, postavená tak, ako sa dnes robia appky tohto typu. Sprav audit reálneho stavu - prečítaj package.json, lockfile a konfiguračné súbory, nepredpokladaj - a potom prejdi týchto šesť oblastí:
 
 1. Stack a verzie - na akých frameworkoch, runtime a kľúčových knižniciach bežíme a ktoré sú zastarané, deprecated alebo po konci podpory.
 2. Best practice frameworku - či používame aktuálne odporúčané vzory toho, čo už máme (React: hooks, Suspense, moderné načítavanie dát, server components tam, kde sadnú), alebo staré idiómy.
 3. Závislosti - ktoré balíky sú zastarané alebo nahraditeľné štíhlejšou, lepšie udržiavanou alternatívou, a aký to má dopad na bundle a údržbu.
 4. Nástroje a CI - build, bundler, typová bezpečnosť, linting, testy a CI: aktuálne, prísne a vynucované pri každej zmene?
 5. Architektúra a stav - manažment stavu, načítavanie dát a hranice modulov, a čo štrukturálne bráni čistej referenčnej implementácii.
+6. Observabilita a monitoring - error tracking, štruktúrované logovanie, metriky a tracing, aby sme videli zdravie produkcie, nielen či sa to zbuilduje.
 
 Oddeľ reálne zlepšenia od hype - žiadne zmeny pre zmenu. Priprav prioritizovaný plán: najprv rýchle výhry, potom väčšie migrácie, každá s hrubým odhadom námahy a rizika a bezpečnou inkrementálnou cestou. Toto je audit - navrhni, zatiaľ nič neupgraduj.</pre>
         <div class="prompt-fade"></div>
@@ -344,14 +346,15 @@ Oddeľ reálne zlepšenia od hype - žiadne zmeny pre zmenu. Priprav prioritizov
         <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
             <div class="lenses">
-          <p data-i18n="en">The five areas</p>
-          <p data-i18n="sk">Päť oblastí</p>
+          <p data-i18n="en">The six areas</p>
+          <p data-i18n="sk">Šesť oblastí</p>
           <div class="lens-grid">
           <button type="button" class="lens" data-lens="m-stack" onclick="openLens('m-stack')"><b>Stack &amp; versions</b><small data-i18n="en">Which frameworks and versions we run on - and what is outdated or end-of-life.</small><small data-i18n="sk">Na akých frameworkoch a verziách bežíme - a čo je zastarané či po podpore.</small></button>
           <button type="button" class="lens" data-lens="m-patterns" onclick="openLens('m-patterns')"><b>Framework best practice</b><small data-i18n="en">Current framework idioms vs old patterns the ecosystem left behind.</small><small data-i18n="sk">Aktuálne idiómy frameworku vs staré vzory, od ktorých ekosystém odišiel.</small></button>
           <button type="button" class="lens" data-lens="m-deps" onclick="openLens('m-deps')"><b>Dependencies</b><small data-i18n="en">Outdated or replaceable packages, and the bundle and maintenance cost.</small><small data-i18n="sk">Zastarané či nahraditeľné balíky a náklad na bundle a údržbu.</small></button>
           <button type="button" class="lens" data-lens="m-tooling" onclick="openLens('m-tooling')"><b>Tooling &amp; CI</b><small data-i18n="en">Build, types, lint, tests, CI - current, strict, and actually enforced?</small><small data-i18n="sk">Build, typy, lint, testy, CI - aktuálne, prísne a naozaj vynucované?</small></button>
           <button type="button" class="lens" data-lens="m-arch" onclick="openLens('m-arch')"><b>Architecture &amp; state</b><small data-i18n="en">State, data flow and module boundaries that keep it modernisable.</small><small data-i18n="sk">Stav, tok dát a hranice modulov, čo ju držia modernizovateľnou.</small></button>
+          <button type="button" class="lens" data-lens="m-observability" onclick="openLens('m-observability')"><b>Observability &amp; monitoring</b><small data-i18n="en">Error tracking, structured logs, metrics - can you see production?</small><small data-i18n="sk">Error tracking, štruktúrované logy, metriky - vidíš produkciu?</small></button>
           </div>
         </div>
     </article>
@@ -370,26 +373,28 @@ Oddeľ reálne zlepšenia od hype - žiadne zmeny pre zmenu. Priprav prioritizov
         <div class="prompt-clip">
         <pre class="prompt" data-i18n="en">Do a thorough, deep security audit of this application - frontend and backend. Work from the real code, not the docs, and verify each issue is actually exploitable rather than pattern-matching. Trace untrusted input from where it enters to where it's used. Context: the app is internet-facing, behind an F5 (BIG-IP) login - don't treat that as a safety net; assume an authenticated user can be hostile.
 
-Work through these six areas:
+Work through these eight areas:
 1. Authentication &amp; authorization - is every endpoint protected server-side? IDOR, privilege escalation, endpoints that trust the frontend to hide them.
 2. Injection &amp; input validation - SQL/NoSQL injection, command injection, XSS (stored and reflected), SSRF, path traversal, mass assignment.
 3. Secrets &amp; configuration - hardcoded credentials, tokens or keys in the repo, git history, or the client bundle.
 4. Data exposure &amp; privacy - over-sent fields, PII in logs or errors, stack traces leaked to the client.
 5. Sessions, transport &amp; CORS - CSRF, secure/httpOnly cookies, CORS scope, missing rate limiting.
 6. Dependencies &amp; supply chain - third-party packages with known vulnerabilities or no maintenance.
-Use the OWASP Top 10 as a backdrop.
+7. Standards &amp; OWASP - audit against the OWASP Top 10 and ASVS, plus rules that apply to us (e.g. GDPR for personal data), not ad-hoc gut feel.
+8. Security headers &amp; CSP - Content-Security-Policy, HSTS, X-Content-Type-Options, anti-clickjacking headers, and secure cookie flags.
 
 For each finding: severity, exact file:line, a short exploit scenario, how confident you are it's real, and the concrete fix. Order by real-world risk. Verify against the code - don't assume.</pre>
         <pre class="prompt" data-i18n="sk">Sprav dôkladný, hĺbkový bezpečnostný audit tejto aplikácie - frontend aj backend. Vychádzaj z reálneho kódu, nie z dokumentácie, a pri každom probléme over, že je naozaj zneužiteľný, nie len že sedí vzor. Sleduj nedôveryhodný vstup od miesta, kde vstupuje, až tam, kde sa použije. Kontext: aplikácia je otvorená do internetu, za loginom cez F5 (BIG-IP) - neber to ako záchrannú sieť; predpokladaj, že aj prihlásený používateľ môže byť nepriateľský.
 
-Prejdi týchto šesť oblastí:
+Prejdi týchto osem oblastí:
 1. Autentifikácia &amp; autorizácia - je každý endpoint chránený na serveri? IDOR, eskalácia práv, endpointy spoliehajúce sa na to, že ich skryje frontend.
 2. Injection &amp; validácia vstupov - SQL/NoSQL injection, command injection, XSS (stored aj reflected), SSRF, path traversal, mass assignment.
 3. Tajomstvá &amp; konfigurácia - natvrdo zapísané credentials, tokeny či kľúče v repozitári, v git histórii alebo v klientskom bundli.
 4. Únik dát &amp; súkromie - polia posielané navyše, PII v logoch alebo chybách, stack trace unikajúci na klienta.
 5. Session, prenos &amp; CORS - CSRF, secure/httpOnly cookies, rozsah CORS, chýbajúci rate limiting.
 6. Závislosti &amp; dodávateľský reťazec - balíky tretích strán so známymi zraniteľnosťami alebo bez údržby.
-OWASP Top 10 ber ako pozadie.
+7. Štandardy &amp; OWASP - audit voči OWASP Top 10 a ASVS, plus pravidlá, čo platia u nás (napr. GDPR pri osobných údajoch), nie ad-hoc pocit.
+8. Bezpečnostné hlavičky &amp; CSP - Content-Security-Policy, HSTS, X-Content-Type-Options, anti-clickjacking hlavičky a secure cookie flagy.
 
 Pri každom náleze: závažnosť, presný súbor:riadok, krátky scenár zneužitia, ako si istý, že je reálny, a konkrétna oprava. Zoraď podľa reálneho rizika. Over voči kódu - nepredpokladaj.</pre>
         <div class="prompt-fade"></div>
@@ -397,8 +402,8 @@ Pri každom náleze: závažnosť, presný súbor:riadok, krátky scenár zneuž
         <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
             <div class="lenses">
-          <p data-i18n="en">The six areas</p>
-          <p data-i18n="sk">Šesť oblastí</p>
+          <p data-i18n="en">The eight areas</p>
+          <p data-i18n="sk">Osem oblastí</p>
           <div class="lens-grid">
           <button type="button" class="lens" data-lens="s-authz" onclick="openLens('s-authz')"><b>Authentication &amp; authorization</b><small data-i18n="en">Every endpoint checks who you are and what you may do - server-side.</small><small data-i18n="sk">Každý endpoint overuje, kto si a čo smieš - na serveri.</small></button>
           <button type="button" class="lens" data-lens="s-injection" onclick="openLens('s-injection')"><b>Injection &amp; input validation</b><small data-i18n="en">Untrusted input into queries, commands, templates or the DOM.</small><small data-i18n="sk">Nedôveryhodný vstup do dopytov, príkazov, šablón či DOM.</small></button>
@@ -406,6 +411,8 @@ Pri každom náleze: závažnosť, presný súbor:riadok, krátky scenár zneuž
           <button type="button" class="lens" data-lens="s-data" onclick="openLens('s-data')"><b>Data exposure &amp; privacy</b><small data-i18n="en">What the API over-sends, logs, or leaks in errors.</small><small data-i18n="sk">Čo API posiela navyše, loguje alebo uniká v chybách.</small></button>
           <button type="button" class="lens" data-lens="s-session" onclick="openLens('s-session')"><b>Sessions, transport &amp; CORS</b><small data-i18n="en">Cookies, CSRF, CORS scope and rate limiting on sensitive routes.</small><small data-i18n="sk">Cookies, CSRF, rozsah CORS a rate limiting na citlivých routách.</small></button>
           <button type="button" class="lens" data-lens="s-deps" onclick="openLens('s-deps')"><b>Dependencies &amp; supply chain</b><small data-i18n="en">Third-party packages with known CVEs or no maintenance.</small><small data-i18n="sk">Balíky tretích strán so známymi CVE alebo bez údržby.</small></button>
+          <button type="button" class="lens" data-lens="s-standards" onclick="openLens('s-standards')"><b>Standards &amp; OWASP</b><small data-i18n="en">Checked against OWASP Top 10, ASVS and rules like GDPR.</small><small data-i18n="sk">Kontrola voči OWASP Top 10, ASVS a pravidlám ako GDPR.</small></button>
+          <button type="button" class="lens" data-lens="s-headers" onclick="openLens('s-headers')"><b>Security headers &amp; CSP</b><small data-i18n="en">CSP, HSTS, anti-clickjacking headers and secure cookie flags.</small><small data-i18n="sk">CSP, HSTS, anti-clickjacking hlavičky a secure cookie flagy.</small></button>
           </div>
         </div>
     </article>
@@ -580,22 +587,24 @@ Choď obrazovku po obrazovke tam, kde to dáva zmysel. Daj konkrétne, prioritiz
         <div class="prompt-clip">
         <pre class="prompt" data-i18n="en">Verify in depth that we've implemented everything in the PRD. Treat the PRD as the source of truth and go requirement by requirement. If you can't find the PRD in the repo, ask me for it before starting.
 
-Work through these five areas:
+Work through these six areas:
 1. Screen &amp; feature coverage - every screen/feature the PRD describes exists and is reachable, not stubbed or flagged off.
 2. Behaviour vs spec - each flow does what the spec says: rules, calculations and state transitions match, not just 'a screen is there'.
 3. Edge, empty &amp; error states - the states beyond the happy path from the PRD are handled (empty, loading, permission-denied, validation, server errors).
 4. Scope creep - anything built beyond the spec, and whether it's justified.
 5. Spec gaps &amp; ambiguity - where the PRD is silent or contradictory and code made a silent decision.
+6. Test coverage - are the PRD's requirements and critical paths actually backed by tests that would catch a regression?
 
 Deliver a traceability table: PRD requirement -> status (done / partial / missing) -> evidence (file:line) -> the gap, if any. Cite concrete files for every 'done'. Be honest about partials - if it looks done but isn't wired up, say so.</pre>
         <pre class="prompt" data-i18n="sk">Over do hĺbky, či máme implementované všetko, čo je v PRD. Ber PRD ako zdroj pravdy a choď požiadavku po požiadavke. Ak PRD v repozitári nenájdeš, vypýtaj si ho odo mňa, než začneš.
 
-Prejdi týchto päť oblastí:
+Prejdi týchto šesť oblastí:
 1. Pokrytie obrazoviek &amp; funkcií - každá obrazovka/feature z PRD existuje a je dostupná, nie stub ani vypnutá flagom.
 2. Správanie vs špecifikácia - každý flow robí, čo hovorí špecifikácia: pravidlá, výpočty a prechody stavov sedia, nielen 'obrazovka tam je'.
 3. Hraničné, prázdne &amp; chybové stavy - stavy mimo šťastnej cesty z PRD sú ošetrené (prázdne, načítavanie, zamietnutý prístup, validácia, serverové chyby).
 4. Scope creep - čokoľvek postavené nad rámec špecifikácie a či je to opodstatnené.
 5. Medzery &amp; nejednoznačnosti v špecifikácii - kde PRD mlčí alebo si protirečí a kód spravil tiché rozhodnutie.
+6. Pokrytie testami - sú požiadavky z PRD a kritické cesty naozaj kryté testami, ktoré by zachytili regresiu?
 
 Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiastočne / chýba) -> dôkaz (súbor:riadok) -> aká je medzera. Pri každom 'hotové' cituj konkrétne súbory. Buď úprimný pri čiastočných - ak to vyzerá hotovo, ale nie je to zapojené, napíš to.</pre>
         <div class="prompt-fade"></div>
@@ -603,14 +612,15 @@ Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiasto�
         <button class="show-more" type="button" onclick="toggleMore(this)">Show more</button>
       </div>
             <div class="lenses">
-          <p data-i18n="en">The five areas</p>
-          <p data-i18n="sk">Päť oblastí</p>
+          <p data-i18n="en">The six areas</p>
+          <p data-i18n="sk">Šesť oblastí</p>
           <div class="lens-grid">
           <button type="button" class="lens" data-lens="f-coverage" onclick="openLens('f-coverage')"><b>Screen &amp; feature coverage</b><small data-i18n="en">Every PRD screen exists and is reachable.</small><small data-i18n="sk">Každá obrazovka z PRD existuje a je dostupná.</small></button>
           <button type="button" class="lens" data-lens="f-behaviour" onclick="openLens('f-behaviour')"><b>Behaviour vs spec</b><small data-i18n="en">Flows do what the spec says, not just 'a screen exists'.</small><small data-i18n="sk">Flows robia, čo hovorí špecifikácia, nielen 'obrazovka existuje'.</small></button>
           <button type="button" class="lens" data-lens="f-states" onclick="openLens('f-states')"><b>Edge, empty &amp; error states</b><small data-i18n="en">Empty, loading, permission and error states are handled.</small><small data-i18n="sk">Prázdne, načítavacie, prístupové a chybové stavy sú ošetrené.</small></button>
           <button type="button" class="lens" data-lens="f-scope" onclick="openLens('f-scope')"><b>Scope creep</b><small data-i18n="en">Anything built beyond the spec - and is it justified?</small><small data-i18n="sk">Čokoľvek postavené nad rámec špecifikácie - a je to opodstatnené?</small></button>
           <button type="button" class="lens" data-lens="f-gaps" onclick="openLens('f-gaps')"><b>Spec gaps &amp; ambiguity</b><small data-i18n="en">Where the PRD is silent and code decided silently.</small><small data-i18n="sk">Kde PRD mlčí a kód rozhodol potichu.</small></button>
+          <button type="button" class="lens" data-lens="f-tests" onclick="openLens('f-tests')"><b>Test coverage</b><small data-i18n="en">Are the PRD's critical paths actually backed by tests?</small><small data-i18n="sk">Sú kritické cesty z PRD naozaj kryté testami?</small></button>
           </div>
         </div>
     </article>
@@ -814,7 +824,11 @@ Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiasto�
     'f-behaviour':{d:'func', en:{t:`Behaviour vs spec`, what:`Whether each flow actually does what the spec says - rules, calculations and state transitions match, not just that a screen is present.`, why:`The screen exists is not the screen is correct; subtle behaviour drift is where real functional bugs hide.`, ex:[`A discount rule implemented as 10% flat when the spec says tiered by order size.`,`A wizard that lets you skip a step the spec marks as mandatory.`]}, sk:{t:`Správanie vs špecifikácia`, what:`Či každý flow reálne robí to, čo hovorí špecifikácia - pravidlá, výpočty a prechody stavov sedia, nielen že obrazovka existuje.`, why:`Obrazovka existuje nie je obrazovka je správna; jemný odklon správania je tam, kde sa skrývajú reálne funkčné chyby.`, ex:[`Pravidlo zľavy implementované ako 10% fixne, hoci špecifikácia hovorí odstupňované podľa veľkosti objednávky.`,`Sprievodca, ktorý dovolí preskočiť krok, čo špecifikácia označuje ako povinný.`]}, links:[]},
     'f-states':{d:'func', en:{t:`Edge, empty & error states`, what:`Whether the states beyond the happy path from the PRD are handled - empty data, loading, permission-denied, validation and server errors.`, why:`The happy path is maybe 20% of the work; products feel broken exactly where these states were skipped.`, ex:[`A dashboard that only works with data - a brand-new account sees a broken, empty screen.`,`No handling for a failed save, so the user thinks it worked when it didn't.`]}, sk:{t:`Hraničné, prázdne a chybové stavy`, what:`Či sú ošetrené stavy mimo šťastnej cesty z PRD - prázdne dáta, načítavanie, zamietnutý prístup, validačné a serverové chyby.`, why:`Šťastná cesta je možno 20% práce; produkty pôsobia rozbito presne tam, kde sa tieto stavy vynechali.`, ex:[`Dashboard, ktorý funguje len s dátami - úplne nový účet vidí rozbitú, prázdnu obrazovku.`,`Žiadne ošetrenie neúspešného uloženia, takže používateľ si myslí, že to prešlo, hoci nie.`]}, links:[]},
     'f-scope':{d:'func', en:{t:`Scope creep`, what:`Things built beyond the spec - extra fields, screens or behaviours nobody asked for that add maintenance and can contradict the design.`, why:`Unrequested features aren't free wins - they're untested surface, extra maintenance, and often a sign the team drifted from the goal.`, ex:[`An extra advanced settings panel not in the PRD, now a permanent maintenance cost.`,`A field added because it might be useful that contradicts the spec's simpler flow.`]}, sk:{t:`Scope creep`, what:`Veci postavené nad rámec špecifikácie - polia, obrazovky či správanie navyše, čo nikto nežiadal, pridávajú údržbu a môžu si protirečiť.`, why:`Nežiadané funkcie nie sú výhry zadarmo - je to netestovaná plocha, viac údržby a často znak, že tím sa odklonil od cieľa.`, ex:[`Panel pokročilé nastavenia navyše, ktorý nie je v PRD, teraz trvalý náklad na údržbu.`,`Pole pridané lebo sa možno zíde, ktoré si protirečí s jednoduchším flow zo špecifikácie.`]}, links:[]},
-    'f-gaps':{d:'func', en:{t:`Spec gaps & ambiguity`, what:`Places where the PRD is silent or contradictory and someone made a silent decision in code - the spots most likely to be wrong later.`, why:`Ambiguity gets resolved somewhere - usually in code, invisibly; surfacing those calls avoids shipping the wrong assumption.`, ex:[`The PRD never says what happens when a payment fails mid-flow - code silently retries forever.`,`Two sections of the spec disagree on a limit; the code picked one and nobody flagged it.`]}, sk:{t:`Medzery a nejednoznačnosti v špecifikácii`, what:`Miesta, kde PRD mlčí alebo si protirečí a niekto spravil tiché rozhodnutie v kóde - body najpravdepodobnejšie zle neskôr.`, why:`Nejednoznačnosť sa niekde vyrieši - zvyčajne v kóde, neviditeľne; vyniesť tie rozhodnutia na povrch zabráni vyexpedovať zlý predpoklad.`, ex:[`PRD nikdy nehovorí, čo sa stane, keď platba zlyhá uprostred flow - kód potichu skúša donekonečna.`,`Dve časti špecifikácie sa nezhodnú na limite; kód si vybral jeden a nikto to neoznačil.`]}, links:[]}
+    'f-gaps':{d:'func', en:{t:`Spec gaps & ambiguity`, what:`Places where the PRD is silent or contradictory and someone made a silent decision in code - the spots most likely to be wrong later.`, why:`Ambiguity gets resolved somewhere - usually in code, invisibly; surfacing those calls avoids shipping the wrong assumption.`, ex:[`The PRD never says what happens when a payment fails mid-flow - code silently retries forever.`,`Two sections of the spec disagree on a limit; the code picked one and nobody flagged it.`]}, sk:{t:`Medzery a nejednoznačnosti v špecifikácii`, what:`Miesta, kde PRD mlčí alebo si protirečí a niekto spravil tiché rozhodnutie v kóde - body najpravdepodobnejšie zle neskôr.`, why:`Nejednoznačnosť sa niekde vyrieši - zvyčajne v kóde, neviditeľne; vyniesť tie rozhodnutia na povrch zabráni vyexpedovať zlý predpoklad.`, ex:[`PRD nikdy nehovorí, čo sa stane, keď platba zlyhá uprostred flow - kód potichu skúša donekonečna.`,`Dve časti špecifikácie sa nezhodnú na limite; kód si vybral jeden a nikto to neoznačil.`]}, links:[]},
+    'm-observability':{d:'modern', en:{t:`Observability & monitoring`, what:`Whether you can see what the app does in production - error tracking, structured logging, metrics and tracing - not just whether it builds.`, why:`A modern app you can't observe is a black box; when something breaks at 2am, error tracking and logs are the difference between a five-minute fix and a guessing game.`, ex:[`No error tracking (Sentry or similar), so client-side crashes are invisible until a user complains.`,`console.log scattered instead of structured logs you can search, filter and alert on.`]}, sk:{t:`Observabilita a monitoring`, what:`Či vidíš, čo appka robí v produkcii - error tracking, štruktúrované logovanie, metriky a tracing - nielen či sa zbuilduje.`, why:`Moderná appka, ktorú nevidíš, je čierna skrinka; keď sa niečo o druhej v noci pokazí, error tracking a logy sú rozdiel medzi päťminútovou opravou a hádaním.`, ex:[`Žiadny error tracking (Sentry a pod.), takže pády na klientovi sú neviditeľné, kým sa neozve používateľ.`,`console.log rozsypaný namiesto štruktúrovaných logov, ktoré vieš prehľadávať, filtrovať a alertovať.`]}, links:[{l:`web.dev`,u:`https://web.dev/`}]},
+    's-standards':{d:'sec', en:{t:`Standards & OWASP`, what:`Whether the app is checked against recognised security standards - the OWASP Top 10 and ASVS, plus domain rules that apply (e.g. GDPR for personal data) - rather than ad-hoc gut feel.`, why:`Standards encode decades of other people's breaches; auditing against a checklist like the OWASP Top 10 catches categories you'd never think to look for yourself.`, ex:[`Walk the whole OWASP Top 10 explicitly - broken access control through to SSRF - and mark each as covered or not.`,`For personal data, check GDPR basics: lawful storage, retention limits, and a right-to-be-forgotten that actually works.`]}, sk:{t:`Štandardy a OWASP`, what:`Či je appka kontrolovaná voči uznávaným bezpečnostným štandardom - OWASP Top 10 a ASVS, plus doménové pravidlá, čo platia (napr. GDPR pri osobných údajoch) - namiesto ad-hoc pocitu.`, why:`Štandardy v sebe nesú desaťročia cudzích prienikov; audit voči checklistu ako OWASP Top 10 zachytí kategórie, ktoré by ti samému nenapadli.`, ex:[`Prejdi explicitne celý OWASP Top 10 - od broken access control po SSRF - a označ každý ako pokrytý alebo nie.`,`Pri osobných údajoch skontroluj základ GDPR: zákonné uchovávanie, limity retencie a reálne fungujúce právo na zabudnutie.`]}, links:[{l:`OWASP Top 10`,u:`https://owasp.org/www-project-top-ten/`},{l:`Cheat Sheets`,u:`https://cheatsheetseries.owasp.org/`}]},
+    's-headers':{d:'sec', en:{t:`Security headers & CSP`, what:`Whether the app sends the HTTP security headers browsers enforce - Content-Security-Policy, HSTS, X-Content-Type-Options, anti-clickjacking headers, Referrer-Policy - and sets secure cookie flags.`, why:`These headers are a cheap, defence-in-depth win the browser enforces for you - a good CSP can neutralise an XSS that slips through, and HSTS blocks downgrade attacks.`, ex:[`No Content-Security-Policy header, so any injected script runs freely - a CSP would contain it.`,`Missing anti-clickjacking header (X-Frame-Options / frame-ancestors), leaving the app open to clickjacking in an iframe.`]}, sk:{t:`Bezpečnostné hlavičky a CSP`, what:`Či appka posiela HTTP bezpečnostné hlavičky, ktoré prehliadač vynucuje - Content-Security-Policy, HSTS, X-Content-Type-Options, anti-clickjacking hlavičky, Referrer-Policy - a nastavuje secure cookie flagy.`, why:`Tieto hlavičky sú lacná defence-in-depth výhra, ktorú vynúti prehliadač za teba - dobrá CSP vie zneškodniť XSS, čo prekĺzne, a HSTS blokuje downgrade útoky.`, ex:[`Žiadna hlavička Content-Security-Policy, takže vložený skript beží voľne - CSP by ho udržala na uzde.`,`Chýbajúca anti-clickjacking hlavička (X-Frame-Options / frame-ancestors), čo necháva appku otvorenú clickjackingu v iframe.`]}, links:[{l:`MDN: CSP`,u:`https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP`},{l:`Cheat Sheets`,u:`https://cheatsheetseries.owasp.org/`}]},
+    'f-tests':{d:'func', en:{t:`Test coverage`, what:`Whether the PRD's requirements and critical paths are actually backed by tests - not raw coverage %, but whether the important behaviours would catch a regression.`, why:`A feature with no test silently breaks on the next change; coverage of the paths the PRD cares about is what lets you ship the next version safely.`, ex:[`A core PRD flow (checkout, sign-up) with no test at all - one refactor away from silently breaking.`,`90% line coverage that never asserts the actual business rules - green tests, wrong behaviour.`]}, sk:{t:`Pokrytie testami`, what:`Či sú požiadavky z PRD a kritické cesty naozaj kryté testami - nie surové % pokrytia, ale či by dôležité správanie zachytilo regresiu.`, why:`Feature bez testu sa potichu pokazí pri ďalšej zmene; pokrytie ciest, na ktorých PRD záleží, je to, čo ti dovolí bezpečne vydať ďalšiu verziu.`, ex:[`Kľúčový flow z PRD (checkout, registrácia) bez jediného testu - jeden refaktor od tichého rozbitia.`,`90% pokrytie riadkov, ktoré nikdy neoveruje reálne biznis pravidlá - zelené testy, zlé správanie.`]}, links:[]}
   };
   function getArea(key){
     if(AREAS[key]) return AREAS[key];
