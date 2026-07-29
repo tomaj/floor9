@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Audit Playbook</title>
-<meta name="description" content="Seven prompts to point at your app - performance, functional, security, refactoring, UX, modernization, engagement. English + Slovak.">
+<meta name="description" content="Seven prompts to point at your app - engagement, modernization, security, performance, refactoring, UX, functional. English + Slovak.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -150,16 +150,16 @@
   <div class="head-inner">
     <p class="eyebrow"><span data-i18n="en">Internal &middot; Engineering playbook</span><span data-i18n="sk">Interné &middot; Engineering playbook</span></p>
     <h1><span data-i18n="en">The AI Audit Playbook</span><span data-i18n="sk">Playbook AI auditov</span></h1>
-    <p class="sub" data-i18n="en">Seven prompts to point at any app - to check it is fast, complete, secure, clean, usable, modern, and worth coming back to. Copy one, tailor it, run it against the real code.</p>
-    <p class="sub" data-i18n="sk">Sedem promptov, ktoré namieriš na akúkoľvek aplikáciu - aby si overil, že je rýchla, kompletná, bezpečná, čistá, použiteľná, moderná a že sa k nej oplatí vracať. Skopíruj jeden, uprav ho a spusti ho na reálny kód.</p>
+    <p class="sub" data-i18n="en">Seven prompts to point at any app - to check it is engaging, modern, secure, fast, clean, usable, and complete. Copy one, tailor it, run it against the real code.</p>
+    <p class="sub" data-i18n="sk">Sedem promptov, ktoré namieriš na akúkoľvek aplikáciu - aby si overil, že je engaging, moderná, bezpečná, rýchla, čistá, použiteľná a kompletná. Skopíruj jeden, uprav ho a spusti ho na reálny kód.</p>
     <nav class="toc" aria-label="Contents">
-      <a href="#perf"     style="--c:#b26a0a">Perf</a>
-      <a href="#func"     style="--c:#2563c9">Func</a>
+      <a href="#engage"   style="--c:#c0357f">Engage</a>
+      <a href="#modern"   style="--c:#4b53c4">Modern</a>
       <a href="#sec"      style="--c:#cf3535">Sec</a>
+      <a href="#perf"     style="--c:#b26a0a">Perf</a>
       <a href="#refactor" style="--c:#6d45c9">Refactor</a>
       <a href="#ux"       style="--c:#0e8f7c">UX</a>
-      <a href="#modern"   style="--c:#4b53c4">Modern</a>
-      <a href="#engage"   style="--c:#c0357f">Engage</a>
+      <a href="#func"     style="--c:#2563c9">Func</a>
     </nav>
   </div>
 </header>
@@ -181,246 +181,18 @@
   <section class="intro">
     <p class="kicker" data-i18n="en">How to use</p>
     <p class="kicker" data-i18n="sk">Ako to použiť</p>
-    <h2 data-i18n="en">Point your AI coding assistant at the app - the repo, a Figma, or just screenshots - and paste one of these.</h2>
-    <h2 data-i18n="sk">Namier svojho AI coding asistenta na aplikáciu - na repozitár, Figmu, alebo len screenshoty - a vlož jeden z týchto promptov.</h2>
+    <h2 data-i18n="en">Point your AI coding assistant at the repo and paste one of these.</h2>
+    <h2 data-i18n="sk">Namier svojho AI coding asistenta na repozitár a vlož jeden z týchto promptov.</h2>
     <p data-i18n="en">These are <strong>starting points, not magic buttons</strong>. Each one is written to check the real code, not the documentation. Run them adversarially, read what comes back with a critical eye, and remember: the prompt finds candidates - the prioritisation, the trade-offs and the ethics are still yours.</p>
     <p data-i18n="sk">Sú to <strong>východiská, nie zázračné tlačidlá</strong>. Každý je napísaný tak, aby kontroloval reálny kód, nie dokumentáciu. Púšťaj ich kriticky, čítaj výstup s odstupom a pamätaj: prompt nájde kandidátov - prioritizácia, kompromisy a etika ostávajú na tebe.</p>
   </section>
 
   <section class="cards">
 
-    <!-- ===== PERFORMANCE ===== -->
-    <article class="card fade" id="perf" style="--c:#b26a0a">
-      <div class="card-head">
-        <div class="tagrow"><span class="tag">PERF</span><span class="idx">01 / 07</span></div>
-        <h3 data-i18n="en">Performance audit</h3>
-        <h3 data-i18n="sk">Audit výkonu</h3>
-        <p class="purpose" data-i18n="en">Is the app as fast as it can be - server, data layer, and the React render path.</p>
-        <p class="purpose" data-i18n="sk">Beží appka tak rýchlo, ako sa dá - server, dátová vrstva aj render v Reacte.</p>
-      </div>
-      <div class="panel">
-        <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
-        <pre class="prompt" data-i18n="en">Audit this application for performance and validate we're doing things right, end to end. Check the real code, not assumptions.
-
-Focus on (but don't stop here):
-- Database / server calls: query efficiency, missing indexes, over-fetching rows or columns, missing pagination.
-- N+1 query patterns anywhere in the data layer.
-- Redundant or duplicate backend/DB calls - the same data fetched more than once, missing caching or memoization.
-- React: how we manage state and re-renders. Unnecessary re-renders, missing useMemo/useCallback/React.memo, state placed too high in the tree, heavy components.
-- Time to first meaningful render: bundle size, code splitting, lazy loading, requests blocking the critical path.
-- How we load resources (images, fonts, scripts): eager vs lazy, caching headers, CDN usage.
-- Request waterfalls that could be parallelized or batched.
-
-For each finding: point to the exact file / component / query, explain the impact, give a concrete fix, and rank everything by impact-to-effort. The goal is for this app to perform as well as it possibly can.</pre>
-        <pre class="prompt" data-i18n="sk">Pozri sa na výkon tejto aplikácie a zvaliduj, či to máme spravené dobre, od servera až po render. Kontroluj reálny kód, nie predpoklady.
-
-Zameraj sa hlavne na (ale nekonči pri tomto):
-- Volania do databázy / na server: efektivita dopytov, chýbajúce indexy, naťahovanie zbytočných riadkov a stĺpcov, chýbajúce stránkovanie.
-- N+1 dopyty kdekoľvek v dátovej vrstve.
-- Zbytočné alebo duplicitné volania na backend/DB - tie isté dáta tahané viackrát, chýbajúci caching alebo memoizácia.
-- React: ako pracujeme so stavmi a re-rendermi. Zbytočné re-rendery, chýbajúce useMemo/useCallback/React.memo, stav uložený privysoko v strome, ťažké komponenty.
-- Čas do prvého zmysluplného vykreslenia: veľkosť bundlu, code splitting, lazy loading, requesty blokujúce kritickú cestu.
-- Ako načítavame resources (obrázky, fonty, skripty): eager vs lazy, caching hlavičky, využitie CDN.
-- Vodopády závislých requestov, ktoré by sa dali paralelizovať alebo dávkovať.
-
-Pri každom náleze: ukáž presný súbor / komponent / dopyt, vysvetli dopad, daj konkrétnu opravu a zoraď všetko podľa pomeru dopad/námaha. Cieľom je, aby appka bežala čo najlepšie.</pre>
-      </div>
-    </article>
-
-    <!-- ===== FUNCTIONAL ===== -->
-    <article class="card fade" id="func" style="--c:#2563c9">
-      <div class="card-head">
-        <div class="tagrow"><span class="tag">FUNC</span><span class="idx">02 / 07</span></div>
-        <h3 data-i18n="en">Functional coverage vs PRD</h3>
-        <h3 data-i18n="sk">Funkčné pokrytie voči PRD</h3>
-        <p class="purpose" data-i18n="en">Does the implementation actually match the PRD - every screen, every step, every state.</p>
-        <p class="purpose" data-i18n="sk">Sedí implementácia naozaj s PRD - každá obrazovka, každý krok, každý stav.</p>
-      </div>
-      <div class="panel">
-        <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
-        <pre class="prompt" data-i18n="en">Verify in depth that we've implemented everything in the PRD. Treat the PRD as the source of truth and go feature by feature.
-
-For every requirement in the spec, check:
-- The screen it describes actually exists and is functional.
-- The step / flow does what the spec says - the behaviour matches, not just "a screen is there".
-- Edge cases, empty states and error states from the PRD are handled.
-- Nothing from the spec is silently missing or only half-implemented.
-
-Deliver a coverage table: PRD requirement -> implemented? (yes / partial / no) -> where in the code -> the gap, if any. Cite concrete files. Flag anything built differently from the spec, even if it works.</pre>
-        <pre class="prompt" data-i18n="sk">Over do hĺbky, či máme implementované všetko, čo je v PRD. Ber PRD ako zdroj pravdy a choď feature po feature.
-
-Pri každej požiadavke zo špecifikácie skontroluj:
-- Či obrazovka, ktorú popisuje, naozaj existuje a je funkčná.
-- Či krok / flow robí to, čo hovorí špecifikácia - správanie sedí, nie len "obrazovka tam je".
-- Či sú ošetrené hraničné prípady, prázdne stavy a chybové stavy z PRD.
-- Či nič zo špecifikácie potichu nechýba alebo nie je len spolovice hotové.
-
-Priprav tabuľku pokrytia: požiadavka z PRD -> implementované? (áno / čiastočne / nie) -> kde v kóde -> aká je medzera. Cituj konkrétne súbory. Označ všetko, čo je spravené inak, než hovorí špecifikácia, aj keď to funguje.</pre>
-      </div>
-    </article>
-
-    <!-- ===== SECURITY ===== -->
-    <article class="card fade" id="sec" style="--c:#cf3535">
-      <div class="card-head">
-        <div class="tagrow"><span class="tag">SEC</span><span class="idx">03 / 07</span></div>
-        <h3 data-i18n="en">Security audit</h3>
-        <h3 data-i18n="sk">Bezpečnostný audit</h3>
-        <p class="purpose" data-i18n="en">A deep audit of what the code really does - not what the docs claim.</p>
-        <p class="purpose" data-i18n="sk">Hĺbkový audit toho, čo kód naozaj robí - nie čo tvrdí dokumentácia.</p>
-      </div>
-      <div class="panel">
-        <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
-        <pre class="prompt" data-i18n="en">Do a thorough, deep security audit of this application - frontend and backend. Check the real implementation in the code, not the docs, READMEs or comments. Verify actual behaviour.
-
-Context: the app is internet-facing, behind an F5 (BIG-IP) login. Security still matters - assume an authenticated user may be hostile.
-
-Cover at least:
-- AuthN / AuthZ: is every endpoint properly protected? Any missing authorization checks (IDOR, privilege escalation, trusting the frontend to hide things)?
-- Input validation and injection: SQL / NoSQL injection, command injection, XSS (stored and reflected), SSRF.
-- Secrets: hardcoded credentials, tokens or keys in the repo or the client bundle.
-- Data exposure: sensitive data sent to the client, verbose errors, PII in logs.
-- Sessions and tokens: CSRF, secure cookies, CORS configuration.
-- Dependencies with known vulnerabilities.
-- OWASP Top 10 as a checklist.
-
-For each finding: severity, exact file / line, how it could be exploited, and the concrete fix. Prioritise by real-world risk. Check the code - verify, don't assume.</pre>
-        <pre class="prompt" data-i18n="sk">Sprav dôkladný, hĺbkový bezpečnostný audit tejto aplikácie - frontend aj backend. Kontroluj reálnu implementáciu v kóde, nie dokumentáciu, README ani komentáre. Over skutočné správanie.
-
-Kontext: aplikácia je otvorená do internetu, za loginom cez F5 (BIG-IP). Bezpečnosť je aj tak dôležitá - predpokladaj, že aj prihlásený používateľ môže byť nepriateľský.
-
-Pokry aspoň:
-- AuthN / AuthZ: je každý endpoint poriadne chránený? Nechýbajú niekde autorizačné kontroly (IDOR, eskalácia práv, spoliehanie sa na to, že to skryje frontend)?
-- Validácia vstupov a injection: SQL / NoSQL injection, command injection, XSS (stored aj reflected), SSRF.
-- Tajomstvá: natvrdo zapísané heslá, tokeny alebo kľúče v repozitári alebo v klientskom bundli.
-- Únik dát: citlivé dáta posielané na klienta, ukecané chybové hlášky, PII v logoch.
-- Session a tokeny: CSRF, secure cookies, nastavenie CORS.
-- Závislosti so známymi zraniteľnosťami.
-- OWASP Top 10 ako checklist.
-
-Pri každom náleze: závažnosť, presný súbor / riadok, ako sa to dá zneužiť, a konkrétna oprava. Prioritizuj podľa reálneho rizika. Kontroluj kód - over, nepredpokladaj.</pre>
-      </div>
-    </article>
-
-    <!-- ===== REFACTORING ===== -->
-    <article class="card fade" id="refactor" style="--c:#6d45c9">
-      <div class="card-head">
-        <div class="tagrow"><span class="tag">REFACTOR</span><span class="idx">04 / 07</span></div>
-        <h3 data-i18n="en">Refactoring analysis</h3>
-        <h3 data-i18n="sk">Analýza refaktoringu</h3>
-        <p class="purpose" data-i18n="en">Cleaner, safer, more readable code - without changing a single behaviour.</p>
-        <p class="purpose" data-i18n="sk">Čistejší, bezpečnejší a čitateľnejší kód - bez zmeny akéhokoľvek správania.</p>
-      </div>
-      <div class="panel">
-        <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
-        <pre class="prompt" data-i18n="en">Review how this application is implemented and find what we can improve to make it more maintainable and readable - without changing any functionality. We are only improving the code, never the behaviour.
-
-Look for:
-- Readability: unclear naming, over-long functions, deep nesting.
-- Change safety: code where a small edit is likely to break something unrelated.
-- Open/Closed principle: places where extending behaviour forces us to modify existing code.
-- Dead code: unused functions, variables, imports, unreachable branches.
-- Scattered logic that belongs together - pull it into cohesive functions / modules.
-- Copy&amp;paste code: extract the shared abstraction into a single place.
-- Magic strings and numbers: pull them into named constants, so we stop comparing raw strings in different spots.
-- Typing: are the types correct and complete everywhere? Any "any", missing types, unsafe casts?
-- Suppressed checks: disabled linter rules, ignored errors, skipped tests, eslint-disable, @ts-ignore. We want everything checked - flag every suppression.
-- Missing comments where they'd genuinely help understanding (not noise).
-- General code smells.
-
-Deliver a complete analysis: what to change, why, and how - ranked by value. Do not change functionality; refactor only.</pre>
-        <pre class="prompt" data-i18n="sk">Pozri sa, ako je táto aplikácia naimplementovaná, a nájdi, čo vieme zlepšiť, aby bola lepšie udržiavateľná a čitateľnejšia - bez zmeny akejkoľvek funkcionality. Iba zlepšujeme kód, nikdy nie správanie.
-
-Hľadaj:
-- Čitateľnosť: nejasné pomenovania, príliš dlhé funkcie, hlboké zanorenie.
-- Bezpečnosť zmien: kód, kde malá úprava pravdepodobne pokazí niečo nesúvisiace.
-- Open/Closed princíp: miesta, kde rozšírenie správania núti meniť existujúci kód.
-- Mŕtvy kód: nepoužité funkcie, premenné, importy, nedosiahnuteľné vetvy.
-- Roztrúsenú logiku, ktorá patrí spolu - vytiahni ju do súdržných funkcií / modulov.
-- Copy&amp;paste kód: vytiahni spoločnú abstrakciu na jedno miesto.
-- Magic strings a čísla: vytiahni ich do pomenovaných konštánt, nech neporovnávame surové reťazce sem-tam.
-- Typovosť: sú typy všade správne a úplné? Nie je niekde "any", chýbajúce typy, nebezpečné pretypovania?
-- Potlačené kontroly: vypnuté pravidlá lintera, ignorované chyby, preskočené testy, eslint-disable, @ts-ignore. Chceme kontrolovať všetko - označ každé potlačenie.
-- Chýbajúce komentáre tam, kde by naozaj pomohli pochopeniu (nie šum).
-- Všeobecné code smells.
-
-Priprav kompletnú analýzu: čo zmeniť, prečo a ako - zoradené podľa prínosu. Nemeň funkcionalitu; iba refaktoruj.</pre>
-      </div>
-    </article>
-
-    <!-- ===== USABILITY ===== -->
-    <article class="card fade" id="ux" style="--c:#0e8f7c">
-      <div class="card-head">
-        <div class="tagrow"><span class="tag">UX</span><span class="idx">05 / 07</span></div>
-        <h3 data-i18n="en">Usability review</h3>
-        <h3 data-i18n="sk">Revízia použiteľnosti</h3>
-        <p class="purpose" data-i18n="en">What's missing to make the app genuinely pleasant to use.</p>
-        <p class="purpose" data-i18n="sk">Čo chýba, aby bola appka naozaj príjemná na používanie.</p>
-      </div>
-      <div class="panel">
-        <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
-        <pre class="prompt" data-i18n="en">I want this app to be genuinely usable from a UX perspective. Review it and tell me what's missing and what we need to add to make it easier and more pleasant to use.
-
-Consider:
-- Clarity: is it always obvious what to do next? Labels, empty states, feedback after actions.
-- Errors from the user's side: helpful messages, recovery paths, preventing mistakes before they happen.
-- Consistency: patterns, wording and components used the same way throughout.
-- Accessibility: keyboard navigation, visible focus, contrast, screen-reader labels, ARIA.
-- Forms: when validation fires, sensible defaults, clearly marked required fields.
-- Loading and latency: skeletons, optimistic UI, progress feedback.
-- Mobile and responsive behaviour.
-
-Give concrete, prioritised recommendations, and say where each one applies.</pre>
-        <pre class="prompt" data-i18n="sk">Chcem, aby bola táto aplikácia z pohľadu UX naozaj dobre použiteľná. Prejdi ju a povedz mi, čo chýba a čo potrebujeme doplniť, aby sa používala ľahšie a príjemnejšie.
-
-Zváž:
-- Zrozumiteľnosť: je vždy jasné, čo spraviť ďalej? Popisky, prázdne stavy, spätná väzba po akciách.
-- Chyby z pohľadu používateľa: nápomocné hlášky, cesty z chyby von, predchádzanie omylom skôr, než nastanú.
-- Konzistentnosť: vzory, formulácie a komponenty používané všade rovnako.
-- Prístupnosť: ovládanie klávesnicou, viditeľný focus, kontrast, popisky pre čítačky obrazovky, ARIA.
-- Formuláre: kedy sa spúšťa validácia, rozumné defaulty, jasne označené povinné polia.
-- Načítavanie a odozva: skeletony, optimistické UI, indikácia priebehu.
-- Mobil a responzívne správanie.
-
-Daj konkrétne, prioritizované odporúčania a pri každom povedz, kde sa uplatní.</pre>
-      </div>
-    </article>
-
-    <!-- ===== MODERN ===== -->
-    <article class="card fade" id="modern" style="--c:#4b53c4">
-      <div class="card-head">
-        <div class="tagrow"><span class="tag">MODERN</span><span class="idx">06 / 07</span></div>
-        <h3 data-i18n="en">Modernization audit</h3>
-        <h3 data-i18n="sk">Audit modernosti</h3>
-        <p class="purpose" data-i18n="en">How to get to a state-of-the-art implementation on our current stack.</p>
-        <p class="purpose" data-i18n="sk">Ako sa dostať k state-of-the-art implementácii na našom stacku.</p>
-      </div>
-      <div class="panel">
-        <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
-        <pre class="prompt" data-i18n="en">I want this to be a state-of-the-art, modern application, built the way apps of this type are built today. Audit it and propose how to get there.
-
-- Modern patterns and architecture appropriate for an app like this.
-- The frameworks we already use: are we on current versions and using their latest recommended patterns correctly (React - hooks, Suspense, data-fetching patterns, server components where they fit)?
-- Dependencies: which packages are outdated, deprecated, or replaceable by a better modern option? Which strong current packages could we adopt to our benefit?
-- Tooling: build, bundling, type-safety, testing, CI - is it current?
-- Anything holding us back from being a modern reference implementation.
-
-Deliver an audit plus a concrete, prioritised roadmap: what to upgrade or adopt, and in what order. Separate quick wins from risky migrations.</pre>
-        <pre class="prompt" data-i18n="sk">Chcem, aby toto bola state-of-the-art, moderná aplikácia, postavená tak, ako sa dnes robia appky tohto typu. Sprav audit a navrhni, ako sa k tomu dostať.
-
-- Moderné postupy a architektúra vhodné pre appku tohto typu.
-- Frameworky, ktoré už používame: sme na aktuálnych verziách a používame ich najnovšie odporúčané postupy správne (React - hooks, Suspense, vzory načítavania dát, server components tam, kde dávajú zmysel)?
-- Závislosti: ktoré balíky sú zastarané, deprecated alebo nahraditeľné lepšou modernou alternatívou? Ktoré silné aktuálne balíky by sme vedeli využiť v náš prospech?
-- Nástroje: build, bundling, typová bezpečnosť, testovanie, CI - je to aktuálne?
-- Čokoľvek, čo nás brzdí byť modernou referenčnou implementáciou.
-
-Priprav audit a konkrétny, prioritizovaný plán: čo upgradovať alebo zaviesť a v akom poradí. Oddeľ rýchle výhry od rizikových migrácií.</pre>
-      </div>
-    </article>
-
     <!-- ===== ENGAGEMENT ===== -->
     <article class="card fade" id="engage" style="--c:#c0357f">
       <div class="card-head">
-        <div class="tagrow"><span class="tag">ENGAGE</span><span class="idx">07 / 07</span></div>
+        <div class="tagrow"><span class="tag">ENGAGE</span><span class="idx">01 / 07</span></div>
         <h3 data-i18n="en">Engagement &amp; behavioral design</h3>
         <h3 data-i18n="sk">Engagement a behaviorálny dizajn</h3>
         <p class="purpose" data-i18n="en">Eleven behavioral levers that turn a used-once app into one people return to.</p>
@@ -428,16 +200,20 @@ Priprav audit a konkrétny, prioritizovaný plán: čo upgradovať alebo zavies�
       </div>
       <div class="panel">
         <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
-        <pre class="prompt" data-i18n="en">Look at this application and find where we can improve it for the user and for engagement. Go through these behavioral-design lenses (skip any that don't fit - don't force them):
+        <pre class="prompt" data-i18n="en">Look at this application and find where we can make it better for the user and more engaging. First map the main user journeys from the code, then walk them through these behavioral-design lenses (skip any that don't fit - don't force them):
 
 peak-end rule, Zeigarnik effect, goal-gradient + endowed progress, variable reward, flow, curiosity gap, aesthetic-usability, IKEA effect, fresh-start effect, Hick's law, loss aversion.
 
-For each lens that fits: name the exact screen or flow, what's weak today, one concrete change, and roughly how hard it is to ship. Rank the ideas by impact-to-effort. Flag anything that would cross into a dark pattern and give me the ethical version instead.</pre>
-        <pre class="prompt" data-i18n="sk">Pozri sa na aplikáciu, kde ju vieme vylepšiť z pohľadu používateľa a engagementu. Prejdi ju cez tieto behaviorálne optiky (preskoč tie, čo nesadnú - nesiľ ich):
+Context: this is an enterprise app behind a login, so "engagement" means helping people finish their task and come back willingly - not manufacturing addiction.
+
+For each idea: name the exact screen or flow, what's weak today (with evidence from the code), one concrete change, and a rough effort estimate. Call out the single strongest "peak" moment we have and the weakest ending. Rank everything by impact-to-effort. Flag anything that crosses into a dark pattern and give me the ethical version instead.</pre>
+        <pre class="prompt" data-i18n="sk">Pozri sa na túto aplikáciu a nájdi, kde ju vieme spraviť lepšou pre používateľa a viac engaging. Najprv si z kódu zmapuj hlavné user journeys a potom ich prejdi cez tieto behaviorálne optiky (preskoč tie, čo nesadnú - nesiľ ich):
 
 peak-end rule, Zeigarnik efekt, goal-gradient + endowed progress, variabilná odmena, flow, curiosity gap, aesthetic-usability, IKEA efekt, fresh-start efekt, Hickov zákon, loss aversion.
 
-Pri každej optike, ktorá sadne: pomenuj konkrétnu obrazovku alebo flow, čo je dnes slabé, jednu konkrétnu zmenu a približne aké ťažké je to nasadiť. Zoraď nápady podľa pomeru dopad/námaha. Označ všetko, čo by prešlo do dark patternu, a daj mi namiesto toho etickú verziu.</pre>
+Kontext: je to firemná aplikácia za loginom, takže "engagement" znamená pomôcť ľuďom dokončiť úlohu a dobrovoľne sa vrátiť - nie vyrábať závislosť.
+
+Pri každom nápade: pomenuj konkrétnu obrazovku alebo flow, čo je dnes slabé (s dôkazom z kódu), jednu konkrétnu zmenu a hrubý odhad námahy. Zvlášť pomenuj náš najsilnejší "peak" moment a najslabší koniec. Zoraď všetko podľa pomeru dopad/námaha. Označ všetko, čo prechádza do dark patternu, a daj mi namiesto toho etickú verziu.</pre>
       </div>
       <div class="lenses">
         <p data-i18n="en">The eleven lenses</p>
@@ -455,6 +231,240 @@ Pri každej optike, ktorá sadne: pomenuj konkrétnu obrazovku alebo flow, čo j
           <div class="lens"><b>Hick's law</b><small data-i18n="en">More options = slower decisions. Fewer choices per screen, sensible defaults, one primary action.</small><small data-i18n="sk">Viac možností = pomalšie rozhodovanie. Menej volieb, rozumné defaulty, jedno hlavné CTA.</small></div>
           <div class="lens"><b>Loss aversion</b><small data-i18n="en">Losing hurts more than gaining. "Don't lose your streak" &gt; "earn a point". Warn, don't coerce.</small><small data-i18n="sk">Strata bolí viac než zisk poteší. "Nepríď o streak" &gt; "získaj bod". Varuj, nevydieraj.</small></div>
         </div>
+      </div>
+    </article>
+
+    <!-- ===== MODERN ===== -->
+    <article class="card fade" id="modern" style="--c:#4b53c4">
+      <div class="card-head">
+        <div class="tagrow"><span class="tag">MODERN</span><span class="idx">02 / 07</span></div>
+        <h3 data-i18n="en">Modernization audit</h3>
+        <h3 data-i18n="sk">Audit modernosti</h3>
+        <p class="purpose" data-i18n="en">How to get to a state-of-the-art implementation on our current stack.</p>
+        <p class="purpose" data-i18n="sk">Ako sa dostať k state-of-the-art implementácii na našom stacku.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt" data-i18n="en">I want this to be a modern, state-of-the-art application, built the way apps of this type are built today. Audit the real setup - read package.json, the lockfile and the config files, don't assume - then propose how to get there.
+
+- Stack reality: what frameworks, versions and key libraries are we actually on? Which are outdated, deprecated or end-of-life?
+- Framework best practice: are we using the current recommended patterns of what we already have (React - hooks, Suspense, modern data-fetching, server components where they fit), or old idioms?
+- Dependencies: which packages could be replaced by a better-maintained modern option, and which strong current libraries are worth adopting? Note the bundle-size and maintenance impact.
+- Tooling: build, bundling, type-safety, linting, testing, CI - is it current and strict enough?
+- Architecture: what structurally holds us back from being a clean reference implementation?
+
+Separate real improvements from hype - I don't want churn for its own sake. Deliver a prioritised roadmap: quick wins first, then bigger migrations, each with a rough effort and risk note and a safe incremental path. This is an audit - propose, don't start upgrading yet.</pre>
+        <pre class="prompt" data-i18n="sk">Chcem, aby toto bola moderná, state-of-the-art aplikácia, postavená tak, ako sa dnes robia appky tohto typu. Sprav audit reálneho stavu - prečítaj package.json, lockfile a konfiguračné súbory, nepredpokladaj - a navrhni, ako sa k tomu dostať.
+
+- Realita stacku: na akých frameworkoch, verziách a kľúčových knižniciach reálne sme? Ktoré sú zastarané, deprecated alebo po konci podpory?
+- Best practice frameworkov: používame aktuálne odporúčané postupy toho, čo už máme (React - hooks, Suspense, moderné načítavanie dát, server components tam, kde sadnú), alebo staré idiómy?
+- Závislosti: ktoré balíky by sa dali nahradiť lepšie udržiavanou modernou alternatívou a ktoré silné aktuálne knižnice sa oplatí zaviesť? Uveď dopad na veľkosť bundlu a údržbu.
+- Nástroje: build, bundling, typová bezpečnosť, linting, testovanie, CI - je to aktuálne a dosť prísne?
+- Architektúra: čo nás štrukturálne brzdí byť čistou referenčnou implementáciou?
+
+Oddeľ reálne zlepšenia od hype - nechcem zmeny pre zmenu. Priprav prioritizovaný plán: najprv rýchle výhry, potom väčšie migrácie, každá s hrubým odhadom námahy a rizika a s bezpečnou inkrementálnou cestou. Toto je audit - navrhni, zatiaľ nič neupgraduj.</pre>
+      </div>
+    </article>
+
+    <!-- ===== SECURITY ===== -->
+    <article class="card fade" id="sec" style="--c:#cf3535">
+      <div class="card-head">
+        <div class="tagrow"><span class="tag">SEC</span><span class="idx">03 / 07</span></div>
+        <h3 data-i18n="en">Security audit</h3>
+        <h3 data-i18n="sk">Bezpečnostný audit</h3>
+        <p class="purpose" data-i18n="en">A deep audit of what the code really does - not what the docs claim.</p>
+        <p class="purpose" data-i18n="sk">Hĺbkový audit toho, čo kód naozaj robí - nie čo tvrdí dokumentácia.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt" data-i18n="en">Do a thorough, deep security audit of this application - frontend and backend. Work from the real code, not the docs, READMEs or comments, and verify each issue is actually exploitable rather than just pattern-matching. Trace untrusted input from where it enters to where it's used.
+
+Context: the app is internet-facing, behind an F5 (BIG-IP) login. Don't treat that login as a safety net - assume an authenticated user can be hostile.
+
+Cover at least:
+- AuthN / AuthZ: is every endpoint properly protected? Missing authorization checks, IDOR, privilege escalation, endpoints that trust the frontend to hide them?
+- Injection &amp; input validation: SQL / NoSQL injection, command injection, XSS (stored and reflected), SSRF, path traversal, mass assignment.
+- Secrets: hardcoded credentials, tokens or keys in the repo or shipped in the client bundle.
+- Data exposure: sensitive data or PII sent to the client, in verbose errors, or in logs.
+- Sessions &amp; transport: CSRF, secure/httpOnly cookies, CORS config, missing rate limiting.
+- File uploads and any calls to external services.
+- Dependencies with known vulnerabilities.
+- OWASP Top 10 as a checklist.
+
+For each finding: severity, exact file:line, a short exploit scenario, how confident you are it's real, and the concrete fix. Order by real-world risk. Verify against the code - don't assume.</pre>
+        <pre class="prompt" data-i18n="sk">Sprav dôkladný, hĺbkový bezpečnostný audit tejto aplikácie - frontend aj backend. Vychádzaj z reálneho kódu, nie z dokumentácie, README ani komentárov, a pri každom probléme over, že je naozaj zneužiteľný, nie len že sedí vzor. Sleduj nedôveryhodný vstup od miesta, kde vstupuje, až tam, kde sa použije.
+
+Kontext: aplikácia je otvorená do internetu, za loginom cez F5 (BIG-IP). Neber ten login ako záchrannú sieť - predpokladaj, že aj prihlásený používateľ môže byť nepriateľský.
+
+Pokry aspoň:
+- AuthN / AuthZ: je každý endpoint poriadne chránený? Chýbajúce autorizačné kontroly, IDOR, eskalácia práv, endpointy spoliehajúce sa na to, že ich skryje frontend?
+- Injection a validácia vstupov: SQL / NoSQL injection, command injection, XSS (stored aj reflected), SSRF, path traversal, mass assignment.
+- Tajomstvá: natvrdo zapísané heslá, tokeny alebo kľúče v repozitári alebo poslané v klientskom bundli.
+- Únik dát: citlivé dáta alebo PII posielané na klienta, v ukecaných chybách alebo v logoch.
+- Session a prenos: CSRF, secure/httpOnly cookies, nastavenie CORS, chýbajúci rate limiting.
+- Uploady súborov a akékoľvek volania na externé služby.
+- Závislosti so známymi zraniteľnosťami.
+- OWASP Top 10 ako checklist.
+
+Pri každom náleze: závažnosť, presný súbor:riadok, krátky scenár zneužitia, ako si istý, že je reálny, a konkrétna oprava. Zoraď podľa reálneho rizika. Over voči kódu - nepredpokladaj.</pre>
+      </div>
+    </article>
+
+    <!-- ===== PERFORMANCE ===== -->
+    <article class="card fade" id="perf" style="--c:#b26a0a">
+      <div class="card-head">
+        <div class="tagrow"><span class="tag">PERF</span><span class="idx">04 / 07</span></div>
+        <h3 data-i18n="en">Performance audit</h3>
+        <h3 data-i18n="sk">Audit výkonu</h3>
+        <p class="purpose" data-i18n="en">Is the app as fast as it can be - server, data layer, and the React render path.</p>
+        <p class="purpose" data-i18n="sk">Beží appka tak rýchlo, ako sa dá - server, dátová vrstva aj render v Reacte.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt" data-i18n="en">Audit this application for performance end to end and validate we're doing things right. Base findings on the real code, and focus on what a user would actually feel - not micro-optimizations that don't matter. Trace one or two of the heaviest real flows from request to render.
+
+Focus on (but don't stop here):
+- Database / server calls: query efficiency, missing indexes, over-fetching rows or columns, missing pagination.
+- N+1 query patterns anywhere in the data layer.
+- Redundant or duplicate backend/DB calls - the same data fetched more than once, missing caching or memoization.
+- React: unnecessary re-renders, missing useMemo/useCallback/React.memo, state placed too high in the tree, heavy components, long lists that should be virtualized.
+- Time to first meaningful render: bundle size, code splitting, lazy loading, requests blocking the critical path.
+- Loading resources (images, fonts, scripts): eager vs lazy, caching headers, CDN usage.
+- Request waterfalls that could be parallelized, batched or streamed.
+
+For each finding: the exact file / component / query, the impact (ideally an estimate of what it costs), a concrete fix, and an effort estimate. Rank by impact-to-effort and put user-perceptible wins first. This is an audit - propose, don't start changing code yet.</pre>
+        <pre class="prompt" data-i18n="sk">Sprav audit výkonu tejto aplikácie od začiatku po koniec a zvaliduj, či to máme spravené dobre. Vychádzaj z reálneho kódu a sústreď sa na to, čo používateľ naozaj pocíti - nie na mikro-optimalizácie, na ktorých nezáleží. Sleduj jeden-dva najťažšie reálne flows od requestu po render.
+
+Zameraj sa hlavne na (ale nekonči pri tomto):
+- Volania do databázy / na server: efektivita dopytov, chýbajúce indexy, naťahovanie zbytočných riadkov a stĺpcov, chýbajúce stránkovanie.
+- N+1 dopyty kdekoľvek v dátovej vrstve.
+- Zbytočné alebo duplicitné volania na backend/DB - tie isté dáta tahané viackrát, chýbajúci caching alebo memoizácia.
+- React: zbytočné re-rendery, chýbajúce useMemo/useCallback/React.memo, stav uložený privysoko v strome, ťažké komponenty, dlhé zoznamy, ktoré by mali byť virtualizované.
+- Čas do prvého zmysluplného vykreslenia: veľkosť bundlu, code splitting, lazy loading, requesty blokujúce kritickú cestu.
+- Načítavanie resources (obrázky, fonty, skripty): eager vs lazy, caching hlavičky, využitie CDN.
+- Vodopády requestov, ktoré by sa dali paralelizovať, dávkovať alebo streamovať.
+
+Pri každom náleze: presný súbor / komponent / dopyt, dopad (ideálne odhad, koľko to stojí), konkrétna oprava a odhad námahy. Zoraď podľa pomeru dopad/námaha a dopredu daj výhry, ktoré používateľ pocíti. Toto je audit - navrhni, zatiaľ nič nemeň.</pre>
+      </div>
+    </article>
+
+    <!-- ===== REFACTORING ===== -->
+    <article class="card fade" id="refactor" style="--c:#6d45c9">
+      <div class="card-head">
+        <div class="tagrow"><span class="tag">REFACTOR</span><span class="idx">05 / 07</span></div>
+        <h3 data-i18n="en">Refactoring analysis</h3>
+        <h3 data-i18n="sk">Analýza refaktoringu</h3>
+        <p class="purpose" data-i18n="en">Cleaner, safer, more readable code - without changing a single behaviour.</p>
+        <p class="purpose" data-i18n="sk">Čistejší, bezpečnejší a čitateľnejší kód - bez zmeny akéhokoľvek správania.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt" data-i18n="en">Review how this application is implemented and find what we can improve to make it more maintainable and readable - without changing any behaviour. We are only improving the code; functionality must stay identical.
+
+Look for:
+- Readability: unclear naming, over-long functions, deep nesting, low cohesion / high coupling.
+- Change safety: code where a small edit is likely to break something unrelated.
+- Open/Closed principle: places where extending behaviour forces us to modify existing code.
+- Dead code: unused functions, variables, imports, unreachable branches.
+- Scattered logic that belongs together - pull it into cohesive functions / modules.
+- Copy&amp;paste code: extract the shared abstraction into a single place.
+- Magic strings and numbers: pull them into named constants, so we stop comparing raw strings in different spots.
+- Inconsistent error handling.
+- Typing: are the types correct and complete everywhere? Any "any", missing types, unsafe casts?
+- Suppressed checks: disabled linter rules, ignored errors, skipped tests, eslint-disable, @ts-ignore - we want everything checked, so flag every suppression.
+- Missing comments where they'd genuinely help understanding (not noise).
+- General code smells.
+
+Deliver a prioritised analysis: what to change, why, and how, ranked by value vs risk, grouped into safe incremental steps. Where behaviour is at risk, note what test would lock it down first. Don't change functionality - refactor only, and propose before touching anything.</pre>
+        <pre class="prompt" data-i18n="sk">Pozri sa, ako je táto aplikácia naimplementovaná, a nájdi, čo vieme zlepšiť, aby bola lepšie udržiavateľná a čitateľnejšia - bez zmeny akéhokoľvek správania. Iba zlepšujeme kód; funkcionalita musí ostať identická.
+
+Hľadaj:
+- Čitateľnosť: nejasné pomenovania, príliš dlhé funkcie, hlboké zanorenie, nízka súdržnosť / vysoká previazanosť.
+- Bezpečnosť zmien: kód, kde malá úprava pravdepodobne pokazí niečo nesúvisiace.
+- Open/Closed princíp: miesta, kde rozšírenie správania núti meniť existujúci kód.
+- Mŕtvy kód: nepoužité funkcie, premenné, importy, nedosiahnuteľné vetvy.
+- Roztrúsenú logiku, ktorá patrí spolu - vytiahni ju do súdržných funkcií / modulov.
+- Copy&amp;paste kód: vytiahni spoločnú abstrakciu na jedno miesto.
+- Magic strings a čísla: vytiahni ich do pomenovaných konštánt, nech neporovnávame surové reťazce sem-tam.
+- Nekonzistentné ošetrovanie chýb.
+- Typovosť: sú typy všade správne a úplné? Nie je niekde "any", chýbajúce typy, nebezpečné pretypovania?
+- Potlačené kontroly: vypnuté pravidlá lintera, ignorované chyby, preskočené testy, eslint-disable, @ts-ignore - chceme kontrolovať všetko, tak označ každé potlačenie.
+- Chýbajúce komentáre tam, kde by naozaj pomohli pochopeniu (nie šum).
+- Všeobecné code smells.
+
+Priprav prioritizovanú analýzu: čo zmeniť, prečo a ako, zoradené podľa prínosu vs rizika, rozdelené do bezpečných inkrementálnych krokov. Kde hrozí zmena správania, napíš, aký test by to najprv zaistil. Nemeň funkcionalitu - iba refaktoruj a najprv navrhni, než sa niečoho dotkneš.</pre>
+      </div>
+    </article>
+
+    <!-- ===== USABILITY ===== -->
+    <article class="card fade" id="ux" style="--c:#0e8f7c">
+      <div class="card-head">
+        <div class="tagrow"><span class="tag">UX</span><span class="idx">06 / 07</span></div>
+        <h3 data-i18n="en">Usability review</h3>
+        <h3 data-i18n="sk">Revízia použiteľnosti</h3>
+        <p class="purpose" data-i18n="en">What's missing to make the app genuinely pleasant to use.</p>
+        <p class="purpose" data-i18n="sk">Čo chýba, aby bola appka naozaj príjemná na používanie.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt" data-i18n="en">I want this app to be genuinely usable. Walk the main user journeys in the app, find the friction, and tell me what's missing and what to add to make it easier and more pleasant.
+
+Consider:
+- Clarity: is it always obvious what to do next? Labels, empty states, feedback after every action.
+- Error handling from the user's side: helpful messages, recovery paths, preventing mistakes before they happen.
+- Consistency: patterns, wording and components used the same way throughout.
+- Information hierarchy: is the important thing the most prominent thing on each screen?
+- Accessibility: keyboard navigation, visible focus, colour contrast, screen-reader labels, ARIA - against WCAG.
+- Forms: when validation fires, sensible defaults, clearly marked required fields, good error text.
+- Loading and latency: skeletons, optimistic UI, progress feedback.
+- Mobile and responsive behaviour.
+
+Go screen by screen where it matters. Give concrete, prioritised recommendations, say where each one applies, and put the quick, high-impact wins first.</pre>
+        <pre class="prompt" data-i18n="sk">Chcem, aby bola táto aplikácia naozaj dobre použiteľná. Prejdi hlavné user journeys v aplikácii, nájdi trenie a povedz mi, čo chýba a čo doplniť, aby sa používala ľahšie a príjemnejšie.
+
+Zváž:
+- Zrozumiteľnosť: je vždy jasné, čo spraviť ďalej? Popisky, prázdne stavy, spätná väzba po každej akcii.
+- Ošetrenie chýb z pohľadu používateľa: nápomocné hlášky, cesty z chyby von, predchádzanie omylom skôr, než nastanú.
+- Konzistentnosť: vzory, formulácie a komponenty používané všade rovnako.
+- Informačná hierarchia: je to najdôležitejšie zároveň najvýraznejšie na obrazovke?
+- Prístupnosť: ovládanie klávesnicou, viditeľný focus, kontrast farieb, popisky pre čítačky obrazovky, ARIA - voči WCAG.
+- Formuláre: kedy sa spúšťa validácia, rozumné defaulty, jasne označené povinné polia, dobré chybové texty.
+- Načítavanie a odozva: skeletony, optimistické UI, indikácia priebehu.
+- Mobil a responzívne správanie.
+
+Choď obrazovku po obrazovke tam, kde to dáva zmysel. Daj konkrétne, prioritizované odporúčania, povedz, kde sa každé uplatní, a dopredu daj rýchle výhry s veľkým dopadom.</pre>
+      </div>
+    </article>
+
+    <!-- ===== FUNCTIONAL ===== -->
+    <article class="card fade" id="func" style="--c:#2563c9">
+      <div class="card-head">
+        <div class="tagrow"><span class="tag">FUNC</span><span class="idx">07 / 07</span></div>
+        <h3 data-i18n="en">Functional coverage vs PRD</h3>
+        <h3 data-i18n="sk">Funkčné pokrytie voči PRD</h3>
+        <p class="purpose" data-i18n="en">Does the implementation actually match the PRD - every screen, every step, every state.</p>
+        <p class="purpose" data-i18n="sk">Sedí implementácia naozaj s PRD - každá obrazovka, každý krok, každý stav.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-bar"><span>Prompt</span><button class="copy" onclick="copyPrompt(this)">Copy</button></div>
+        <pre class="prompt" data-i18n="en">Verify in depth that we've implemented everything in the PRD. Treat the PRD as the source of truth and go requirement by requirement. If you can't find the PRD in the repo, ask me for it before starting.
+
+For every requirement and acceptance criterion, check:
+- The screen or feature it describes actually exists and is functional.
+- The behaviour matches the spec - not just "a screen is there", but it does what it should, including edge cases, empty states and error states.
+- Nothing from the spec is silently missing or only half-implemented.
+- Flag anything built beyond the spec (scope creep) and anything where the PRD is ambiguous.
+
+Deliver a traceability table: PRD requirement -> status (done / partial / missing) -> evidence (file:line) -> the gap, if any. Cite concrete files for every "done". Be honest about partials - if it looks done but isn't wired up, say so.</pre>
+        <pre class="prompt" data-i18n="sk">Over do hĺbky, či máme implementované všetko, čo je v PRD. Ber PRD ako zdroj pravdy a choď požiadavku po požiadavke. Ak PRD v repozitári nenájdeš, vypýtaj si ho odo mňa, než začneš.
+
+Pri každej požiadavke a akceptačnom kritériu skontroluj:
+- Či obrazovka alebo feature, ktorú popisuje, naozaj existuje a je funkčná.
+- Či správanie sedí so špecifikáciou - nie len "obrazovka tam je", ale robí to, čo má, vrátane hraničných prípadov, prázdnych stavov a chybových stavov.
+- Či nič zo špecifikácie potichu nechýba alebo nie je len spolovice hotové.
+- Označ všetko postavené nad rámec špecifikácie (scope creep) a všetko, kde je PRD nejednoznačné.
+
+Priprav tabuľku sledovateľnosti: požiadavka z PRD -> stav (hotové / čiastočne / chýba) -> dôkaz (súbor:riadok) -> aká je medzera. Pri každom "hotové" cituj konkrétne súbory. Buď úprimný pri čiastočných - ak to vyzerá hotovo, ale nie je to zapojené, napíš to.</pre>
       </div>
     </article>
 
