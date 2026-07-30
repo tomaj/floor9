@@ -48,7 +48,7 @@ I turned all of this into a small **prompt playbook** - point your AI assistant 
 - **Usability** - clarity, errors, accessibility, forms
 - **Functional / PRD** - coverage, edge states, test coverage
 
-Each prompt lists the exact areas to check, why each matters, and real examples. Bilingual (EN/SK), copy-and-paste.
+Each prompt lists the exact areas to check, why each matters, and real examples. Every prompt in English, Slovak and Czech - copy and paste.
 
 Do yourself a favour and open it for two minutes - skim the seven prompts, and take whichever one matches what you're wrestling with this week.
 
@@ -62,7 +62,7 @@ The obvious next step: an **agent you simply hand a repo to** - it runs all seve
 - AI will hand you 20 ideas in a minute. Prioritisation and ethics are still on you.
 - An idea is not a shipped feature. The prompt is a starting point - half the ideas won't survive contact with your actual users, and that's fine.
 
-## Worth thinking about
+## The part worth sitting with
 The psychology isn't new - these effects have been in textbooks for decades. What's new is that the cost of checking your product against all of them just dropped to near zero. The bottleneck was never the knowledge; it was having someone sit down and look through every lens. That part is now a prompt. What's left for us is the judgement about which changes are worth it, and which ones we'd be ashamed to ship.
 
 ## Sign-off
