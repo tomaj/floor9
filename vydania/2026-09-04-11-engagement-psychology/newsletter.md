@@ -2,7 +2,7 @@
 
 **Date:** Friday 4 September 2026
 **Issue:** N°11
-**Topic of this issue:** Better, faster apps - the patterns behind them, and a playbook of prompts that find them
+**Topic of this issue:** Better, faster apps - four patterns worth knowing, and a playbook of prompts that find them
 
 ---
 
@@ -21,12 +21,10 @@ We tend to think "make the app better" means a big project. Usually it doesn't. 
 ## 01 Patterns you should know
 1. **Peak-end rule** - people judge an experience by its most intense moment and its ending, not the average. *Why it matters:* nail one "wow" moment and a clean final screen, and users remember the whole thing as good - even if the middle was bumpy.
 2. **Zeigarnik effect** - we can't stop thinking about unfinished tasks. *Why it matters:* a visible "profile 80% complete" or a saved draft quietly pulls people back to finish, with zero nagging.
-3. **Goal-gradient + endowed progress** - the closer a goal feels, the harder we push, and starting with some progress already filled makes us push from the first click. *Why it matters:* never start anyone at an empty bar - "2 of 5 done" converts far better than "0 of 5".
-4. **Hick's law** - every extra choice on a screen slows the decision and tires the user. *Why it matters:* fewer options and one obvious primary action usually beat cramming in more - counterintuitive, but it lifts completion.
-5. **Aesthetic-usability effect** - people perceive better-looking interfaces as easier to use and more trustworthy, even when they're functionally identical. *Why it matters:* polish isn't decoration; it buys forgiveness for small friction and raises perceived quality.
-6. **Loss aversion** - losing something hurts about twice as much as gaining the same thing pleases. *Why it matters:* "don't lose your streak" motivates harder than "earn a point" - powerful, so use it to protect the user's progress, not to trap them.
+3. **Hick's law** - every extra choice on a screen slows the decision and tires the user. *Why it matters:* fewer options and one obvious primary action usually beat cramming in more - counterintuitive, but it lifts completion.
+4. **Loss aversion** - losing something hurts about twice as much as gaining the same thing pleases. *Why it matters:* "don't lose your streak" motivates harder than "earn a point" - powerful, so use it to protect the user's progress, not to trap them.
 
-There are twelve of these in total - variable reward, flow, curiosity gap, IKEA effect, fresh-start, social proof round out the set. All twelve, with concrete examples, live in the playbook below.
+**+8 And eight more.** Goal-gradient, variable reward, flow, curiosity gap, aesthetic-usability, IKEA effect, fresh-start and social proof. All twelve, with concrete examples, are in the playbook below.
 
 ## 02 The prompt (steal this)
 Here's the thing: you don't have to memorise any of it. Point Claude Code (or any assistant) at your app - the repo, a Figma, or just screenshots - and paste this:
@@ -34,6 +32,11 @@ Here's the thing: you don't have to memorise any of it. Point Claude Code (or an
 > Look at this application and find where we can improve it for the user and for engagement. Go through these behavioral-design lenses (skip any that don't fit): peak-end rule, Zeigarnik effect, goal-gradient + endowed progress, variable reward, flow, curiosity gap, aesthetic-usability, IKEA effect, fresh-start effect, Hick's law, loss aversion, social proof. For each lens that fits: name the exact screen or flow, what's weak today, one concrete change, and roughly how hard it is to ship. Rank the ideas by impact-to-effort. Flag anything that would cross into a dark pattern and give me the ethical version instead.
 
 Follow-up that works well: *"Take the top 3 and write them up as tickets with acceptance criteria."*
+
+## Bridge to the playbook
+**That prompt fixes one thing: engagement. But it's rarely the only thing wrong with an app.**
+
+The same trick - hand the assistant a proper checklist instead of a vague ask - works just as well on the slow query, the file nobody dares refactor, or the security hole nobody has found yet. So I collected the prompts I actually use into one place.
 
 ## 03 The playbook (and it's not just engagement)
 I turned all of this into a small **prompt playbook** - point your AI assistant at an app, paste a prompt, get back concrete, ranked improvements. Engagement is only one of seven. The same playbook has prompts for:
@@ -46,6 +49,8 @@ I turned all of this into a small **prompt playbook** - point your AI assistant 
 - **Functional / PRD** - coverage, edge states, test coverage
 
 Each prompt lists the exact areas to check, why each matters, and real examples. Bilingual (EN/SK), copy-and-paste.
+
+Do yourself a favour and open it for two minutes - skim the seven prompts, and take whichever one matches what you're wrestling with this week.
 
 **Open the playbook:** https://decklink.sk.tmo/d/the-ai-audit-playbook
 
