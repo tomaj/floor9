@@ -2,52 +2,63 @@
 
 **Date:** Friday 4 September 2026
 **Issue:** N°11
-**Topic of this issue:** How to make your app better - a prompt you can steal, and 11 levers behind it
+**Topic of this issue:** Better, faster apps - the patterns behind them, and a playbook of prompts that find them
 
 ---
 
 ## HERO
 - Kicker: FLOOR 9 · Digital & Omnichannel · N°11 · September 2026
 - Title: FLOOR 9
-- White line: Small nudges beat big rebuilds.
-- Green line: This issue - one prompt to point at your own app, and 11 behavioral levers it looks for. Steal both.
+- White line: Great apps aren't luck. They're patterns.
+- Green line: This issue - the design patterns you should know, and a playbook of prompts that find them in your own app.
 
 ## Lead
-**Most engagement problems don't need a rebuild. They need a few small nudges in the right places - and now you can have AI find them in minutes.** The trick is giving it the right lens. Below is the exact prompt I use, plus the 11 behavioral levers behind it, each with one concrete change you could ship.
+**Have you heard of the peak-end rule? The Zeigarnik effect? Hick's law?** If not - you probably should have. They're not trivia. They're the studied, named reasons some apps feel effortless and worth coming back to, while others - with the exact same features - feel like a chore. And the best part: you don't need a rebuild to use them, and AI can now find where they're missing in minutes.
 
 ## A quick word
-We tend to think "make the app better" means a big project. Usually it doesn't. The difference between an app people use once and one they come back to is often a handful of small moments: how a flow ends, whether progress is visible, how many choices sit on a screen. Those are studied, named things - not taste. And AI is very good at spotting where they're missing, if you tell it what to look for.
+We tend to think "make the app better" means a big project. Usually it doesn't. The difference between an app people use once and one they return to is often a handful of small, well-understood moments: how a flow ends, whether progress is visible, how many choices sit on one screen. These are documented patterns, not taste - and once you know their names, you start seeing them (or their absence) everywhere.
 
-## The prompt (steal this)
-Point Claude Code (or any assistant) at your app - the repo, a Figma, or just screenshots - and paste this:
+## 01 Patterns you should know
+1. **Peak-end rule** - people judge an experience by its most intense moment and its ending, not the average. *Why it matters:* nail one "wow" moment and a clean final screen, and users remember the whole thing as good - even if the middle was bumpy.
+2. **Zeigarnik effect** - we can't stop thinking about unfinished tasks. *Why it matters:* a visible "profile 80% complete" or a saved draft quietly pulls people back to finish, with zero nagging.
+3. **Goal-gradient + endowed progress** - the closer a goal feels, the harder we push, and starting with some progress already filled makes us push from the first click. *Why it matters:* never start anyone at an empty bar - "2 of 5 done" converts far better than "0 of 5".
+4. **Hick's law** - every extra choice on a screen slows the decision and tires the user. *Why it matters:* fewer options and one obvious primary action usually beat cramming in more - counterintuitive, but it lifts completion.
+5. **Aesthetic-usability effect** - people perceive better-looking interfaces as easier to use and more trustworthy, even when they're functionally identical. *Why it matters:* polish isn't decoration; it buys forgiveness for small friction and raises perceived quality.
+6. **Loss aversion** - losing something hurts about twice as much as gaining the same thing pleases. *Why it matters:* "don't lose your streak" motivates harder than "earn a point" - powerful, so use it to protect the user's progress, not to trap them.
 
-> Look at this application and find where we can improve it for the user and for engagement. Go through these behavioral-design lenses (skip any that don't fit, don't force them): peak-end rule, Zeigarnik effect, goal-gradient + endowed progress, variable reward, flow (difficulty vs skill), curiosity gap, aesthetic-usability, IKEA effect, fresh-start effect, Hick's law, loss aversion. For each lens that fits: name the exact screen or flow, what's weak today, one concrete change, and roughly how hard it is to ship. Rank the ideas by impact-to-effort. Flag anything that would cross into a dark pattern and give me the ethical version instead.
+There are twelve of these in total - variable reward, flow, curiosity gap, IKEA effect, fresh-start, social proof round out the set. All twelve, with concrete examples, live in the playbook below.
+
+## 02 The prompt (steal this)
+Here's the thing: you don't have to memorise any of it. Point Claude Code (or any assistant) at your app - the repo, a Figma, or just screenshots - and paste this:
+
+> Look at this application and find where we can improve it for the user and for engagement. Go through these behavioral-design lenses (skip any that don't fit): peak-end rule, Zeigarnik effect, goal-gradient + endowed progress, variable reward, flow, curiosity gap, aesthetic-usability, IKEA effect, fresh-start effect, Hick's law, loss aversion, social proof. For each lens that fits: name the exact screen or flow, what's weak today, one concrete change, and roughly how hard it is to ship. Rank the ideas by impact-to-effort. Flag anything that would cross into a dark pattern and give me the ethical version instead.
 
 Follow-up that works well: *"Take the top 3 and write them up as tickets with acceptance criteria."*
 
-## The 11 levers (principle -> what to actually change)
-1. **Peak-end rule** - people remember an experience by its most intense moment and its ending, not the average. Design one deliberate "wow" moment, and polish the last screen of every flow (success, confirmation, end of session). A great ending forgives a bumpy middle.
-2. **Zeigarnik effect** - we keep thinking about unfinished tasks. Progress bars, "profile 80% complete", saved drafts. An open loop the brain wants to close.
-3. **Goal-gradient + endowed progress** - the closer the goal, the harder we push. Start onboarding or loyalty already partly filled ("2 of 5 steps done"). People try harder on a path they feel already on.
-4. **Variable reward** - an unpredictable reward is stickier than a regular one. An occasional surprise, bonus, or "you unlocked...". The honest line: reward real value, don't build a slot machine.
-5. **Flow** - engagement lives just above the user's current skill. Not too easy (boredom), not too hard (frustration). Progressive disclosure: don't drown newcomers, don't bore power users.
-6. **Curiosity gap** - a visible gap between what I know and want to know pulls me forward. "2 more steps and you'll see your result." A tease that pays off soon.
-7. **Aesthetic-usability effect** - things that look better are perceived as easier to use and more trustworthy, even when they aren't functionally better. Visual polish is not decoration, it's perceived quality.
-8. **IKEA effect** - we value what we helped build. Let users set something up or create something in onboarding - the attachment beats a ready-made product handed over.
-9. **Fresh-start effect** - motivation rises at symbolic beginnings (new week, 1st of the month, birthday). Let people restart a streak or a goal without feeling like they failed.
-10. **Hick's law** - more options = slower, more tiring decisions. Fewer choices per screen, sensible defaults, one primary action. Feels counterintuitive, raises satisfaction.
-11. **Loss aversion** - losing something hurts more than gaining the same thing pleases. "Don't lose your streak" pulls harder than "earn a point". Ethical version: warn, don't coerce.
+## 03 The playbook (and it's not just engagement)
+I turned all of this into a small **prompt playbook** - point your AI assistant at an app, paste a prompt, get back concrete, ranked improvements. Engagement is only one of seven. The same playbook has prompts for:
+
+- **Performance** - queries, N+1, React re-renders, bundle size
+- **Security** - auth, injection, secrets, OWASP standards, headers
+- **Refactoring** - readability, duplication, dead code, types
+- **Modernization** - stack, framework patterns, dependencies, tooling
+- **Usability** - clarity, errors, accessibility, forms
+- **Functional / PRD** - coverage, edge states, test coverage
+
+Each prompt lists the exact areas to check, why each matters, and real examples. Bilingual (EN/SK), copy-and-paste.
+
+**Open the playbook:** https://decklink.sk.tmo/d/the-ai-audit-playbook
 
 ## Kept honest
-- These levers are powerful, and the line between engagement and manipulation is thin. Variable reward + loss aversion are exactly the casino mechanics we wrote about in N°05 (Hooked). Use them to help the user get real value, not to trap them.
+- These patterns are powerful, and the line between engagement and manipulation is thin. Variable reward + loss aversion are the same casino mechanics we wrote about in N°05 (Hooked). Use them to help the user, not to trap them.
 - AI will hand you 20 ideas in a minute. Prioritisation and ethics are still on you.
-- An idea is not a shipped feature. The prompt is a starting point, not a finished product - and half the ideas won't survive contact with your actual users.
+- An idea is not a shipped feature. The prompt is a starting point - half the ideas won't survive contact with your actual users, and that's fine.
 
 ## What I'm chewing on
-The interesting shift isn't the psychology - these effects have been in textbooks for decades. It's that the cost of *checking your product against all of them* just dropped to near zero. The bottleneck was never the knowledge, it was having someone sit down and look through eleven different lenses. That part is now a prompt. What's left for us is the judgement about which nudges are worth it, and which ones we'd be ashamed to ship.
+The psychology isn't new - these effects have been in textbooks for decades. What's new is that the cost of checking your product against all of them just dropped to near zero. The bottleneck was never the knowledge; it was having someone sit down and look through every lens. That part is now a prompt. What's left for us is the judgement about which changes are worth it, and which ones we'd be ashamed to ship.
 
 ## Sign-off
-Run the prompt on something you own this week and reply with the one idea that surprised you. I'll collect the best ones for a follow-up. And if you catch me shipping a dark pattern, call it out - that's the deal.
+Run one prompt on something you own this week and reply with the idea that surprised you most. I'll collect the best ones for a follow-up. And if you catch me shipping a dark pattern, call it out - that's the deal.
 
 - Tomas
 
