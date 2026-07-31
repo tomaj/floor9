@@ -3,3 +3,6 @@
 .decklink-assets.json
 .DS_Store
 newsletter-email.html
+
+# playbook / scratch - not part of the newsletter repo
+temp/
