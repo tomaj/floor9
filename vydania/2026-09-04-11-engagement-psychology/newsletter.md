@@ -55,7 +55,7 @@ Do yourself a favour and open it for two minutes - skim the seven prompts, and t
 **Open the playbook:** https://decklink.sk.tmo/d/the-ai-audit-playbook
 
 ## Bonus idea
-The obvious next step: an **agent you simply hand a repo to** - it runs all seven audits by itself, on a schedule, and tells you what got better or worse since last week. Nobody has to remember to ask. If that sounds useful to you too, say so and I'll build it.
+The obvious next step: an **agent you simply hand a repo to** - it runs all seven audits by itself, on a schedule, and tells you what got better or worse since last week. Nobody has to remember to ask. If that sounds useful where you sit too, let's team up and build it together.
 
 ## Kept honest
 - These patterns are powerful, and the line between engagement and manipulation is thin. Variable reward + loss aversion are the same casino mechanics we wrote about in N°05 (Hooked). Use them to help the user, not to trap them.
