@@ -16,6 +16,8 @@
 **Have you heard of the peak-end rule? The Zeigarnik effect? Hick's law?** If not - you probably should have. They're not trivia. They're the studied, named reasons some apps feel effortless and worth coming back to, while others - with the exact same features - feel like a chore. And the best part: you don't need a rebuild to use them, and AI can now find where they're missing in minutes.
 
 ## A quick word
+*We're back after a month off - I hope you got some proper rest over the summer. Let's ease in with something light, though I think it's genuinely interesting.*
+
 We tend to think "make the app better" means a big project. Usually it doesn't. The difference between an app people use once and one they return to is often a handful of small, well-understood moments: how a flow ends, whether progress is visible, how many choices sit on one screen. These are documented patterns, not taste - and once you know their names, you start seeing them (or their absence) everywhere.
 
 ## 01 Patterns you should know
