@@ -18,6 +18,8 @@ Stav: `nápad` -> `zbieram materiál` -> `draft` -> `odoslané`
 | 12 | Minions | minions.md | nápad | |
 | 13 | Claude Code vs Codex? | claude-code-vs-codex.md | nápad | porovnanie nástrojov, čo nám funguje a prečo |
 | 14 | Ako jednoducho zlepsit vasu aplikaciu | engagement-psychology.md | ready to send | issue N°11 "Steal this prompt" (4. 9. 2026, 1. piatok v septembri) - behavioral levers + AI audit prompt |
+| 15 | Rýchlosť je nový štandard | rychlost-je-novy-standard.md | odoslané | issue N°12 "Speed is the new normal" (odoslané 25. 9. 2026) - Communication hub, IWD (teraz STR), SearchX, RetailPass, Flow (teaser) |
+| 16 | Flow | flow.md | nápad | nový frontend namiesto Siebelu, fully AI, backend nové DPS - follow-up na N°15 |
 
 ## Tip na poradie
 
