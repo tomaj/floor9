@@ -21,6 +21,7 @@ Stav: `nápad` -> `zbieram materiál` -> `draft` -> `odoslané`
 | 15 | Rýchlosť je nový štandard | rychlost-je-novy-standard.md | odoslané | issue N°12 "Speed is the new normal" (odoslané 25. 9. 2026) - Communication hub, IWD (teraz STR), SearchX, RetailPass, Flow (teaser) |
 | 16 | Flow | flow.md | nápad | nový frontend namiesto Siebelu, fully AI, backend nové DPS - follow-up na N°15 |
 | 17 | HackAIton - Po Ruke | hackaiton-po-ruke.md | odoslané | issue N°13 "A native app in 24 hours" (naplánované na 16. 10. 2026) - natívna appka za 24 h, webview vs native, chýbajúce zdrojáky |
+| 18 | firstmate + Software is copyable | software-is-copyable.md | draft | issue N°14 (plán 23. 10. 2026) - firstmate do hĺbky, ArtCraft (Adobe clean-room), REA |
 
 ## Tip na poradie
 
