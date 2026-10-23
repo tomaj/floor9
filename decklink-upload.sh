@@ -14,14 +14,23 @@ fi
 
 TOKEN=$(tr -d '[:space:]' < "$TOKEN_FILE")
 
+# --magazine also publishes the edition to the FLOOR 9 Magazine (once - skipped if already there)
+MAGAZINE=false
+ARGS=()
+for a in "$@"; do
+  if [ "$a" = "--magazine" ]; then MAGAZINE=true; else ARGS+=("$a"); fi
+done
+set -- "${ARGS[@]}"
+
 if [ $# -lt 1 ]; then
-  echo "Usage: $0 <path-to-newsletter.html> [deck-name]"
-  echo "Example: $0 vydania/2026-06-26-05-level-up-day/newsletter.html \"FLOOR 9 N°05\""
+  echo "Usage: $0 <path-to-newsletter.html> [deck-name] [--magazine]"
+  echo "Example: $0 vydania/2026-06-26-05-level-up-day/newsletter.html \"FLOOR 9 N°05\" --magazine"
   exit 1
 fi
 
 HTML_FILE="$1"
 DECK_NAME="${2:-}"
+MAGAZINE_ID="zeyl8mbb6yjy65i9sbnk6xjg"
 
 if [ ! -f "$HTML_FILE" ]; then
   echo "Error: $HTML_FILE not found"
@@ -209,6 +218,42 @@ elif [ "$IS_NEW" = false ]; then
 fi
 
 rm -f "$ASSET_MAP_FILE"
+
+# --- Publish to Magazine ---
+
+if [ "$MAGAZINE" = true ]; then
+  echo ""
+  echo "=== Magazine ==="
+  PUBLISHED=$(curl -s "$BASE_URL/api/publications/$MAGAZINE_ID" -H "Authorization: Bearer $TOKEN" \
+    | jq -r --arg sid "$SHORT_ID" '.publishedDeckShortIds | index($sid) != null')
+
+  if [ "$PUBLISHED" = "true" ]; then
+    echo "  Already in the magazine, skipping (edit title/excerpt in the dashboard if needed)"
+  else
+    SUGGEST=$(curl -s -X POST "$BASE_URL/api/decks/$DECK_ID/magazine/suggest" -H "Authorization: Bearer $TOKEN")
+    # Newsletter style: hyphens, never em/en dashes
+    PAYLOAD=$(echo "$SUGGEST" | jq --arg did "$DECK_ID" --arg date "${EDITION_KEY:0:10}T08:00:00.000Z" '
+      def dash: gsub(" *[—–] *"; " - ");
+      {deckId: $did, publishedAt: $date, scheduledAt: null}
+      + (if .title then {title: (.title|dash), titleIsAi: true} else {} end)
+      + (if .excerpt then {excerpt: (.excerpt|dash), excerptIsAi: true} else {} end)
+      + (if has("coverImageUrl") then {coverImageUrl: .coverImageUrl, coverImageIsAi: true} else {} end)')
+
+    RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "$BASE_URL/api/publications/$MAGAZINE_ID/issues" \
+      -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d "$PAYLOAD")
+    HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+    BODY=$(echo "$RESPONSE" | sed '$d')
+
+    if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+      echo "  Published issue $(echo "$BODY" | jq -r '.issueNumber'): $(echo "$BODY" | jq -r '.title')"
+      echo "  Excerpt: $(echo "$BODY" | jq -r '.excerpt')"
+    else
+      echo "  Error publishing to magazine ($HTTP_CODE):" >&2
+      echo "$BODY" | jq . 2>/dev/null >&2 || echo "$BODY" >&2
+      exit 1
+    fi
+  fi
+fi
 
 echo ""
 echo "=== Done ==="

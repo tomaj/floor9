@@ -21,7 +21,9 @@ Stav: `nápad` -> `zbieram materiál` -> `draft` -> `odoslané`
 | 15 | Rýchlosť je nový štandard | rychlost-je-novy-standard.md | odoslané | issue N°12 "Speed is the new normal" (odoslané 25. 9. 2026) - Communication hub, IWD (teraz STR), SearchX, RetailPass, Flow (teaser) |
 | 16 | Flow | flow.md | nápad | nový frontend namiesto Siebelu, fully AI, backend nové DPS - follow-up na N°15 |
 | 17 | HackAIton - Po Ruke | hackaiton-po-ruke.md | odoslané | issue N°13 "A native app in 24 hours" (naplánované na 16. 10. 2026) - natívna appka za 24 h, webview vs native, chýbajúce zdrojáky |
-| 18 | firstmate + Software is copyable | software-is-copyable.md | draft | issue N°14 (plán 23. 10. 2026) - firstmate do hĺbky, ArtCraft (Adobe clean-room), REA |
+| 18 | firstmate | software-is-copyable.md | ready to send | issue N°14 (23. 10. 2026) - firstmate do hĺbky, 5-10 sessions naraz, Projects v Claude Code ako natívna náhrada |
+| 19 | DeckLink | decklink.md | draft | issue N°16 (plán 6. 11. 2026) - DeckLink v číslach; interná platforma na prezentácie, od 1. 6. 2026, AI edit, Magazine (aj FLOOR 9) |
+| 20 | Software is copyable (REA + ArtCraft) | software-is-copyable.md | draft | issue N°15 (plán 30. 10. 2026) - ArtCraft (Adobe clean-room), REA, graf hviezd; odštiepené z N°14 |
 
 ## Tip na poradie
 

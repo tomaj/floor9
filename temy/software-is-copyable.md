@@ -1,5 +1,7 @@
 # Téma: firstmate + softvér sa dá skopírovať (ArtCraft, REA)
 
+**Rozdelené 23. 10. 2026:** firstmate ide v N°14 (23. 10.), ArtCraft + REA v N°15 (30. 10., vydania/2026-10-30-15-rea-artcraft). Pred odoslaním N°15: aktualizovať hviezdy REA v grafe a overiť počet ArtCraft appiek (text hovorí "seven", web ich má 13).
+
 **Stav:** draft (N°14, plán 23. 10. 2026)
 
 ## Časť 1 - firstmate
@@ -14,7 +16,7 @@
   postavené s Claude. Tvrdí clean-room (žiadny Adobe kód, verejná dokumentácia + pozorované správanie).
   Výhrady: nikto neoveril, patenty, early alpha (roadmap ~25-35 % toho, čo potrebuje profík).
 - REA (github.com/morluto/rea, MIT): MCP/CLI, napája agenta na Ghidra/Hopper, binárky, APK, Electron, web.
-  Neobnovuje zdrojáky, neklonuje - vysvetľuje feature s dôkazmi. <10k stars 6. 10. -> 100k+ 12. 10. -> 277k 16. 10.
+  Neobnovuje zdrojáky, neklonuje - vysvetľuje feature s dôkazmi. <10k stars 6. 10. -> 100k+ 12. 10. -> 284k 16. 10. -> 368k 23. 10.
   Thomas tvrdí, že ArtCraft REA nepoužil.
 - Myšlienka: feature prestáva byť moat; ostáva zákazník, dáta, dôvera, rýchlosť.
 

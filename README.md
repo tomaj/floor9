@@ -100,6 +100,7 @@ Kazdy newsletter sa po finalizacii nahra na Decklink (`https://emp.st.sk/decklin
 2. **Nahraj na Decklink** - spusti `./decklink-upload.sh vydania/YYYY-MM-DD-NN-tema/newsletter.html "FLOOR 9 Issue N°XX - Nazov"`
 3. **Pri updateoch** - ten isty prikaz znova, skript automaticky vytvori novu verziu (netreba manualne riesit)
 4. **Pridaj link do emailu** - shareUrl z outputu vloz do HTML ako "Read online" odkaz
+5. **Pri finalnej verzii pridaj do Magazinu** - `./decklink-upload.sh <html> --magazine` (robi to automaticky skill open-in-outlook pred otvorenim draftu; ak uz vydanie v Magazine je, preskoci sa)
 
 ### Technicke detaily
 

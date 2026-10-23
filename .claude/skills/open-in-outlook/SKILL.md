@@ -23,6 +23,20 @@ Subject convention: `FLOOR 9 · Issue N°XX - <Title>`.
 
 Do this **after** the DeckLink upload, so the draft already contains the "Read online" link.
 
+## Before the draft: final DeckLink upload + Magazine
+
+Opening the draft means the issue is final, so always run this first:
+
+```
+./decklink-upload.sh <path-to-newsletter.html> --magazine
+```
+
+It pushes the final version to DeckLink and adds the issue to the FLOOR 9 Magazine (AI title/excerpt/cover, em dashes replaced with hyphens, `publishedAt` = edition date 08:00 UTC). If the issue is already in the magazine it skips that step.
+
+Target magazine: **FLOOR 9** - publication id `zeyl8mbb6yjy65i9sbnk6xjg` (slug `floor-9`), set as `MAGAZINE_ID` in `decklink-upload.sh`. The account can own several magazines, so never pick one by guessing - always publish to this id. To check what exists: `curl -s https://decklink.sk.tmo/api/publications -H "Authorization: Bearer $(cat .decklink-token)" | jq '.[] | {id, slug, name}'`.
+
+Show the user the published title and excerpt - they can tweak them in the DeckLink dashboard.
+
 ## The call order is load-bearing
 
 Inside the script, and if you ever write this by hand:
